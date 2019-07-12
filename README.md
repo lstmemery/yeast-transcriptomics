@@ -14,6 +14,7 @@ The goal of this project is to unravel the genetic mechanisms involved in yeast 
 ### Skills
 You will need an introductory knowledge of RNA expression analysis workflow, shiny applications, and design thinking.
 
+### References 
 This project is inspired by a data shared on a kaggle competition, and the original data can be found [here](https://www.kaggle.com/costalaether/yeast-transcriptomics).
 
 
