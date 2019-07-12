@@ -1,12 +1,20 @@
 # Transcriptomics in yeast
-### A computational bioinformatics dataset with 92 sets of yeast data on 6000 genes
-Yeasts (saccharomyces cerevisiae) are used in the production of beer, wine, bread and many other biotechnology applications such as creating complex pharmaceuticals. 
 
-Yeasts are great model organisms for for their small genome consisting of ~ 6000 genes. They are also single cells making them more homogeneous in gene expression.
+Yeasts (saccharomyces cerevisiae) are used in the production of some of the most cherished food choices such as beer, wine, and bread. There are many other biotechnology applications not limited to complex pharmaceuticals. 
+Yeasts are great model organisms for for their simple and small genome consisting of approximately 6000 genes. They are also single cell organisms making them more homogeneous in gene expression.
 
-We will be using RNA expression for yeasts grown in various stress conditions. We will be unraveling the genetic mechanisms involved in stress with the overal aim in using this knowledge for studying other diseases. Expression levels were normalized by TPM (transcripts per million), following a default normalization procedure. 
 
-The original data can be found [here](https://www.kaggle.com/costalaether/yeast-transcriptomics).
+### Data
+The dataset in this project consists of gene expression levels for 92 yeast strains treated with various stimuli. RNA expression levels are normalized to TPM (transcripts per million), following a default normalization procedure. 
+
+### Goal
+The goal of this project is to unravel the genetic mechanisms involved in yeast stress adaptation through building a visualization platform that allows scientists to explore the data more easily. 
+
+
+### Skills
+You will need an introductory knowledge of RNA expression analysis workflow, shiny applications, and design thinking.
+
+This project is inspired by a data shared on a kaggle competition, and the original data can be found [here](https://www.kaggle.com/costalaether/yeast-transcriptomics).
 
 
 
