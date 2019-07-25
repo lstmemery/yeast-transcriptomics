@@ -16,7 +16,7 @@ You will need an introductory knowledge of RNA expression analysis workflows, de
 
 ### References 
 This project is inspired by a data shared on a kaggle competition, and the original data can be found [here](https://www.kaggle.com/costalaether/yeast-transcriptomics).
-
+- -RNAseq data analysis workflow](https://github.com/griffithlab/rnaseq_tutorial) 
 
 
 
