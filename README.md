@@ -11,7 +11,7 @@ The goal of this project is to unravel the genetic mechanisms involved in yeast 
 
 
 ### Skills
-You will need an introductory knowledge of RNA expression analysis workflows, design thinking, and coding skills. Coding in R or Python is an asset. 
+You will need an introductory knowledge of RNA expression analysis workflows, design thinking, and coding skills. Coding in R (or Python) and basic knowledge of git/github is an asset. 
 
 
 ### References 
