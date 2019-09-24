@@ -75,7 +75,7 @@ Time | Event | Location
 9:00 AM | Red-eye hacking | LSI, UBC
 12:00 PM | Lunch | LSI, UBC
 2:00 PM | Desperate bug-fix time | LSI, UBC
-3:30 PM | Team Project Presentations (do we still want to do this?) | LSI, UBC
+3:30 PM | Team Project Presentations | LSI, UBC
 4:30 PM | Coffee Break | LSI, UBC
 4:30 PM | Abcellera talk | LSI, UBC
 5:00 PM | hackseq19 wrap-up | LSI, UBC
