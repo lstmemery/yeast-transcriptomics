@@ -28,9 +28,9 @@ You will need an introductory knowledge of RNA expression analysis workflows, de
 
 Please have the latest versions of R and R Bioconductor installed on your laptop prior to the workshop. RStudio (the free version) is highly recommended as well, since we will be teaching in this environment.
 
-[Install R](https://cran.r-project.org/)
-[Install R Bioconductor](https://bioconductor.org/install/)
-[Install RStudio](https://rstudio.com/products/rstudio/download/#download)
+- [Install R](https://cran.r-project.org/)   
+- [Install R Bioconductor](https://bioconductor.org/install/)   
+- [Install RStudio](https://rstudio.com/products/rstudio/download/#download)   
 
 ### Suggested preparatory lessons
 - [Introduction to Data Science with R](http://shop.oreilly.com/product/0636920034834.do)
