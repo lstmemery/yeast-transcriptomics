@@ -38,6 +38,7 @@ Please have the latest versions of R and R Bioconductor installed on your laptop
 - [Data Manipulation and Visualization using R](http://bioinformatics-core-shared-training.github.io/r-intermediate/)
 - [RNAseq data analysis workflow](https://github.com/griffithlab/rnaseq_tutorial) 
 - [Setting up reproducible projects in R](https://nicercode.github.io/blog/2013-04-05-projects/) and [package management for reproducible R code](https://rviews.rstudio.com/2018/01/18/package-management-for-reproducible-r-code/) and [reproducibility good practices](https://github.com/karthik/rstudio2019)
+- [Additional resources from UCSF Data Science Initiative](https://courses.ucsf.edu/course/index.php?categoryid=499)
 
 
 ### Hackathon Schedule
