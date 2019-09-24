@@ -42,7 +42,7 @@ Please have the latest versions of R and R Bioconductor installed on your laptop
 
 ### Tentative Schedule
 
-**Day 1 - Firday October 18, 2019**
+#### **Day 1 - Firday October 18, 2019**
 
 | Time  | Event            |
 | ----- | ---------------- |
@@ -56,7 +56,7 @@ Please have the latest versions of R and R Bioconductor installed on your laptop
 | 17:00 | Team Scrum & wrap-up |
 | 17:30 | Unofficial Evening Social |
 
-**Day 2 - Saturday October 19, 2019**
+#### **Day 2 - Saturday October 19, 2019**
 
 | Time  | Event            |
 | ----- | ---------------- |
@@ -70,7 +70,8 @@ Please have the latest versions of R and R Bioconductor installed on your laptop
 | 17:00 | Team Scrum & wrap-up |
 | 17:30 | Evening Social |
 
-**Day 3 - Sunday October 20, 2019**
+#### **Day 3 - Sunday October 20, 2019**
+
 | Time  | Event            |
 | ----- | ---------------- |
 | 8:30  | Coffee & Snacks  |
