@@ -40,49 +40,42 @@ Please have the latest versions of R and R Bioconductor installed on your laptop
 - [Setting up reproducible projects in R](https://nicercode.github.io/blog/2013-04-05-projects/) and [package management for reproducible R code](https://rviews.rstudio.com/2018/01/18/package-management-for-reproducible-r-code/) and [reproducibility good practices](https://github.com/karthik/rstudio2019)
 
 
-### Tentative Schedule
+### Hackathon Schedule
 
-#### **Day 1 - Firday October 18, 2019**
+### Friday, October 18, 2019
 
-| Time  | Event            |
-| ----- | ---------------- |
-| 8:30  | Coffee & Snacks  |
-| 9:00  | hackseq kickoff  |
-| 9:30  | Team meet        |
-| 10:00 | Introduction to the data, brainstorming, group-forming |
-| 11:30 | Intro to Git/Github Workshop (optional) |
-| 13:00 | Lunch |
-| 14:00 | Assign tasks and start hacking |
-| 17:00 | Team Scrum & wrap-up |
-| 17:30 | Unofficial Evening Social |
+Time | Event | Location
+-- | -- | --
+8:30 AM | Coffee and snacks | LSI, UBC
+9:00 AM | hackseq kickoff | LSI, UBC
+9:30 AM | Team meet + hacking | LSI, UBC
+11:30 AM | Intro to Git/Github Workshop (Optional) | room 1330
+1:00 PM | Lunch | LSI, UBC
+2:00 PM | Continue hacking | LSI, UBC
+5:00 PM | Team Scrum + wrap-up | LSI, UBC
+5:30 PM | Unofficial Evening Social | The Gallery, UBC
 
-#### **Day 2 - Saturday October 19, 2019**
-
-| Time  | Event            |
-| ----- | ---------------- |
-| 8:30  | Coffee & Snacks  |
-| 9:00  | Re-cap and planning meeting  |
-| 9:30  | Hackity hacking        |
-| 11:00 | check-in |
-| 12:00 | Lunch |
-| 14:00 | Hacking |
-| 15:30 | check-in |
-| 17:00 | Team Scrum & wrap-up |
-| 17:30 | Evening Social |
-
-#### **Day 3 - Sunday October 20, 2019**
-
-| Time  | Event            |
-| ----- | ---------------- |
-| 8:30  | Coffee & Snacks  |
-| 9:00  | Re-cap and planning meeting  |
-| 9:30  | Last-minute hacking |
-| 11:00 | check-in |
-| 12:00 | Lunch |
-| 14:00 | Finishing touches |
-| 15:30 | Team Project Presentations |
-| 16:30 | Coffee Break |
-| 17:00 | HackSeq19 Wrap-up |
+### Saturday, October 19, 2019
 
 
+Time | Event | Location
+-- | -- | --
+8:30 AM | Coffee and snacks | LSI, UBC
+9:00 AM | Hacking! | LSI, UBC
+12:00 PM | Lunch | LSI, UBC
+2:00 PM | Hacking… | LSI, UBC
+5:00 PM | Team Scrum + wrap-up | LSI, UBC
+5:30 PM | hackseq Evening Social | BierCraft, UBC
 
+### Sunday, October 20, 2019
+
+Time | Event | Location
+-- | -- | --
+8:30 AM | Coffee and snacks | LSI, UBC
+9:00 AM | Red-eye hacking | LSI, UBC
+12:00 PM | Lunch | LSI, UBC
+2:00 PM | Desperate bug-fix time | LSI, UBC
+3:30 PM | Team Project Presentations (do we still want to do this?) | LSI, UBC
+4:30 PM | Coffee Break | LSI, UBC
+4:30 PM | Abcellera talk | LSI, UBC
+5:00 PM | hackseq19 wrap-up | LSI, UBC
