@@ -1,15 +1,14 @@
 # Transcriptomics in yeast
-
-Yeasts (saccharomyces cerevisiae) are used in the production of some of the most cherished food choices such as beer, wine, and bread. There are many other biotechnology applications not limited to complex pharmaceuticals. Yeasts are great model organisms for their simple and small genome consisting of approximately 6000 genes. They are also single cell organisms making gene expression more homogenous.
+Yeasts (saccharomyces cerevisiae) are used in the production of some of our diet's most cherished choices such bread (not mentioning wine and beer). There are many other biotechnology applications that use yeast some of which include complex pharmaceuticals production. Yeasts are also great model organisms because of their simple and small genome consisting of approximately 6000 genes. Being single celled organisms also make them great for gene expression analyses as they are more homogenous.
 
 ### Data
-The dataset in this project consists of gene expression levels for 92 yeast strains treated with various stimuli. RNA expression levels are normalized to TPM (transcripts per million), following a default normalization procedure. Data is stored in `data` folder.
+The data in this project includes gene expression values for 92 yeast strains treated with various stimuli. RNA expression levels are normalized to TPM (transcripts per million), following a default normalization procedure. Data is stored in `data` folder.
 
 ### Data Source 
 This project is inspired by the yeast-omics dataset shared as a kaggle competition, and the original data can be found [here](https://www.kaggle.com/costalaether/yeast-transcriptomics).
 
 ### Goal
-The goal of this project is to unravel the genetic mechanisms involved in yeast stress adaptation through building an interactive visualization platform (e.g. shiny application or dashboard) that allows scientists to explore the data more easily. 
+The goal of this project is to unravel the genetic mechanisms involved in yeast stress adaptation through building an interactive visualization platform (e.g. shiny application or dashboard) that allows scientists to explore the data more easily. Some visualization suggestions are heatmaps, plots, taxonomy trees for yeast strains, etc.
 
 The tasks we will complete through the duration of hackathon include:
 - Estimate gene expression levels based for the normalized RNA-Seq data
@@ -22,10 +21,9 @@ The tasks we will complete through the duration of hackathon include:
 
 
 ### Skills
-You will need an introductory knowledge of RNA expression analysis workflows, design thinking, and coding skills. Coding in R (or Python) and basic knowledge of git/github is an asset. 
+You will need an introductory knowledge of R, RNA expression analysis workflows, design thinking, and coding skills. Coding in R (or Python) and basic knowledge of git/github is an asset. 
 
 ### Software
-
 Please have the latest versions of R and R Bioconductor installed on your laptop prior to the workshop. RStudio (the free version) is highly recommended as well, since we will be teaching in this environment.
 
 - [Install R](https://cran.r-project.org/)   
@@ -43,7 +41,7 @@ Please have the latest versions of R and R Bioconductor installed on your laptop
 
 ### Hackathon Schedule
 
-### Friday, October 18, 2019
+#### Friday, October 18, 2019
 
 Time | Event | Location
 -- | -- | --
@@ -56,7 +54,7 @@ Time | Event | Location
 5:00 PM | Team Scrum + wrap-up | LSI, UBC
 5:30 PM | Unofficial Evening Social | The Gallery, UBC
 
-### Saturday, October 19, 2019
+#### Saturday, October 19, 2019
 
 
 Time | Event | Location
@@ -68,7 +66,7 @@ Time | Event | Location
 5:00 PM | Team Scrum + wrap-up | LSI, UBC
 5:30 PM | hackseq Evening Social | BierCraft, UBC
 
-### Sunday, October 20, 2019
+#### Sunday, October 20, 2019
 
 Time | Event | Location
 -- | -- | --
