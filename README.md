@@ -1,5 +1,5 @@
 # Transcriptomics in yeast
-Yeasts (saccharomyces cerevisiae) are used in the production of some of our diet's most cherished choices such bread (not mentioning wine and beer). There are many other biotechnology applications that use yeast some of which include complex pharmaceuticals production. Yeasts are also great model organisms because of their simple and small genome consisting of approximately 6000 genes. Being single celled organisms also make them great for gene expression analyses as they are more homogenous.
+Yeasts (saccharomyces cerevisiae) are used in the production of some of our diet's most cherished choices such as bread (not mentioning wine and beer). There are many other biotechnology applications that use yeast some of which include complex pharmaceuticals production. Yeasts are also great model organisms because of their simple and small genome consisting of approximately 6000 genes. Being single celled organisms also make them great for gene expression analyses as they are more homogenous.
 
 ### Data
 The data in this project includes gene expression values for 92 yeast strains treated with various stimuli. RNA expression levels are normalized to TPM (transcripts per million), following a default normalization procedure. Data is stored in `data` folder.
