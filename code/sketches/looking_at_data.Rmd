@@ -1,0 +1,26 @@
+---
+title: "Data Exploration"
+author: "Matt Emery"
+date: "09/10/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+library(tidyverse)
+```
+
+```{r}
+df <- read_csv("../../data/SC_expression.csv")
+```
+
+```{r}
+df %>%
+  rename()
+```
+
+I'm seeing some duplicated names.
