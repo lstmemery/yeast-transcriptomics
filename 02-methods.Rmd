@@ -1,3 +1,9 @@
+---
+output:
+  html_document: default
+  pdf_document: default
+---
+
 # Methods
 
-Here is a review methods.
+Here is a review of methods.

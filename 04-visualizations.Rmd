@@ -1,4 +1,12 @@
+---
+output:
+  html_document: default
+  pdf_document: default
+---
+
 # Visualizations
+
+Plots etc. 
 
 ## Example one
 
