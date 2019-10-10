@@ -3,6 +3,9 @@ Yeasts (saccharomyces cerevisiae) are used in the production of some of our diet
 
 ### Data
 The data in this project includes gene expression values for 92 yeast strains treated with various stimuli. RNA expression levels are normalized to TPM (transcripts per million), following a default normalization procedure. Data is stored in `data` folder.
+- The `SC_expression.csv` file contains gene expression of yeast strains in the experiments.
+- The `labels.csv` files pertain to gene validation status and molecular function (MF), cellular component (CC), and biological processes (BP) of those genes. 
+- The `conditions_annotation.csv` file explain the yeast strains and experimental conditions.
 
 ### Data Source 
 This project is inspired by the yeast-omics dataset shared as a kaggle competition, and the original data can be found [here](https://www.kaggle.com/costalaether/yeast-transcriptomics).
