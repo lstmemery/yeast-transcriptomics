@@ -42,7 +42,7 @@ Please have the latest versions of R and R Bioconductor installed on your laptop
 - [Setting up reproducible projects in R](https://nicercode.github.io/blog/2013-04-05-projects/) and [package management for reproducible R code](https://rviews.rstudio.com/2018/01/18/package-management-for-reproducible-r-code/) and [reproducibility good practices](https://github.com/karthik/rstudio2019)
 - [Yeast pathway analysis in R](https://bioconductor.org/packages/release/bioc/vignettes/ReactomePA/inst/doc/ReactomePA.html)   
 - [Additional resources from UCSF Data Science Initiative](https://courses.ucsf.edu/course/index.php?categoryid=499)
-
+- [Package development, maintenance, documentation, and peer-review](https://devguide.ropensci.org/building.html#documentation)
 
 ### Hackathon Schedule
 
