@@ -43,6 +43,8 @@ Please have the latest versions of R and R Bioconductor installed on your laptop
 - [Yeast pathway analysis in R](https://bioconductor.org/packages/release/bioc/vignettes/ReactomePA/inst/doc/ReactomePA.html)   
 - [Additional resources from UCSF Data Science Initiative](https://courses.ucsf.edu/course/index.php?categoryid=499)
 - [Package development, maintenance, documentation, and peer-review](https://devguide.ropensci.org/building.html#documentation)
+- [Shiny Apps for Transcriptome Visualizations](https://academic.oup.com/bioinformatics/article/33/3/447/2525724)
+- [RNAseq Shiny app options](https://www.rna-seqblog.com/tag/shiny/)
 
 ### Hackathon Schedule
 
