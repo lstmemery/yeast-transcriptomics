@@ -1,5 +1,5 @@
 # Transcriptomics in yeast
-Yeasts (saccharomyces cerevisiae) are used in the production of some of our diet's most cherished choices such as bread (not mentioning wine and beer). There are many other biotechnology applications that use yeast some of which include complex pharmaceuticals production. Yeasts are also great model organisms because of their simple and small genome consisting of approximately 6000 genes. Being single celled organisms also make them great for transcriptome analyses as gene expression is homogenous. As part of our hackathon project (October 18 to 20, 2019) we will be examining a yeast transcriptome dataset. In this data, a numbre of yeast strains have been treated  with various stimuli and gene expression changes are the readout. Expression is normalized  to Transcript Per Million (TPM). As a team, we will be cleaning, analyzing, and communicating the results of our explorations through clear documnetation of procedures and an interactive application. 
+Yeasts (saccharomyces cerevisiae) are used in the production of some of our diet's most cherished choices such as bread (not mentioning wine and beer). There are many other biotechnology applications that use yeast, some of which include complex pharmaceuticals production. Yeasts are also great model organisms because of their simple and small genome consisting of approximately 6000 genes. Being single celled organisms also make them great for transcriptome analyses as gene expression is homogenous. As part of our Vancouver-based hackathon (hackseq19) project (October 18 to 20, 2019) we will be examining a yeast transcriptome dataset. In this data, a number of yeast strains have been treated with various stimuli, and gene expression changes are the readout. Expression is normalized  to Transcript Per Million (TPM). As a team, we will be cleaning, analyzing, and communicating the results of our explorations through clear documentation of procedures and an interactive application. 
 
 ### Data
 The data in this project includes gene expression values for 92 yeast strains treated with various stimuli. RNA expression levels are normalized to TPM (transcripts per million), following a default normalization procedure. Data is stored in `data` folder.
@@ -18,7 +18,6 @@ The tasks we will attempt in the hackathon include:
 - Perform gene set enrichment analyses (GSEA, ReactomePA)
 - Create visualizations of results (heatmaps, barplots, etc.)
 - Phylogenetic/Taxonomic trees for yeast strains
-
 
 ### Skills
 You will need an introductory knowledge of R, RNA expression analysis workflows, design thinking, and coding skills. Coding in R (or Python) and basic knowledge of git/github is an asset. Team communications will happen in person and in [slack](hackseq19.slack.com).
@@ -59,7 +58,6 @@ Time | Event | Location
 5:30 PM | Unofficial Evening Social | The Gallery, UBC
 
 #### Saturday, October 19, 2019
-
 
 Time | Event | Location
 -- | -- | --
