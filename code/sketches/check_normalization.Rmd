@@ -1,0 +1,25 @@
+---
+title: "Normalization Process?"
+author: "Matt Emery"
+date: "18/10/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+```
+
+```{r}
+expressions <- read_csv("../../app/tidy_data/tidy_expressions.csv")
+```
+
+```{r}
+expressions %>% 
+  group_by(condition) %>% 
+  summarise(average = mean(value), variance = var(value))
+```
+
