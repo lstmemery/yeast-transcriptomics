@@ -1,5 +1,5 @@
 # Transcriptomics in yeast
-Yeasts (saccharomyces cerevisiae) are used in the production of some of our diet's most cherished choices such as bread (not mentioning wine and beer). There are many other biotechnology applications that use yeast some of which include complex pharmaceuticals production. Yeasts are also great model organisms because of their simple and small genome consisting of approximately 6000 genes. Being single celled organisms also make them great for transcriptome analyses as gene expression is homogenous.
+Yeasts (saccharomyces cerevisiae) are used in the production of some of our diet's most cherished choices such as bread (not mentioning wine and beer). There are many other biotechnology applications that use yeast some of which include complex pharmaceuticals production. Yeasts are also great model organisms because of their simple and small genome consisting of approximately 6000 genes. Being single celled organisms also make them great for transcriptome analyses as gene expression is homogenous. As part of our hackathon project (October 18 to 20, 2019) we will be examining a yeast transcriptome dataset. In this data, a numbre of yeast strains have been treated  with various stimuli and gene expression changes are the readout. Expression is normalized  to Transcript Per Million (TPM). As a team, we will be cleaning, analyzing, and communicating the results of our explorations through clear documnetation of procedures and an interactive application. 
 
 ### Data
 The data in this project includes gene expression values for 92 yeast strains treated with various stimuli. RNA expression levels are normalized to TPM (transcripts per million), following a default normalization procedure. Data is stored in `data` folder.
@@ -82,3 +82,7 @@ Time | Event | Location
 4:30 PM | Coffee Break | LSI, UBC
 4:30 PM | Abcellera talk | LSI, UBC
 5:00 PM | hackseq19 wrap-up | LSI, UBC
+
+
+### Team Members
+Noushin Nabavi, Matthew Emery, Alex Morin, Zuhaib Ahmed, Casey Engstrom, Sedat Demiriz, Shinta Thio, Saelin Bjornson
