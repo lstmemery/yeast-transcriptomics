@@ -36,12 +36,15 @@ Please have the latest versions of R and R Bioconductor installed on your laptop
 ### Suggested preparatory lessons
 - [Introduction to Data Science with R](http://shop.oreilly.com/product/0636920034834.do)
 - [RNAseq Analysis tutorials in R](https://bioinformatics-core-shared-training.github.io/RNAseq-R/) and [Differential expression Analysis](https://combine-australia.github.io/RNAseq-R/06-rnaseq-day1.html)
+- [Mastering Shiny](https://mastering-shiny.org/)
 - [Data Manipulation and Visualization using R](http://bioinformatics-core-shared-training.github.io/r-intermediate/)
 - [RNAseq data analysis workflow](https://github.com/griffithlab/rnaseq_tutorial) 
 - [Setting up reproducible projects in R](https://nicercode.github.io/blog/2013-04-05-projects/) and [package management for reproducible R code](https://rviews.rstudio.com/2018/01/18/package-management-for-reproducible-r-code/) and [reproducibility good practices](https://github.com/karthik/rstudio2019)
 - [Yeast pathway analysis in R](https://bioconductor.org/packages/release/bioc/vignettes/ReactomePA/inst/doc/ReactomePA.html)   
 - [Additional resources from UCSF Data Science Initiative](https://courses.ucsf.edu/course/index.php?categoryid=499)
-
+- [Package development, maintenance, documentation, and peer-review](https://devguide.ropensci.org/building.html#documentation)
+- [Shiny Apps for Transcriptome Visualizations](https://academic.oup.com/bioinformatics/article/33/3/447/2525724)
+- [RNAseq Shiny app options](https://www.rna-seqblog.com/tag/shiny/)
 
 ### Hackathon Schedule
 
