@@ -13,18 +13,18 @@ library(Rtsne)
 
 ```{r read}
 
-rel_expr <- read_csv(fs::path(here::here(), "data","SC_expression.csv"))
+rel_expr <- read_csv(fs::path(here::here(), "data","00_raw","SC_expression.csv"))
 
-strain_meta <- read_csv(fs::path(here::here(), "data","conditions_annotation.csv"))
+strain_meta <- read_csv(fs::path(here::here(), "data","00_raw","conditions_annotation.csv"))
 
 # read in the gene metadata, with additional cols for tags
 tag.vec <- c("name","confidence", paste0("tag",1:10))
 # biol process
-bp_meta <- read_csv(fs::path(here::here(),"data","labels_BP.csv"), col_names = tag.vec)
+bp_meta <- read_csv(fs::path(here::here(),"data","00_raw","labels_BP.csv"), col_names = tag.vec)
 # cellular_component
-cc_meta <- read_csv(fs::path(here::here(),"data","labels_CC.csv"), col_names = tag.vec)
+cc_meta <- read_csv(fs::path(here::here(),"data","00_raw","labels_CC.csv"), col_names = tag.vec)
 # molecular func
-mf_meta <- read_csv(fs::path(here::here(),"data","labels_MF.csv"), col_names = tag.vec)
+mf_meta <- read_csv(fs::path(here::here(),"data","00_raw","labels_MF.csv"), col_names = tag.vec)
 
 ```
 
@@ -86,9 +86,8 @@ cc_meta %>%
 ```{r eda}
 go_type <- mf_meta
 
-
 # compare RNA expression of strains with go_tag1 and go_tag2
-p <- rel_expr %>% 
+heatmap_by_GO <- rel_expr %>% 
   left_join(go_type, by="gene_name") %>%
   left_join(strain_meta, by="culture_treatment") %>% 
   # filter(tag %in% go_tags) %>% 
@@ -97,13 +96,13 @@ p <- rel_expr %>%
   ungroup()
   
   
-ggplot(p, aes(x=primary %>% fct_reorder(-rel_expr), y=tag %>% fct_reorder(-rel_expr))) +
+ggplot(heatmap_by_GO, aes(x=primary %>% fct_reorder(-rel_expr), y=tag %>% fct_reorder(-rel_expr))) +
   geom_tile(aes(fill=rel_expr)) +
   scale_fill_viridis_c() +
   ggtitle("Mean transcript abundance") +
   theme(axis.text.x = element_text(angle = 90, hjust=0.99, vjust=0.5)) +
   ylab("Molecular Function (GO)") +
-  xlab("strain") +
+  xlab("primary") +
   labs(fill="Norm. rel. expr.")
   
 ```
