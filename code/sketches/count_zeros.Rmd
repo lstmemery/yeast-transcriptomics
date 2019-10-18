@@ -1,0 +1,43 @@
+---
+title: "count-zeros"
+author: "Matt Emery"
+date: "18/10/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+library(here)
+library(fs)
+library(ggthemes)
+```
+
+```{r}
+expressions <- read_csv(path(here(), "data", "tidy_data", "tidy_expressions.csv"))
+```
+
+```{r}
+ggplot()
+```
+
+
+```{r}
+number_of_zero_counts <- expressions %>% 
+  filter(value == 0) %>% 
+  count(gene) %>% 
+  arrange(desc(n))
+```
+
+
+```{r}
+ggplot(number_of_zero_counts, aes(x= n)) + 
+  geom_density(fill = "grey") +
+  xlab("Count of Zero Expression Reads")
+  theme_few() +
+  ggsave(here("figures/zero_counts.png"))
+```
+
