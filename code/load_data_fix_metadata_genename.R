@@ -1,10 +1,12 @@
-## Load and explore the expression data and associated metadata
+## Load the expression matrix and associated metadata. Fix inconsistency between.
+# Resave the cleaned tables.
 
 library(tidyverse)
 
 # expression matrix, note that first column is gene names. coercing to rownames
 # expect 6071x93
-SC_expression <- read.csv("data/SC_expression.csv", row.names = 1)
+SC_expression <- read.csv("data/SC_expression.csv")
+colnames(SC_expression)[colnames(SC_expression) == "X"] <- "gene"
 
 # expect 92x4
 condition_annotation <- read.csv("data/conditions_annotation.csv", stringsAsFactors = FALSE)
@@ -32,6 +34,29 @@ labels_BP <- labels_BP[labels_BP$gene != "gene", ]
 labels_CC <- labels_BP[labels_CC$gene != "gene", ]
 labels_MF <- labels_BP[labels_MF$gene != "gene", ]
 
-stopifnot(all(table(rownames(SC_expression) %in% labels_BP$gene)))
-stopifnot(all(table(rownames(SC_expression) %in% labels_CC$gene)))
-stopifnot(all(table(rownames(SC_expression) %in% labels_MF$gene)))
+
+stopifnot(all(table(SC_expression$gene %in% labels_BP$gene)))
+stopifnot(all(table(SC_expression$gene %in% labels_CC$gene)))
+stopifnot(all(table(SC_expression$gene %in% labels_MF$gene)))
+
+
+table.names <- c("01_condition_annotation.csv", 
+                 "01_labelsBP.csv",
+                 "01_labelsCC.csv",
+                 "01_labelsMF.csv", 
+                 "01_SC_expression.csv")
+
+tables <- list(condition_annotation,
+            labels_BP,
+            labels_CC,
+            labels_MF,
+            SC_expression)
+
+
+for (i in 1:length(tables)) {
+  write.table(tables[i], 
+              sep = ",",
+              quote = FALSE,
+              row.names = FALSE,
+              paste0("data/", table.names[i]))
+}
