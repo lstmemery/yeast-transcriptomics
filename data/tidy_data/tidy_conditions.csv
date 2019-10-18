@@ -1,0 +1,191 @@
+condition,condition_number,name,value
+AFIQCI,1,primary,wildtype
+AFIQCI,1,secondary,wildtype 1
+AFIQBR,1,primary,wildtype
+AFIQBR,1,secondary,wildtype 2
+AFIINC,1,primary,itc1
+AFIINC,1,secondary,itc1-1_dUTP
+AFNAQI,1,primary,itc1
+AFNAQI,1,secondary,itc1-1_dUTP
+AFNCCR,1,primary,swr1
+AFNCCR,1,secondary,swr1 mutant
+AFNCCA,1,primary,swr1
+AFNCCA,1,secondary,swr1 mutant
+FABINB,1,primary,tet-STH1
+FABINB,1,secondary,<not provided>
+FABINF,1,primary,tet-STH1
+FABINF,1,secondary,<not provided>
+FAFAFF,1,primary,tet-INO80
+FAFAFF,1,secondary,tet-ino80
+FAFAFQ,1,primary,tet-INO80
+FAFAFQ,1,secondary,tet-ino80
+FAFAQQ,1,primary,tet-control strain
+FAFAQQ,1,secondary,tet-control
+FAFASB,1,primary,tet-control strain
+FAFASB,1,secondary,tet-control
+FFNARI,1,primary,Strain5
+FFNARI,1,secondary,phenol lysis
+FFNARS,1,primary,Strain5
+FFNARS,1,secondary,phenol lysis
+FFNARN,1,primary,Strain6
+FFNARN,1,secondary,phenol lysis
+FFNAAR,1,primary,Strain6
+FFNAAR,1,secondary,phenol lysis
+FFNAAA,1,primary,Strain6
+FFNAAA,1,secondary,phenol lysis
+FFNAAA,2,primary,Strain6
+FFNAAA,2,secondary,phenol lysis
+FFNAAC,1,primary,Strain7
+FFNAAC,1,secondary,phenol lysis
+FFNAAQ,1,primary,Strain7
+FFNAAQ,1,secondary,phenol lysis
+QCAQFQ,1,primary,wildtype
+QCAQFQ,1,secondary,Mat a
+QCAQFI,1,primary,wildtype
+QCAQFI,1,secondary,Mat a
+QCAQFS,1,primary,anMX4
+QCAQFS,1,secondary,BY4741 background
+QCAQFN,1,primary,anMX4
+QCAQFN,1,secondary,BY4741 background
+QCFFAB,1,primary,rrp6
+QCFFAB,1,secondary,rrp6
+QCFQIA,1,primary,rrp6
+QCFQIA,1,secondary,rrp6
+QNCSCQ,1,primary,MATa MAL2-8c SUC2
+QNCSCQ,1,secondary,CEN.PK113-7D
+QNCSCI,1,primary,MATa MAL2-8c SUC2
+QNCSCI,1,secondary,CEN.PK113-7D
+QNCSCS,1,primary,MATa ura3-52 his3-1 leu2-3
+QNCSCS,1,secondary,hxk1::KlLEU2
+QNCSCS,1,additional_information,IMX372
+QNCSCN,1,primary,MATa ura3-52 his3-1 leu2-3
+QNCSCN,1,secondary,hxk1::KlLEU2
+QNCSCN,1,additional_information,IMX372
+IAAICF,1,primary,hybrid  cerevisiae x  paradoxus
+IAAICF,1,secondary,Citrinin
+IAAICQ,1,primary,hybrid  cerevisiae x  paradoxus
+IAAICQ,1,secondary,Citrinin
+IAAICI,1,primary,hybrid  cerevisiae x  paradoxus
+IAAICI,1,secondary,Untreated
+IAAICS,1,primary,hybrid  cerevisiae x  paradoxus
+IAAICS,1,secondary,Untreated
+IFAAAR,1,primary,DDY3630
+IFAAAR,1,secondary,strain W303
+IFAAAA,1,primary,DDY4300
+IFAAAA,1,secondary,strain W303
+IFAAAA,2,primary,DDY4301
+IFAAAA,2,secondary,strain W303
+IFFABC,1,primary,E1A1
+IFFABC,1,secondary,ethanol
+IFFABB,1,primary,E1A2
+IFFABB,1,secondary,ethanol
+IFFABF,1,primary,E1B1
+IFFABF,1,secondary,ethanol
+IFFABQ,1,primary,E1B2
+IFFABQ,1,secondary,ethanol
+IFFABI,1,primary,E2A1
+IFFABI,1,secondary,ethanol
+IFFABS,1,primary,E2A2
+IFFABS,1,secondary,ethanol
+IFFABN,1,primary,E2B1
+IFFABN,1,secondary,ethanol
+IFFAFR,1,primary,E2B2
+IFFAFR,1,secondary,ethanol
+IFFAFA,1,primary,G1A1
+IFFAFA,1,secondary,glucose
+IFFAFA,2,primary,G1A2
+IFFAFA,2,secondary,glucose
+IFFAFC,1,primary,G1B1
+IFFAFC,1,secondary,glucose
+IFFAFB,1,primary,G1B2
+IFFAFB,1,secondary,glucose
+IFFAFF,1,primary,G2A1
+IFFAFF,1,secondary,glucose
+IFFAFQ,1,primary,G2A2
+IFFAFQ,1,secondary,glucose
+IFFAFI,1,primary,G2B1
+IFFAFI,1,secondary,glucose
+IFFAFS,1,primary,G2B2
+IFFAFS,1,secondary,glucose
+INICIR,1,primary,YB210
+INICIR,1,secondary,biofuel generation
+INICIA,1,primary,YB210
+INICIA,1,secondary,biofuel generation
+INICIA,2,primary,YB210
+INICIA,2,secondary,biofuel generation
+INICIC,1,primary,YB211
+INICIC,1,secondary,biofuel generation
+INICIB,1,primary,YB211
+INICIB,1,secondary,biofuel generation
+INICIF,1,primary,YB211
+INICIF,1,secondary,biofuel generation
+INICIQ,1,primary,YB212
+INICIQ,1,secondary,biofuel generation
+INICII,1,primary,YB212
+INICII,1,secondary,biofuel generation
+INICIS,1,primary,YB212
+INICIS,1,secondary,biofuel generation
+INICIN,1,primary,YB213
+INICIN,1,secondary,biofuel generation
+INICSR,1,primary,YB213
+INICSR,1,secondary,biofuel generation
+INICSA,1,primary,YB213
+INICSA,1,secondary,biofuel generation
+SAABRQ,1,primary,wild type
+SAABRQ,1,secondary,none
+SAASAQ,1,primary,wild type
+SAASAQ,1,secondary,galactose
+SAASCC,1,primary,pbs2
+SAASCC,1,secondary,galactose
+SAASCF,1,primary,ste12
+SAASCF,1,secondary,galactose
+SAANNN,1,primary,wild type
+SAANNN,1,secondary,tunicamycin
+SAARRR,1,primary,pbs2
+SAARRR,1,secondary,tunicamycin
+SAARRS,1,primary,wild type
+SAARRS,1,secondary,salt stress
+SAARAA,1,primary,pbs2
+SAARAA,1,secondary,salt stress
+SARIAI,1,primary,fy3
+SARIAI,1,secondary,chemostat
+SARICB,1,primary,fy3
+SARICB,1,secondary,chemostat
+SAABBN,1,primary,15 deg
+SAABBN,1,secondary,temperature
+SAABFR,1,primary,15 deg
+SAABFR,1,secondary,temperature
+SAABFA,1,primary,15 deg
+SAABFA,1,secondary,temperature
+SAABFA,2,primary,15 deg
+SAABFA,2,secondary,temperature
+SAABFI,1,primary,37 deg
+SAABFI,1,secondary,temperature
+SAABFS,1,primary,37 deg
+SAABFS,1,secondary,temperature
+SAABFN,1,primary,37 deg
+SAABFN,1,secondary,temperature
+SAABQR,1,primary,37 deg
+SAABQR,1,secondary,temperature
+SAABQF,1,primary,30 deg
+SAABQF,1,secondary,temperature
+SAABQQ,1,primary,30 deg
+SAABQQ,1,secondary,temperature
+SAABQI,1,primary,30 deg
+SAABQI,1,secondary,temperature
+SAABQS,1,primary,30 deg
+SAABQS,1,secondary,temperature
+SAABIC,1,primary,37 deg
+SAABIC,1,secondary,temperature
+SAABIC,1,additional_information,dedbox1
+SAABIB,1,primary,37 deg
+SAABIB,1,secondary,temperature
+SAABIB,1,additional_information,dedbox1
+SAABIF,1,primary,37 deg
+SAABIF,1,secondary,temperature
+SAABIF,1,additional_information,dedbox1
+SAABIQ,1,primary,37 deg
+SAABIQ,1,secondary,temperature
+SAABIQ,1,additional_information,dedbox1
+SICIBA,1,primary,undocumented
+SICIBA,1,secondary,undocumented
