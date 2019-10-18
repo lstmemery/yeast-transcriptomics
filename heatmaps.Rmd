@@ -1,0 +1,109 @@
+---
+title: "heatmap shiny"
+output: html_notebook
+---
+
+```{r libs, echo=F}
+library(fs)
+library(here)
+library(tidyverse)
+library(DESeq2)
+library(Rtsne)
+```
+
+```{r read}
+
+rel_expr <- read_csv(fs::path(here::here(), "data","SC_expression.csv"))
+
+strain_meta <- read_csv(fs::path(here::here(), "data","conditions_annotation.csv"))
+
+# read in the gene metadata, with additional cols for tags
+tag.vec <- c("name","confidence", paste0("tag",1:10))
+# biol process
+bp_meta <- read_csv(fs::path(here::here(),"data","labels_BP.csv"), col_names = tag.vec)
+# cellular_component
+cc_meta <- read_csv(fs::path(here::here(),"data","labels_CC.csv"), col_names = tag.vec)
+# molecular func
+mf_meta <- read_csv(fs::path(here::here(),"data","labels_MF.csv"), col_names = tag.vec)
+
+```
+
+```{r wrangle}
+# cols are strains, rows are genes
+
+# threshold <- 0.0001 # 
+# remove dups
+rel_expr <- rel_expr %>%
+  select(-ends_with("_1")) %>% # remove duplicate strains
+  dplyr::rename(gene_name = X1) %>% 
+  pivot_longer(-gene_name, names_to = "culture_treatment", values_to = "rel_expr") %>% 
+  select(culture_treatment, gene_name, rel_expr) #%>% # reorder just to make look better
+  # filter(rel_expr > threshold)
+
+rel_expr
+```
+
+```{r wrangle2}
+strain_meta %>% distinct(primary)
+strain_meta %>% distinct(secondary)
+
+strain_meta <- strain_meta %>% 
+  dplyr::rename(culture_treatment = ID) %>% 
+  mutate(secondary = if_else(secondary == "<not provided>", NA_character_, secondary))
+head(strain_meta) # not sure how to tidy this
+```
+
+
+```{r wrangle3}
+clean_annotations <- function(df){
+  df %>% 
+    pivot_longer(cols = paste0("tag",1:10), names_to = "tag", values_to = "vals") %>% 
+    drop_na() %>% 
+    select(-tag) %>% 
+    dplyr::rename(tag = vals,
+                  gene_name = name) %>% 
+    filter(gene_name != "gene",
+           !tag %in% c("biological_process","molecular_function", "cellular_component"),
+           confidence == "Verified") %>% # remove artifacts
+    select(-confidence) 
+}
+bp_meta <- bp_meta %>%
+  clean_annotations()
+bp_meta %>% 
+  distinct(tag)
+cc_meta <- cc_meta %>% 
+  clean_annotations()
+cc_meta %>% 
+  distinct(tag)
+mf_meta <- mf_meta %>% 
+  clean_annotations()
+cc_meta %>% 
+  distinct(tag)
+```
+
+
+
+```{r eda}
+go_type <- mf_meta
+
+
+# compare RNA expression of strains with go_tag1 and go_tag2
+p <- rel_expr %>% 
+  left_join(go_type, by="gene_name") %>%
+  left_join(strain_meta, by="culture_treatment") %>% 
+  # filter(tag %in% go_tags) %>% 
+  group_by(tag, primary) %>% 
+  summarise(rel_expr = mean(rel_expr)) %>% 
+  ungroup()
+  
+  
+ggplot(p, aes(x=primary %>% fct_reorder(-rel_expr), y=tag %>% fct_reorder(-rel_expr))) +
+  geom_tile(aes(fill=rel_expr)) +
+  scale_fill_viridis_c() +
+  ggtitle("Mean transcript abundance") +
+  theme(axis.text.x = element_text(angle = 90, hjust=0.99, vjust=0.5)) +
+  ylab("Molecular Function (GO)") +
+  xlab("strain") +
+  labs(fill="Norm. rel. expr.")
+  
+```
