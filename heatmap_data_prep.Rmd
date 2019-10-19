@@ -91,30 +91,3 @@ go_annotation <- go_annotation %>%
 write_csv(bp_meta, fs::path(here::here(), "app","data", "go_annotation.csv"))
 ```
 
-
-
-Make the heatmap
-
-```{r heatmap}
-go_type <- mf_meta
-
-# compare RNA expression of strains with go_tag1 and go_tag2
-heatmap_by_GO <- rel_expr %>% 
-  left_join(go_type, by="gene_name") %>%
-  left_join(strain_meta, by="culture_treatment") %>% 
-  # filter(tag %in% go_tags) %>% 
-  group_by(tag, primary) %>% 
-  summarise(rel_expr = mean(rel_expr)) %>% 
-  ungroup()
-  
-  
-ggplot(heatmap_by_GO, aes(x=primary %>% fct_reorder(-rel_expr), y=tag %>% fct_reorder(-rel_expr))) +
-  geom_tile(aes(fill=rel_expr)) +
-  scale_fill_viridis_c() +
-  ggtitle("Mean transcript abundance") +
-  theme(axis.text.x = element_text(angle = 90, hjust=0.99, vjust=0.5)) +
-  ylab("Molecular Function (GO)") +
-  xlab("primary") +
-  labs(fill="Norm. rel. expr.")
-  
-```
