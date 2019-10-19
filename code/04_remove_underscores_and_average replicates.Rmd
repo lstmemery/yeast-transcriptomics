@@ -1,0 +1,45 @@
+---
+title: "04 - Remove Junk names and average replicates"
+author: "Matt Emery"
+date: "19/10/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+library(here)
+library(fs)
+```
+
+```{r}
+expressions <- read_csv(here("data/03_remove_zero_genes/03_SC_expression.csv"))
+```
+
+```{r}
+removed_underscores <- expressions %>%
+  rename("gene" = "X1") %>% 
+  pivot_longer(-gene) %>% 
+  filter(!str_detect(gene, "^_"))
+```
+
+
+```{r}
+averaged_replicates <- removed_underscores %>% 
+  mutate(name = str_remove(name, ".1$")) %>% 
+  group_by(gene, name) %>% 
+  summarise(value = mean(value))
+```
+
+```{r}
+wide_df <- averaged_replicates %>% 
+  pivot_wider(id_cols = gene)
+```
+
+```{r}
+write_csv(wide_df, here("data/04_remove_underscores_average_replicates/04_SC_expression.csv"))
+```
+
