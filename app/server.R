@@ -28,7 +28,7 @@ shinyServer(function(input, output, session) {
         
         # Can also set the label and select items
         updateCheckboxGroupInput(session, "inCheckboxGroup",
-                                 label = paste("Select Checkbox"),
+                                 label = paste("Select which responses to visualise"),
                                  choices = responses,
                                  selected = responses
         )
@@ -40,6 +40,8 @@ shinyServer(function(input, output, session) {
     # with requested GO domain
     
     output$heat <- renderPlot({
+        
+        view(input$inCheckboxGroup)
         
         # filter based on ui input
         my_go_domain <- go_annotation %>% 
@@ -55,7 +57,9 @@ shinyServer(function(input, output, session) {
             summarise(rel_expr = mean(rel_expr)) %>% 
             ungroup()
         
-        ggplot(heatmap_by_GO, aes(x=strain_tag %>% fct_reorder(-rel_expr), y= go_annotation %>% fct_reorder(-rel_expr))) +
+        user_filtered_heatmap = heatmap_by_GO %>% filter(go_annotation %in% input$inCheckboxGroup)
+        
+        ggplot(user_filtered_heatmap, aes(x=strain_tag %>% fct_reorder(-rel_expr), y= go_annotation %>% fct_reorder(-rel_expr))) +
             geom_tile(aes(fill=rel_expr)) +
             scale_fill_viridis_c() +
             ggtitle("Mean transcript abundance") +
@@ -67,4 +71,3 @@ shinyServer(function(input, output, session) {
     })
 
 })
-
