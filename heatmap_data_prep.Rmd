@@ -80,6 +80,7 @@ go_annotation <- go_annotation %>%
   dplyr::rename(go_annotation = vals,
                 gene_name = name) %>% 
   filter(gene_name != "gene",
+         !(go_annotation %in% c("biological_process","celllular_component","molecular_function")),
          confidence == "Verified") %>% # remove artifacts
   select(-confidence) 
 
