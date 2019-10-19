@@ -16,7 +16,7 @@ library(fs)
 ```
 
 ```{r}
-expressions <- read_csv(fs::path(here::here(), "app", "tidy_data", "tidy_expressions.csv"))
+expressions <- read_csv(here("data", "tidy_data", "tidy_expressions.csv"))
 ```
 
 ```{r}

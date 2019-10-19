@@ -1,5 +1,5 @@
 # Transcriptomics in yeast
-Yeasts (saccharomyces cerevisiae) are used in the production of some of our diet's most cherished choices such as bread (not mentioning wine and beer). There are many other biotechnology applications that use yeast, some of which include complex pharmaceuticals production. Yeasts are also great model organisms because of their simple and small genome consisting of approximately 6000 genes. Being single celled organisms also make them great for transcriptome analyses as gene expression is homogenous. As part of our Vancouver-based hackathon (hackseq19) project (October 18 to 20, 2019) we will be examining a yeast transcriptome dataset. In this data, a number of yeast strains have been treated with various stimuli, and gene expression changes are the readout. Expression is normalized  to Transcript Per Million (TPM). As a team, we will be cleaning, analyzing, and communicating the results of our explorations through clear documentation of procedures and an interactive application. 
+Yeasts (saccharomyces cerevisiae) are used in the production of some of our diet's most cherished choices such as bread (not mentioning wine and beer). There are many other biotechnology applications that use yeast, some of which include complex pharmaceuticals production. Yeasts are also great model organisms because of their simple and small genome consisting of approximately 6000 genes. Being single celled organisms also make them great for transcriptome analyses as gene expression is homogenous. As part of our Vancouver-based hackathon (hackseq19) project (October 18 to 20, 2019) we will be examining a yeast transcriptome dataset. In this data, yeast strains have been treated with various stimuli (e.g. heat, phenol lysis, ethanol treatment, etc), and gene expression changes are the readout. It is note entirely clear from the metadata why certain strains or mutants were picked or how the stimuli differ for some experiments. It is, however, known that the data has been [scraped](https://github.com/rtwillett/yeastract_spider/) off of the web from various sources and aggregated into one where we can access through the Kaggle competition site. Also, we are provided with gene expression that is normalized to Transcript Per Million (TPM). As a team, we will be cleaning, analyzing, and communicating the results of our explorations through clear documentation of procedures and an interactive application. 
 
 ### Data
 The data in this project includes gene expression values for 92 yeast strains treated with various stimuli. RNA expression levels are normalized to TPM (transcripts per million), following a default normalization procedure. Data is stored in `data` folder.
@@ -11,16 +11,11 @@ The data in this project includes gene expression values for 92 yeast strains tr
 This project is inspired by the yeast-omics dataset shared as a kaggle competition, and the original data can be found [here](https://www.kaggle.com/costalaether/yeast-transcriptomics).
 
 ### Goal
-The goal of this project is to unravel the genetic mechanisms involved in yeast stress adaptation through building a visualization platform (e.g. shiny application) that allows scientists to explore the data interactively. 
-
-The tasks we will attempt in the hackathon include:
-- Perform unsupervised and supervised clustering of expression data
+The goal of this project is to unravel the genetic mechanisms involved in yeast stress adaptation through building a visualization platform (e.g. shiny application) that allows scientists to explore the data interactively. The tasks we will attempt in the hackathon include:
+- Perform unsupervised and supervised clustering of experimental conditions based on gene expression 
 - Perform gene set enrichment analyses (GSEA, ReactomePA)
-- Create visualizations of results (heatmaps, barplots, etc.)
+- Create visualizations of gene expression (heatmaps, barplots, etc.)
 - Phylogenetic/Taxonomic trees for yeast strains
-
-### Skills
-You will need an introductory knowledge of R, RNA expression analysis workflows, design thinking, and coding skills. Coding in R (or Python) and basic knowledge of git/github is an asset. Team communications will happen in person and in [slack](hackseq19.slack.com).
 
 ### Software
 Please have the latest versions of R and R Bioconductor installed on your laptop prior to the workshop. RStudio (the free version) is highly recommended as well, since we will be teaching in this environment.
@@ -42,45 +37,9 @@ Please have the latest versions of R and R Bioconductor installed on your laptop
 - [Shiny Apps for Transcriptome Visualizations](https://academic.oup.com/bioinformatics/article/33/3/447/2525724)
 - [RNAseq Shiny app options](https://www.rna-seqblog.com/tag/shiny/)
 
-### Hackathon Schedule
-
-#### Friday, October 18, 2019
-
-Time | Event | Location
--- | -- | --
-8:30 AM | Coffee and snacks | LSI, UBC
-9:00 AM | hackseq kickoff | LSI, UBC
-9:30 AM | Team meet + hacking | LSI, UBC
-11:30 AM | Intro to Git/Github Workshop (Optional) | room 1330
-1:00 PM | Lunch | LSI, UBC
-2:00 PM | Continue hacking | LSI, UBC
-5:00 PM | Team Scrum + wrap-up | LSI, UBC
-5:30 PM | Unofficial Evening Social | The Gallery, UBC
-
-#### Saturday, October 19, 2019
-
-Time | Event | Location
--- | -- | --
-8:30 AM | Coffee and snacks | LSI, UBC
-9:00 AM | Hacking! | LSI, UBC
-12:00 PM | Lunch | LSI, UBC
-2:00 PM | Hacking… | LSI, UBC
-5:00 PM | Team Scrum + wrap-up | LSI, UBC
-5:30 PM | hackseq Evening Social | BierCraft, UBC
-
-#### Sunday, October 20, 2019
-
-Time | Event | Location
--- | -- | --
-8:30 AM | Coffee and snacks | LSI, UBC
-9:00 AM | Red-eye hacking | LSI, UBC
-12:00 PM | Lunch | LSI, UBC
-2:00 PM | Desperate bug-fix time | LSI, UBC
-3:30 PM | Team Project Presentations | LSI, UBC
-4:30 PM | Coffee Break | LSI, UBC
-4:30 PM | Abcellera talk | LSI, UBC
-5:00 PM | hackseq19 wrap-up | LSI, UBC
-
 
 ### Team Members
 Noushin Nabavi, Matthew Emery, Alex Morin, Zuhaib Ahmed, Casey Engstrom, Sedat Demiriz, Shinta Thio, Saelin Bjornson
+
+### Team Channel
+Team collaborations in #p02-yeast channel in [slack](hackseq19.slack.com)
