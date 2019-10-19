@@ -6,8 +6,13 @@ output:
 
 # Visualizations
 
-Plots etc. 
+## UMAP
+\@ref(fig:UMAP-fig)
 
-## Example one
 
-## Example two
+## Heat Maps
+\@ref(fig:HeatMap-fig)
+
+
+
+
