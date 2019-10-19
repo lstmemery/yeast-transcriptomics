@@ -7,8 +7,6 @@ output: html_notebook
 library(fs)
 library(here)
 library(tidyverse)
-library(DESeq2)
-library(Rtsne)
 ```
 
 Read in the data
