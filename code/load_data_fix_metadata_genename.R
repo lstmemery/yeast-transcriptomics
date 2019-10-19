@@ -2,24 +2,25 @@
 # Resave the cleaned tables.
 
 library(tidyverse)
+library(here)
 
 # expression matrix, note that first column is gene names. coercing to rownames
 # expect 6071x93
-SC_expression <- read.csv("data/SC_expression.csv")
+SC_expression <- read.csv(here("data", "00_raw", "SC_expression.csv"))
 colnames(SC_expression)[colnames(SC_expression) == "X"] <- "gene"
 
 # expect 92x4
-condition_annotation <- read.csv("data/conditions_annotation.csv", stringsAsFactors = FALSE)
+condition_annotation <- read.csv(here("data", "00_raw", "conditions_annotation.csv"), stringsAsFactors = FALSE)
 
 # expect 6071x3
-labels_BP <- read.csv("data/labelsBP.csv", stringsAsFactors = FALSE)
+labels_BP <- read.csv(here("data", "01_fixlabels", "labelsBP.csv"), stringsAsFactors = FALSE)
 
 # expect 6071x3
-labels_CC <- read.csv("data/labelsCC.csv", stringsAsFactors = FALSE)
+labels_CC <- read.csv(here("data", "01_fixlabels", "labelsCC.csv"), stringsAsFactors = FALSE)
 
 # expect 6071x3
-labels_MF <- read.csv(
-  "data/labelsMF.csv",
+labels_MF <- read.csv(here(
+  "data", "01_fixlabels", "labelsMF.csv"),
   stringsAsFactors = FALSE,
   header = FALSE,
   col.names = c("gene", "validation", "localization")
@@ -58,5 +59,5 @@ for (i in 1:length(tables)) {
               sep = ",",
               quote = FALSE,
               row.names = FALSE,
-              paste0("data/", table.names[i]))
+              paste0(here("data"), table.names[i]))
 }
