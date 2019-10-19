@@ -23,29 +23,40 @@ shinyUI(fluidPage(
 
                     # Sidebar with a slider input for number of bins
                     sidebarLayout(
-                        position = "right",
+                        position = "left",
                         sidebarPanel(
-                            selectInput(inputId="go_domain",
-                                        label = "GO domain",
-                                        choices = list("Biological process",
-                                                   "Cellular component", 
-                                                   "Molecular function"),
-                                        selected = "Biological process"
-                                        ),
-                            selectInput(inputId="strain_tag_type",
-                                        label = "Strain metadata",
-                                        choices = list("primary",
-                                                       "secondary", 
-                                                       "additional_information"),
-                                        selected = "primary"
-                                        ),
+                            fluidRow(
+                                column(5,
+                                    selectInput(inputId="go_domain",
+                                                label = "GO domain",
+                                                choices = list("Biological process",
+                                                           "Cellular component", 
+                                                           "Molecular function"),
+                                                selected = "Biological process"
+                                                ),
+                                ),
+                                column(5,
+                                    selectInput(inputId="strain_tag_type",
+                                                label = "Strain metadata",
+                                                choices = list("primary",
+                                                               "secondary", 
+                                                               "additional_information"),
+                                                selected = "primary"
+                                                ),
+                                )
+                            ),
+                            fluidRow(
+                                column(5,
                             checkboxGroupInput(inputId = "inCheckboxGroup", 
                                                label = "Input checkbox",
                                                c())
+                            
+                                )
+                            )
                         ),
                 
                         # Show a plot of the generated distribution
-                        mainPanel(plotOutput(outputId="heat"))
+                        mainPanel(br(),plotOutput(outputId="heat",height = 600))
                     )
                 )),
                 tabPanel("UMAP"),

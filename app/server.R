@@ -3,6 +3,7 @@
 library(shiny)
 library(tidyverse)
 library(here)
+library(ggthemes) 
 
 # Define server logic required to draw a histogram
 shinyServer(function(input, output, session) {
@@ -57,7 +58,10 @@ shinyServer(function(input, output, session) {
             geom_tile(aes(fill=rel_expr)) +
             scale_fill_viridis_c() +
             ggtitle("Mean transcript abundance") +
-            theme(axis.text.x = element_text(angle = 90, hjust=0.99, vjust=0.5)) +
+            theme_few() +
+            theme(plot.title = element_text(size =20, hjust = 0.5, vjust=2))+
+            theme(title = element_text(size = 17, vjust=0.5)) +
+            theme(axis.text.x = element_text(angle = 90, hjust=0.99, vjust=1)) +
             ylab(input$go_domain) +
             xlab(input$strain_tag_type) +
             labs(fill="Norm. rel. expr.")
