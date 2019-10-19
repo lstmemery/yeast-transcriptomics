@@ -17,9 +17,8 @@ The goal of this project is to unravel the genetic mechanisms involved in yeast 
 - Create visualizations of gene expression (heatmaps, barplots, etc.)
 - Phylogenetic/Taxonomic trees for yeast strains
 
-### Software
-Please have the latest versions of R and R Bioconductor installed on your machine prior to the workshop.
 
+### Software
 - [Install R](https://cran.r-project.org/)   
 - [Install R Bioconductor](https://bioconductor.org/install/)   
 - [Install RStudio](https://rstudio.com/products/rstudio/download/#download)   
