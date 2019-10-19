@@ -1,7 +1,19 @@
-library(readr)
+# load package dependancy
+library(tidyverse)
+library(stringr)
+
+# can download limma through the bioconductor:
+if (!requireNamespace("BiocManager", quietly = TRUE))
+  install.packages("BiocManager")
+BiocManager::install("limma")
 library(limma)
 
+# set time zone to proper location
+options(readr.default_locale=readr::locale(tz="America/Vancouver"))
+
+
 # Load datafiles
+
 conditions_annotation <- read_csv("data/00_raw/conditions_annotation.csv")
 SC_expression <- read_csv("data/04_remove_underscores_average_replicates/04_SC_expression.csv")
 
@@ -35,9 +47,10 @@ SA_expressiontemp <- SC_expression %>%
 SAtable <- cbind(SA_expression, SA_expressiontemp)
 colnames(SAtable)[1] <- "Gene"
 
-SAwildGalactose <- SAtable[,1:3]
+SAwildGalactose <- SAwildGalactose[,1:3]
 
 rownames(SAwildGalactose) <- SAwildGalactose$Gene
+
 SAwildGalactose$Gene <- NULL
 
 
@@ -53,6 +66,7 @@ g = ggplot(data=df, aes(x=log2(fold), y=-log10(pval))) +
   theme(legend.position = "none") +
   xlim(c(-5, 12)) + ylim(c(0, 5)) +
   xlab("log2 fold change") + ylab("-log10 p-value")
+
 
 
 
