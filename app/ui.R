@@ -13,26 +13,43 @@ library(shiny)
 shinyUI(fluidPage(
 
     # Application title
-    titlePanel("SC Data"),
+    titlePanel(h1("Visualize Yeast Transcriptome Data")),
 
+    hr(),
     
-    
-    # Sidebar with a slider input for number of bins
-    sidebarLayout(
-        sidebarPanel(
-            selectInput(inputId="go_domain",
-                        label = "GO domain",
-                        c("Biological process", "Cellular component", "Molecular function"),
+    tabsetPanel(
+        tabPanel("Heatmap",
+                fluidRow(
+
+                    # Sidebar with a slider input for number of bins
+                    sidebarLayout(
+                        position = "right",
+                        sidebarPanel(
+                            selectInput(inputId="go_domain",
+                                        label = "GO domain",
+                                        choices = list("Biological process",
+                                                   "Cellular component", 
+                                                   "Molecular function"),
+                                        selected = "Biological process"
+                                        ),
+                            selectInput(inputId="strain_tag_type",
+                                        label = "Strain metadata",
+                                        choices = list("primary",
+                                                       "secondary", 
+                                                       "additional_information"),
+                                        selected = "primary"
+                                        ),
+                            checkboxGroupInput(inputId = "inCheckboxGroup", 
+                                               label = "Input checkbox",
+                                               c())
                         ),
-            selectInput(inputId="strain_tag_type",
-                        label = "Strain metadata",
-                        c("primary","secondary", "additional_information"),
-                        )
-        ),
-
-        # Show a plot of the generated distribution
-        mainPanel(
-            plotOutput(outputId="heat")
-        )
+                
+                        # Show a plot of the generated distribution
+                        mainPanel(plotOutput(outputId="heat"))
+                    )
+                )),
+                tabPanel("UMAP"),
+                tabPanel("PCA")
+                )
     )
-))
+)
