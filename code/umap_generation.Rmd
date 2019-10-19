@@ -1,0 +1,85 @@
+---
+title: "UMAP"
+author: "Matt Emery"
+date: "19/10/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+library(umapr)
+library(tidyverse)
+```
+
+```{r}
+expression <- read_csv(here("data/04_remove_underscores_average_replicates/04_SC_expression.csv"))
+```
+
+```{r}
+expression_matrix <- expression %>% 
+  select_if(is.numeric) %>% 
+  as.matrix()
+```
+
+
+```{r}
+umap_expression <- umap(expression_matrix)
+```
+
+```{r}
+umap_df <- bind_cols(expression %>% select(gene), umap_expression %>% select(UMAP1, UMAP2))
+```
+
+
+```{r}
+umap_df <- umap_df %>% 
+  mutate(long_non_coding = str_detect(gene, "^SCER_lnc"))
+```
+
+```{r}
+ggplot(umap_df, aes(UMAP1, UMAP2, color = long_non_coding)) + 
+  geom_point(alpha = 0.2)
+```
+
+```{r}
+tidy_attributes <- read_csv(here("data/tidy_data/tidy_attributes.csv"))
+```
+
+```{r}
+wide_attributes <- tidy_attributes %>%
+  pivot_wider(gene)
+```
+
+```{r}
+attributes_df <- umap_df %>% 
+  inner_join(wide_attributes)
+```
+
+```{r}
+umap_coloring <- function(filter_query) {
+  filtered_values <- tidy_attributes %>% 
+    filter(value == {{ filter_query }}) %>% 
+    pull(gene)
+  
+  
+  filter_df <- umap_df %>% 
+    mutate({{ filter_query }} := map_lgl(gene, function(x) x %in% filtered_values))
+  
+  ggplot(filter_df, aes_string("UMAP1", "UMAP2", color = filter_query)) + 
+    geom_point()
+  }
+
+g <- umap_coloring("protein") 
+  ggsave(here("output/first_umap.png"), g, width = 16, height = 9)
+```
+
+
+```{r}
+tidy_attributes %>% 
+  distinct(value)
+```
+
