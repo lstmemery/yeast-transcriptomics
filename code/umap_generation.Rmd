@@ -27,17 +27,11 @@ expression_matrix <- expression %>%
 
 
 ```{r}
-umap_expression <- umap(expression_matrix)
+umap_expression <- umap(expression_matrix, random_state = 0L)
 ```
 
 ```{r}
 umap_df <- bind_cols(expression %>% select(gene), umap_expression %>% select(UMAP1, UMAP2))
-```
-
-
-```{r}
-umap_df <- umap_df %>% 
-  mutate(long_non_coding = str_detect(gene, "^SCER_lnc"))
 ```
 
 ```{r}
