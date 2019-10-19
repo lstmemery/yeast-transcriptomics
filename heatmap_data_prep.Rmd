@@ -1,0 +1,120 @@
+---
+title: "heatmap shiny"
+output: html_notebook
+---
+
+```{r libs, echo=F}
+library(fs)
+library(here)
+library(tidyverse)
+library(DESeq2)
+library(Rtsne)
+```
+
+Read in the data
+```{r read}
+
+rel_expr <- read_csv(fs::path(here::here(), "data","00_raw","SC_expression.csv"))
+
+strain_meta <- read_csv(fs::path(here::here(), "data","00_raw","conditions_annotation.csv"))
+
+# read in the gene metadata, with additional cols for tags
+tag.vec <- c("name","confidence", paste0("tag",1:10))
+# biol process
+bp_meta <- read_csv(fs::path(here::here(),"data","00_raw","labels_BP.csv"), col_names = tag.vec)
+# cellular_component
+cc_meta <- read_csv(fs::path(here::here(),"data","00_raw","labels_CC.csv"), col_names = tag.vec)
+# molecular func
+mf_meta <- read_csv(fs::path(here::here(),"data","00_raw","labels_MF.csv"), col_names = tag.vec)
+
+```
+
+
+Wrangle the relative expression data
+```{r wrangle}
+# cols are strains, rows are genes
+
+# threshold <- 0.0001 # 
+# remove dups
+rel_expr <- rel_expr %>%
+  select(-ends_with("_1")) %>% # remove duplicate strains
+  dplyr::rename(gene_name = X1) %>% 
+  pivot_longer(-gene_name, names_to = "culture_treatment", values_to = "rel_expr") %>% 
+  select(culture_treatment, gene_name, rel_expr) #%>% # reorder just to make look better
+  # filter(rel_expr > threshold)
+
+rel_expr
+
+# write to shiny data file
+write_csv(rel_expr, fs::path(here::here(), "app","data","rel_expr.csv"))
+```
+
+Wrangle the strain metadata
+```{r wrangle2}
+strain_meta %>% distinct(primary)
+strain_meta %>% distinct(secondary)
+
+strain_meta <- strain_meta %>%
+  dplyr::rename(culture_treatment = ID) %>% 
+  mutate(secondary = if_else(secondary == "<not provided>", NA_character_, secondary)) %>% 
+  pivot_longer(-culture_treatment, names_to = "strain_tag_type",values_to = "strain_tag")
+
+strain_meta 
+
+write_csv(strain_meta, fs::path(here::here(), "app", "data","strain_meta.csv"))
+
+```
+
+Wrangle the GO metadata
+```{r wrangle3}
+
+# combine into one tbl
+bp_meta <- bp_meta %>% add_column(go_domain = "Biological process")
+cc_meta <- cc_meta %>% add_column(go_domain = "Cellular component")
+mf_meta <- mf_meta %>% add_column(go_domain = "Molecular function")
+go_annotation <- bind_rows(bp_meta,cc_meta,mf_meta)
+
+# tidy
+go_annotation <- go_annotation %>% 
+  pivot_longer(cols = paste0("tag",1:10), names_to = "go_annotation", values_to = "vals") %>% 
+  drop_na() %>% 
+  select(-go_annotation) %>% 
+  dplyr::rename(go_tag = vals,
+                gene_name = name) %>% 
+  filter(gene_name != "gene",
+         confidence == "Verified") %>% # remove artifacts
+  select(-confidence) 
+
+
+
+# write data for shiny app
+write_csv(bp_meta, fs::path(here::here(), "app","data", "go_annotation.csv"))
+```
+
+
+
+Make the heatmap
+
+```{r heatmap}
+go_type <- mf_meta
+
+# compare RNA expression of strains with go_tag1 and go_tag2
+heatmap_by_GO <- rel_expr %>% 
+  left_join(go_type, by="gene_name") %>%
+  left_join(strain_meta, by="culture_treatment") %>% 
+  # filter(tag %in% go_tags) %>% 
+  group_by(tag, primary) %>% 
+  summarise(rel_expr = mean(rel_expr)) %>% 
+  ungroup()
+  
+  
+ggplot(heatmap_by_GO, aes(x=primary %>% fct_reorder(-rel_expr), y=tag %>% fct_reorder(-rel_expr))) +
+  geom_tile(aes(fill=rel_expr)) +
+  scale_fill_viridis_c() +
+  ggtitle("Mean transcript abundance") +
+  theme(axis.text.x = element_text(angle = 90, hjust=0.99, vjust=0.5)) +
+  ylab("Molecular Function (GO)") +
+  xlab("primary") +
+  labs(fill="Norm. rel. expr.")
+  
+```
