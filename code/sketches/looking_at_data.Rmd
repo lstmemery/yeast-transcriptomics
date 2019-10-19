@@ -12,11 +12,15 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r}
 library(tidyverse)
+library(here)
 ```
 
 ```{r}
+
+options(readr.default_locale=readr::locale(tz="America/Vancouver"))
+
 biological_process <- read_csv(
-  "../../data/labels_BP.csv",
+  here("data/00_raw/labels_BP.csv"),
   col_names = c(
     "gene",
     "bp_validation",
@@ -40,7 +44,7 @@ tidy_bp <- biological_process %>%
 
 ```{r}
 cellular_components <- read_csv(
-  "../../data/labels_CC.csv",
+    here("data", "00_raw","labels_BP.csv"),
   col_names = c(
     "gene",
     "cc_validation",
@@ -62,8 +66,8 @@ tidy_cc <- cellular_components %>%
 ```
 
 ```{r}
-molecular_function <- read_csv(
-  "../../data/labels_MF.csv",
+molecular_function <- read_csv(here(
+  "data", "00_raw", "labels_MF.csv"),
   col_names = c(
     "gene",
     "mf_validation",
@@ -88,7 +92,7 @@ tidy_attributes <- bind_rows(tidy_bp, tidy_cc, tidy_mf)
 ```
 
 ```{r}
-conditions_df <- read_csv("../../data/conditions_annotation.csv") %>% 
+conditions_df <- read_csv(here("data", "00_raw", "conditions_annotation.csv")) %>% 
   rename(condition = ID) %>% 
   group_by(.data$condition) %>% 
   mutate(condition_number = row_number())
@@ -100,7 +104,7 @@ tidy_conditions <- conditions_df %>%
 ```
 
 ```{r}
-expressions_df <- read_csv("../../data/SC_expression.csv")
+expressions_df <- read_csv(here("data", "00_raw", "SC_expression.csv"))
 ```
 
 Looking at duplicate columns
@@ -117,8 +121,8 @@ tidy_expressions <- expressions_df %>%
 ```
 
 ```{r}
-write_csv(tidy_expressions, "../../app/tidy_data/tidy_expressions.csv")
-write_csv(tidy_conditions, "../../app/tidy_data/tidy_conditions.csv")
-write_csv(tidy_attributes, "../../app/tidy_data/tidy_attributes.csv")
+write_csv(tidy_expressions, here("data", "tidy_data", "tidy_expressions.csv"))
+write_csv(tidy_conditions, here("data", "tidy_data", "tidy_conditions.csv"))
+write_csv(tidy_attributes, here("data", "tidy_data", "tidy_attributes.csv"))
 ```
 
