@@ -16,21 +16,7 @@ shinyUI(fluidPage(
     titlePanel(HTML("<em>S. cervisiae</em> RNA expression")),
 
     hr(),
-
-    # Sidebar with a slider input for number of bins
-    sidebarLayout(
-        sidebarPanel(
-            selectInput(inputId="go_domain",
-                        label = "GO domain",
-                        c("Biological process", "Cellular component", "Molecular function"),
-                        ),
-            selectInput(inputId="strain_tag_type",
-                        label = "Strain metadata",
-                        c("primary","secondary", "additional_information"),
-                        ),
-
-            )
-        ),
+    
     tabsetPanel(
         tabPanel("Heatmap",
                 fluidRow(
