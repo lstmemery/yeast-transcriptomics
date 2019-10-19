@@ -9,17 +9,27 @@ output:
 ## Cleaning data
 
 ### Removing zeros
+```{r}
 here::here()
-# Get file
+```
+Get file
+```{r}
 expression <- read.csv("02_expression.csv", header = T, row.names = 1)
-# See which rows have all zeros
+```
+See which rows have all zeros
+```{r}
 zeros <- apply(expression, 1, function(x) return(length(which(x == 0))))
-# Generate new data frame
+```
+Generate new data frame
+```{r}
 newExpression <- expression[which(zeros != ncol(expression)),]
-# Write to file
+```
+Write to file
+```{r}
 write.csv(newExpression, "03_SC_expression.csv", row.names = T)
+```
 
-### Check Normalization
+### Check Normalization - Matt Emery
 ```{r}
 expressions <- read_csv(here("data", "tidy_data", "tidy_expressions.csv"))
 ```
@@ -38,8 +48,7 @@ standard_deviation_gene <- expressions %>%
   arrange(standard_deviation)
 ```
 
-Expressed in at least 5 samples
-141
+Expressed in at least 5 samples:
 ```{r}
 standard_deviation_gene %>% 
   filter(!str_detect(gene, "^__")) %>% 
@@ -53,7 +62,7 @@ standard_deviation_gene %>%
   arrange(desc(standard_deviation))
 ```
 
-### Remove Underscores and average replicates 
+### Remove Underscores and average replicates - Matt Emery
 ```{r}
 expressions <- read_csv(here("data/03_remove_zero_genes/03_SC_expression.csv"))
 ```
@@ -163,8 +172,7 @@ for (i in 1:length(tables)) {
 
 ## Visualizations
 
-### UMAP
-
+### UMAP Generation - Matt Emery
 ```{r}
 library(umapr)
 library(tidyverse)
@@ -198,7 +206,6 @@ umap_df <- umap_df %>%
 ```{r}
 write_csv(umap_df, here("data/umap.csv"))
 ```
-
 
 ```{r}
 ggplot(umap_df, aes(UMAP1, UMAP2, color = long_non_coding)) + 
@@ -242,7 +249,113 @@ tidy_attributes %>%
   distinct(value)
 ```
 
-### Heat Maps
+### Heat Map Generation
+
+---
+
+```{r libs, echo=F}
+library(fs)
+library(here)
+library(tidyverse)
+library(DESeq2)
+library(Rtsne)
+```
+
+```{r read}
+
+rel_expr <- read_csv(fs::path(here::here(), "data","00_raw","SC_expression.csv"))
+
+strain_meta <- read_csv(fs::path(here::here(), "data","00_raw","conditions_annotation.csv"))
+
+# read in the gene metadata, with additional cols for tags
+tag.vec <- c("name","confidence", paste0("tag",1:10))
+# biol process
+bp_meta <- read_csv(fs::path(here::here(),"data","00_raw","labels_BP.csv"), col_names = tag.vec)
+# cellular_component
+cc_meta <- read_csv(fs::path(here::here(),"data","00_raw","labels_CC.csv"), col_names = tag.vec)
+# molecular func
+mf_meta <- read_csv(fs::path(here::here(),"data","00_raw","labels_MF.csv"), col_names = tag.vec)
+
+```
+
+```{r wrangle}
+# cols are strains, rows are genes
+
+# threshold <- 0.0001 # 
+# remove dups
+rel_expr <- rel_expr %>%
+  select(-ends_with("_1")) %>% # remove duplicate strains
+  dplyr::rename(gene_name = X1) %>% 
+  pivot_longer(-gene_name, names_to = "culture_treatment", values_to = "rel_expr") %>% 
+  select(culture_treatment, gene_name, rel_expr) #%>% # reorder just to make look better
+  # filter(rel_expr > threshold)
+
+rel_expr
+```
+
+```{r wrangle2}
+strain_meta %>% distinct(primary)
+strain_meta %>% distinct(secondary)
+
+strain_meta <- strain_meta %>% 
+  dplyr::rename(culture_treatment = ID) %>% 
+  mutate(secondary = if_else(secondary == "<not provided>", NA_character_, secondary))
+head(strain_meta) # not sure how to tidy this
+```
+
+```{r wrangle3}
+clean_annotations <- function(df){
+  df %>% 
+    pivot_longer(cols = paste0("tag",1:10), names_to = "tag", values_to = "vals") %>% 
+    drop_na() %>% 
+    select(-tag) %>% 
+    dplyr::rename(tag = vals,
+                  gene_name = name) %>% 
+    filter(gene_name != "gene",
+           !tag %in% c("biological_process","molecular_function", "cellular_component"),
+           confidence == "Verified") %>% # remove artifacts
+    select(-confidence) 
+}
+bp_meta <- bp_meta %>%
+  clean_annotations()
+bp_meta %>% 
+  distinct(tag)
+cc_meta <- cc_meta %>% 
+  clean_annotations()
+cc_meta %>% 
+  distinct(tag)
+mf_meta <- mf_meta %>% 
+  clean_annotations()
+cc_meta %>% 
+  distinct(tag)
+```
+
+```{r eda}
+go_type <- mf_meta
+
+# compare RNA expression of strains with go_tag1 and go_tag2
+heatmap_by_GO <- rel_expr %>% 
+  left_join(go_type, by="gene_name") %>%
+  left_join(strain_meta, by="culture_treatment") %>% 
+  # filter(tag %in% go_tags) %>% 
+  group_by(tag, primary) %>% 
+  summarise(rel_expr = mean(rel_expr)) %>% 
+  ungroup()
+  
+  
+ggplot(heatmap_by_GO, aes(x=primary %>% fct_reorder(-rel_expr), y=tag %>% fct_reorder(-rel_expr))) +
+  geom_tile(aes(fill=rel_expr)) +
+  scale_fill_viridis_c() +
+  ggtitle("Mean transcript abundance") +
+  theme(axis.text.x = element_text(angle = 90, hjust=0.99, vjust=0.5)) +
+  ylab("Molecular Function (GO)") +
+  xlab("primary") +
+  labs(fill="Norm. rel. expr.")
+  
+```
+
+
+
 
 
 
