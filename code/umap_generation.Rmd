@@ -41,6 +41,11 @@ umap_df <- umap_df %>%
 ```
 
 ```{r}
+write_csv(umap_df, here("data/umap.csv"))
+```
+
+
+```{r}
 ggplot(umap_df, aes(UMAP1, UMAP2, color = long_non_coding)) + 
   geom_point(alpha = 0.2)
 ```
