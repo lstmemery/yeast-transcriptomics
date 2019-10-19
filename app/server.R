@@ -8,9 +8,9 @@ library(here)
 shinyServer(function(input, output, session) {
     
     # load plot data
-    rel_expr <- read_csv(fs::path(here::here(),"app","data","rel_expr.csv"))
-    strain_meta <- read_csv(fs::path(here::here(),"app","data","strain_meta.csv"))
-    go_annotation <- read_csv(fs::path(here::here(),"app","data","go_annotation.csv"))
+    rel_expr <- read_csv("data/rel_expr.csv")
+    strain_meta <- read_csv("data/strain_meta.csv")
+    go_annotation <- read_csv("data/go_annotation.csv")
     
 
     #Find the GO domain selected and change the options on the response checkboxes
