@@ -19,9 +19,6 @@ The tasks we will attempt in the hackathon include:
 - Create visualizations of results (heatmaps, barplots, etc.)
 - Phylogenetic/Taxonomic trees for yeast strains
 
-### Skills
-You will need an introductory knowledge of R, RNA expression analysis workflows, design thinking, and coding skills. Coding in R (or Python) and basic knowledge of git/github is an asset. Team communications will happen in person and in [slack](hackseq19.slack.com).
-
 ### Software
 Please have the latest versions of R and R Bioconductor installed on your laptop prior to the workshop. RStudio (the free version) is highly recommended as well, since we will be teaching in this environment.
 
@@ -42,45 +39,9 @@ Please have the latest versions of R and R Bioconductor installed on your laptop
 - [Shiny Apps for Transcriptome Visualizations](https://academic.oup.com/bioinformatics/article/33/3/447/2525724)
 - [RNAseq Shiny app options](https://www.rna-seqblog.com/tag/shiny/)
 
-### Hackathon Schedule
-
-#### Friday, October 18, 2019
-
-Time | Event | Location
--- | -- | --
-8:30 AM | Coffee and snacks | LSI, UBC
-9:00 AM | hackseq kickoff | LSI, UBC
-9:30 AM | Team meet + hacking | LSI, UBC
-11:30 AM | Intro to Git/Github Workshop (Optional) | room 1330
-1:00 PM | Lunch | LSI, UBC
-2:00 PM | Continue hacking | LSI, UBC
-5:00 PM | Team Scrum + wrap-up | LSI, UBC
-5:30 PM | Unofficial Evening Social | The Gallery, UBC
-
-#### Saturday, October 19, 2019
-
-Time | Event | Location
--- | -- | --
-8:30 AM | Coffee and snacks | LSI, UBC
-9:00 AM | Hacking! | LSI, UBC
-12:00 PM | Lunch | LSI, UBC
-2:00 PM | Hacking… | LSI, UBC
-5:00 PM | Team Scrum + wrap-up | LSI, UBC
-5:30 PM | hackseq Evening Social | BierCraft, UBC
-
-#### Sunday, October 20, 2019
-
-Time | Event | Location
--- | -- | --
-8:30 AM | Coffee and snacks | LSI, UBC
-9:00 AM | Red-eye hacking | LSI, UBC
-12:00 PM | Lunch | LSI, UBC
-2:00 PM | Desperate bug-fix time | LSI, UBC
-3:30 PM | Team Project Presentations | LSI, UBC
-4:30 PM | Coffee Break | LSI, UBC
-4:30 PM | Abcellera talk | LSI, UBC
-5:00 PM | hackseq19 wrap-up | LSI, UBC
-
 
 ### Team Members
 Noushin Nabavi, Matthew Emery, Alex Morin, Zuhaib Ahmed, Casey Engstrom, Sedat Demiriz, Shinta Thio, Saelin Bjornson
+
+### Team Channel
+Team collaborations in #p02-yeast channel in [slack](hackseq19.slack.com)
