@@ -1,6 +1,6 @@
 ---
 title: "heatmap shiny"
-output: html_notebook
+
 ---
 
 ```{r libs, echo=F}
