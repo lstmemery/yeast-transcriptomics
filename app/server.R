@@ -5,7 +5,34 @@ library(tidyverse)
 library(here)
 
 # Define server logic required to draw a histogram
-shinyServer(function(input, output) {
+shinyServer(function(input, output, session) {
+    
+    # load plot data
+    rel_expr <- read_csv("data/rel_expr.csv")
+    strain_meta <- read_csv("data/strain_meta.csv")
+    go_annotation <- read_csv("data/go_annotation.csv")
+    
+
+    #Find the GO domain selected and change the options on the response checkboxes
+    observe({
+        domain_outputs <- go_annotation %>% 
+            filter(go_domain == input$go_domain) # "Biological process"
+        
+        responses <- domain_outputs %>% 
+                        distinct(go_annotation) %>% 
+                            pull(go_annotation)
+        
+        # Can use character(0) to remove all choices
+        if (is.null(x))
+            x <- character(0)
+        
+        # Can also set the label and select items
+        updateCheckboxGroupInput(session, "inCheckboxGroup",
+                                 label = paste("Select Checkbox"),
+                                 choices = responses,
+                                 selected = x
+        )
+    })
     
 
     
@@ -13,10 +40,6 @@ shinyServer(function(input, output) {
     # with requested GO domain
     
     output$heat <- renderPlot({
-        # load plot data
-        rel_expr <- read_csv(fs::path(here::here(),"app","data","rel_expr.csv"))
-        strain_meta <- read_csv(fs::path(here::here(),"app","data","strain_meta.csv"))
-        go_annotation <- read_csv(fs::path(here::here(),"app","data","go_annotation.csv"))
         
         # filter based on ui input
         my_go_domain <- go_annotation %>% 
@@ -24,7 +47,6 @@ shinyServer(function(input, output) {
         my_strain_type <- strain_meta %>%
             filter(strain_tag_type == input$strain_tag_type) # "primary"
 
-                      
         # compare RNA expression of strains with go_tag1 and go_tag2
         heatmap_by_GO <- rel_expr %>% 
             left_join(my_go_domain, by="gene_name") %>%
@@ -32,7 +54,6 @@ shinyServer(function(input, output) {
             group_by(go_annotation, strain_tag) %>% 
             summarise(rel_expr = mean(rel_expr)) %>% 
             ungroup()
-        
         
         ggplot(heatmap_by_GO, aes(x=strain_tag %>% fct_reorder(-rel_expr), y= go_annotation %>% fct_reorder(-rel_expr))) +
             geom_tile(aes(fill=rel_expr)) +
