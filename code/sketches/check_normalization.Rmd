@@ -11,10 +11,12 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r}
 library(tidyverse)
+library(here)
+library(fs)
 ```
 
 ```{r}
-expressions <- read_csv("../../app/tidy_data/tidy_expressions.csv")
+expressions <- read_csv(fs::path(here::here(), "app", "tidy_data", "tidy_expressions.csv"))
 ```
 
 ```{r}
@@ -31,10 +33,6 @@ standard_deviation_gene <- expressions %>%
   arrange(standard_deviation)
 ```
 
-Expressed in at least 5 samples
-
-
-141
 ```{r}
 standard_deviation_gene %>% 
   filter(!str_detect(gene, "^__")) %>% 
