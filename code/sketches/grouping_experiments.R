@@ -8,7 +8,7 @@ if (!requireNamespace("BiocManager", quietly = TRUE))
 BiocManager::install("limma")
 library(limma)
 
-# set time zone to proper location
+# set time zone to proper location   
 options(readr.default_locale=readr::locale(tz="America/Vancouver"))
 
 
@@ -65,7 +65,8 @@ g = ggplot(data=df, aes(x=log2(fold), y=-log10(pval))) +
   geom_point(alpha=0.4, size=5) +
   theme(legend.position = "none") +
   xlim(c(-5, 12)) + ylim(c(0, 5)) +
-  xlab("log2 fold change") + ylab("-log10 p-value")
+  xlab("log2 fold change") + ylab("-log10 p-value")  
+
 
 
 
