@@ -14,7 +14,7 @@ library(tidyverse)
 ```
 
 ```{r}
-expressions <- read_csv("../../app/tidy_data/tidy_expressions.csv")
+expressions <- read_csv(here("data", "tidy_data", "tidy_expressions.csv"))
 ```
 
 ```{r}
