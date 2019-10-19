@@ -50,7 +50,7 @@ SA_expressiontemp <- SC_expression %>%
 SAtable <- cbind(SA_expression, SA_expressiontemp)
 colnames(SAtable)[1] <- "Gene"
 
-SAwildGalactose <- SAwildGalactose[,1:3]
+SAwildGalactose <- SAtable[,1:3]
 
 rownames(SAwildGalactose) <- SAwildGalactose$Gene
 
@@ -60,7 +60,7 @@ SAwildGalactose$Gene <- NULL
 fit <- lmFit(SAwildGalactose)
 
 SAwildGalactose$fold <- SAwildGalactose$SAASAQ/SAwildGalactose$SAABRQ
-SAwildGalactose$pval <- fit$p.value
+SAwildGalactose$pval <- fit$p.value # this doesn't run, no p.value in the data
 
 df <- SAwildGalactose[is.finite(rowSums(SAwildGalactose)),]
 
