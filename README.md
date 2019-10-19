@@ -38,6 +38,7 @@ The goal of this project is to unravel the genetic mechanisms involved in yeast 
 - [Package development, maintenance, documentation, and peer-review](https://devguide.ropensci.org/building.html#documentation)
 - [Shiny Apps for Transcriptome Visualizations](https://academic.oup.com/bioinformatics/article/33/3/447/2525724)
 - [RNAseq Shiny app options](https://www.rna-seqblog.com/tag/shiny/)
+- [Limma/Glimma/edgeR analyses](https://www.bioconductor.org/packages/devel/workflows/vignettes/RNAseq123/inst/doc/limmaWorkflow.html)
 
 
 ### Team Members
