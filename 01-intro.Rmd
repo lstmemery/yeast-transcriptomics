@@ -22,6 +22,27 @@ knitr::kable(
 ```
 
 
-## Data 
+## About the Data:
+
+**data/04_remove_underscores_average_replicates/04_SC-expression.csv**
+1st col "gene": gene names, lnc= long non-coding RNA
+all others: experimental IDs. 87 total. See /03_remove_zero_genes/03_condition_annotation.csv
+values: expression values. Normalized to TPM 
+
+**data/03_remove_zero_genes/03_condition_annotation.csv**
+1st "col: experimental ID. Grouped together by the first 2 letters.
+2nd col "primary": strain used, includes WT, temp sensitivity? (ex. 15 deg, 37 deg), test-control, strain codes
+3rd col "secondary": experimental test, ex. salinty, temperature, ethanol, untreated...
+
+
+**data/03_remove_zero_genes/tiddy_expressions.csv**
+
+
+**data/tidy_data/tiddy_attributes.csv**
+
+**data/tidy_data/tiddy_conditionss.csv**
+
+**data/tidy_data/tiddy_expressions.csv**
+
 
 
