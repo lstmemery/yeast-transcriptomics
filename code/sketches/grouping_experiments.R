@@ -20,6 +20,7 @@ SC_expression <- read_csv("data/04_remove_underscores_average_replicates/04_SC_e
 
 View(conditions_annotation)
 
+
 # Create group based on first to char in ID which we believe groups data from the same lab
 conditions_annotation$Group <- NA
 conditions_annotation$Group <- substr(conditions_annotation$ID, 1, 2)   
@@ -30,6 +31,8 @@ conditions_annotation$primary <- str_to_lower(conditions_annotation$primary, loc
 conditions_annotation$secondary <- str_to_lower(conditions_annotation$secondary, locale = "en")
 
 conditions_annotation$Ref <- NA
+
+write.csv(conditions_annotation, here::here("data", "05_grouping_experiments", "05_grouping_table"))
 
 
 # split out the SA group and merge in gene expression data
