@@ -4,6 +4,10 @@ output:
   pdf_document: default
 ---
 
+```{r}
+knitr::opts_chunk$set(eval = FALSE)
+```
+
 # Methods
 
 ## Cleaning data
@@ -113,6 +117,7 @@ labels_BP <- read.csv("data/labelsBP.csv", stringsAsFactors = FALSE)
 expect 6071x3
 ```{r}
 labels_CC <- read.csv("data/labelsCC.csv", stringsAsFactors = FALSE)
+```
 
 expect 6071x3
 ```{r}
@@ -122,7 +127,7 @@ labels_MF <- read.csv(
   header = FALSE,
   col.names = c("gene", "validation", "localization")
 )
-
+```
 metadata has 6072 rows instead of 6071. turns out there is an extra row
 with a gene called "gene." must remove
 ```{r}
@@ -165,8 +170,6 @@ for (i in 1:length(tables)) {
               paste0("data/", table.names[i]))
 }
 ```
-
-
 ## Shiny App
 
 
