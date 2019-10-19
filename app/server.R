@@ -7,6 +7,8 @@ library(here)
 # Define server logic required to draw a histogram
 shinyServer(function(input, output) {
     
+
+    
     # Heatmap of RNA expression data for different strains of yeast
     # with requested GO domain
     

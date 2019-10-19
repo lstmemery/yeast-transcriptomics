@@ -13,9 +13,8 @@ library(shiny)
 shinyUI(fluidPage(
 
     # Application title
-    titlePanel("SC Data"),
+    titlePanel(HTML("<em>S. cervisiae</em> RNA expression")),
 
-    
     
     # Sidebar with a slider input for number of bins
     sidebarLayout(
@@ -27,7 +26,9 @@ shinyUI(fluidPage(
             selectInput(inputId="strain_tag_type",
                         label = "Strain metadata",
                         c("primary","secondary", "additional_information"),
-                        )
+                        ),
+
+            )
         ),
 
         # Show a plot of the generated distribution
