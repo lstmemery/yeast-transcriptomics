@@ -20,21 +20,19 @@ shinyUI(fluidPage(
     # Sidebar with a slider input for number of bins
     sidebarLayout(
         sidebarPanel(
-            sliderInput("bins",
-                        "Number of bins:",
-                        min = 1,
-                        max = 50,
-                        value = 30),
-            selectInput("experiment",
-                        "Experiment Name",
-                        c("IFFABF", "SAABQF"),
+            selectInput(inputId="go_domain",
+                        label = "GO domain",
+                        c("Biological process", "Cellular component", "Molecular function"),
+                        ),
+            selectInput(inputId="strain_tag_type",
+                        label = "Strain metadata",
+                        c("primary","secondary", "additional_information"),
                         )
         ),
-        
 
         # Show a plot of the generated distribution
         mainPanel(
-            plotOutput("distPlot")
+            plotOutput(outputId="heat")
         )
     )
 ))
