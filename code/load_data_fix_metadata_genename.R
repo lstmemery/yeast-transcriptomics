@@ -59,5 +59,6 @@ for (i in 1:length(tables)) {
               sep = ",",
               quote = FALSE,
               row.names = FALSE,
-              paste0(here("data"), table.names[i]))
+              paste0("data/", table.names[i]))
 }
+
