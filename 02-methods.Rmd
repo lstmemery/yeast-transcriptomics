@@ -6,4 +6,244 @@ output:
 
 # Methods
 
-Here is a review of methods.
+## Cleaning data
+
+### Removing zeros
+here::here()
+# Get file
+expression <- read.csv("02_expression.csv", header = T, row.names = 1)
+# See which rows have all zeros
+zeros <- apply(expression, 1, function(x) return(length(which(x == 0))))
+# Generate new data frame
+newExpression <- expression[which(zeros != ncol(expression)),]
+# Write to file
+write.csv(newExpression, "03_SC_expression.csv", row.names = T)
+
+### Check Normalization
+```{r}
+expressions <- read_csv(here("data", "tidy_data", "tidy_expressions.csv"))
+```
+
+```{r}
+expressions %>% 
+  group_by(condition) %>% 
+  summarise(average = mean(value), standard_deviation = sd(value)) %>% 
+  arrange(standard_deviation)
+```
+
+```{r}
+standard_deviation_gene <- expressions %>% 
+  group_by(gene) %>% 
+  summarise(average = mean(value), standard_deviation = sd(value)) %>% 
+  arrange(standard_deviation)
+```
+
+Expressed in at least 5 samples
+141
+```{r}
+standard_deviation_gene %>% 
+  filter(!str_detect(gene, "^__")) %>% 
+  filter(standard_deviation > 0) %>% 
+  arrange(standard_deviation)
+  
+```
+
+```{r}
+standard_deviation_gene %>% 
+  arrange(desc(standard_deviation))
+```
+
+### Remove Underscores and average replicates 
+```{r}
+expressions <- read_csv(here("data/03_remove_zero_genes/03_SC_expression.csv"))
+```
+
+```{r}
+removed_underscores <- expressions %>%
+  rename("gene" = "X1") %>% 
+  pivot_longer(-gene) %>% 
+  filter(!str_detect(gene, "^_"))
+```
+
+```{r}
+averaged_replicates <- removed_underscores %>% 
+  mutate(name = str_remove(name, ".1$")) %>% 
+  group_by(gene, name) %>% 
+  summarise(value = mean(value))
+```
+
+```{r}
+wide_df <- averaged_replicates %>% 
+  pivot_wider(id_cols = gene)
+```
+
+```{r}
+write_csv(wide_df, here("data/04_remove_underscores_average_replicates/04_SC_expression.csv"))
+```
+
+###  Load the expression matrix and associated metadata. Fix inconsistency between.
+Resave the cleaned tables.
+```{r}
+library(tidyverse)
+```
+expression matrix, note that first column is gene names. coercing to rownames
+expect 6071x93
+```{r}
+SC_expression <- read.csv("data/SC_expression.csv")
+colnames(SC_expression)[colnames(SC_expression) == "X"] <- "gene"
+```
+expect 92x4
+```{r}
+condition_annotation <- read.csv("data/conditions_annotation.csv", stringsAsFactors = FALSE)
+```
+expect 6071x3
+```{r}
+labels_BP <- read.csv("data/labelsBP.csv", stringsAsFactors = FALSE)
+```
+
+expect 6071x3
+```{r}
+labels_CC <- read.csv("data/labelsCC.csv", stringsAsFactors = FALSE)
+
+expect 6071x3
+```{r}
+labels_MF <- read.csv(
+  "data/labelsMF.csv",
+  stringsAsFactors = FALSE,
+  header = FALSE,
+  col.names = c("gene", "validation", "localization")
+)
+
+metadata has 6072 rows instead of 6071. turns out there is an extra row
+with a gene called "gene." must remove
+```{r}
+table(labels_MF$gene %in% rownames(SC_expression))
+setdiff(labels_MF$gene, rownames(SC_expression))
+```
+
+```{r}
+labels_BP <- labels_BP[labels_BP$gene != "gene", ]
+labels_CC <- labels_BP[labels_CC$gene != "gene", ]
+labels_MF <- labels_BP[labels_MF$gene != "gene", ]
+```
+
+```{r}
+stopifnot(all(table(SC_expression$gene %in% labels_BP$gene)))
+stopifnot(all(table(SC_expression$gene %in% labels_CC$gene)))
+stopifnot(all(table(SC_expression$gene %in% labels_MF$gene)))
+```
+
+```{r}
+table.names <- c("01_condition_annotation.csv", 
+                 "01_labelsBP.csv",
+                 "01_labelsCC.csv",
+                 "01_labelsMF.csv", 
+                 "01_SC_expression.csv")
+
+tables <- list(condition_annotation,
+            labels_BP,
+            labels_CC,
+            labels_MF,
+            SC_expression)
+```
+
+```{r}
+for (i in 1:length(tables)) {
+  write.table(tables[i], 
+              sep = ",",
+              quote = FALSE,
+              row.names = FALSE,
+              paste0("data/", table.names[i]))
+}
+```
+
+
+## Shiny App
+
+
+## Visualizations
+
+### UMAP
+
+```{r}
+library(umapr)
+library(tidyverse)
+```
+
+```{r}
+expression <- read_csv(here("data/04_remove_underscores_average_replicates/04_SC_expression.csv"))
+```
+
+```{r}
+expression_matrix <- expression %>% 
+  select_if(is.numeric) %>% 
+  as.matrix()
+```
+
+
+```{r}
+umap_expression <- umap(expression_matrix)
+```
+
+```{r}
+umap_df <- bind_cols(expression %>% select(gene), umap_expression %>% select(UMAP1, UMAP2))
+```
+
+
+```{r}
+umap_df <- umap_df %>% 
+  mutate(long_non_coding = str_detect(gene, "^SCER_lnc"))
+```
+
+```{r}
+write_csv(umap_df, here("data/umap.csv"))
+```
+
+
+```{r}
+ggplot(umap_df, aes(UMAP1, UMAP2, color = long_non_coding)) + 
+  geom_point(alpha = 0.2)
+```
+
+```{r}
+tidy_attributes <- read_csv(here("data/tidy_data/tidy_attributes.csv"))
+```
+
+```{r}
+wide_attributes <- tidy_attributes %>%
+  pivot_wider(gene)
+```
+
+```{r}
+attributes_df <- umap_df %>% 
+  inner_join(wide_attributes)
+```
+
+```{r}
+umap_coloring <- function(filter_query) {
+  filtered_values <- tidy_attributes %>% 
+    filter(value == {{ filter_query }}) %>% 
+    pull(gene)
+  
+  
+  filter_df <- umap_df %>% 
+    mutate({{ filter_query }} := map_lgl(gene, function(x) x %in% filtered_values))
+  
+  ggplot(filter_df, aes_string("UMAP1", "UMAP2", color = filter_query)) + 
+    geom_point()
+  }
+
+g <- umap_coloring("protein") 
+  ggsave(here("output/first_umap.png"), g, width = 16, height = 9)
+```
+
+```{r}
+tidy_attributes %>% 
+  distinct(value)
+```
+
+### Heat Maps
+
+
+
+

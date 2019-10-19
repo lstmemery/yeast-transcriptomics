@@ -1,9 +1,0 @@
----
-output:
-  html_document: default
-  pdf_document: default
----
-
-# Models
-
-We describe our models in this chapter.
