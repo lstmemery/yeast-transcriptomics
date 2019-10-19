@@ -132,14 +132,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a></li>
-<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a></li>
-<li class="chapter" data-level="3" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>3</b> Methods</a></li>
-<li class="chapter" data-level="4" data-path="models.html"><a href="models.html"><i class="fa fa-check"></i><b>4</b> Models</a></li>
-<li class="chapter" data-level="5" data-path="visualizations.html"><a href="visualizations.html"><i class="fa fa-check"></i><b>5</b> Visualizations</a><ul>
-<li class="chapter" data-level="5.1" data-path="visualizations.html"><a href="visualizations.html#example-one"><i class="fa fa-check"></i><b>5.1</b> Example one</a></li>
-<li class="chapter" data-level="5.2" data-path="visualizations.html"><a href="visualizations.html#example-two"><i class="fa fa-check"></i><b>5.2</b> Example two</a></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a><ul>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#about-the-data"><i class="fa fa-check"></i><b>2.1</b> About the Data:</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>6</b> Final Words</a></li>
+<li class="chapter" data-level="3" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>3</b> Methods</a><ul>
+<li class="chapter" data-level="3.1" data-path="methods.html"><a href="methods.html#cleaning-data"><i class="fa fa-check"></i><b>3.1</b> Cleaning data</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="methods.html"><a href="methods.html#removing-zeros"><i class="fa fa-check"></i><b>3.1.1</b> Removing zeros</a></li>
+<li class="chapter" data-level="3.1.2" data-path="methods.html"><a href="methods.html#check-normalization---matt-emery"><i class="fa fa-check"></i><b>3.1.2</b> Check Normalization - Matt Emery</a></li>
+<li class="chapter" data-level="3.1.3" data-path="methods.html"><a href="methods.html#remove-underscores-and-average-replicates---matt-emery"><i class="fa fa-check"></i><b>3.1.3</b> Remove Underscores and average replicates - Matt Emery</a></li>
+<li class="chapter" data-level="3.1.4" data-path="methods.html"><a href="methods.html#load-the-expression-matrix-and-associated-metadata.-fix-inconsistency-between."><i class="fa fa-check"></i><b>3.1.4</b> Load the expression matrix and associated metadata. Fix inconsistency between.</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="methods.html"><a href="methods.html#shiny-app"><i class="fa fa-check"></i><b>3.2</b> Shiny App</a></li>
+<li class="chapter" data-level="3.3" data-path="methods.html"><a href="methods.html#visualizations"><i class="fa fa-check"></i><b>3.3</b> Visualizations</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="methods.html"><a href="methods.html#umap-generation---matt-emery"><i class="fa fa-check"></i><b>3.3.1</b> UMAP Generation - Matt Emery</a></li>
+<li class="chapter" data-level="3.3.2" data-path="methods.html"><a href="methods.html#heat-map-generation"><i class="fa fa-check"></i><b>3.3.2</b> Heat Map Generation</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="visualizations-1.html"><a href="visualizations-1.html"><i class="fa fa-check"></i><b>4</b> Visualizations</a><ul>
+<li class="chapter" data-level="4.1" data-path="visualizations-1.html"><a href="visualizations-1.html#umap"><i class="fa fa-check"></i><b>4.1</b> UMAP</a></li>
+<li class="chapter" data-level="4.2" data-path="visualizations-1.html"><a href="visualizations-1.html#heat-maps"><i class="fa fa-check"></i><b>4.2</b> Heat Maps</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>5</b> Final Words</a><ul>
+<li class="chapter" data-level="5.1" data-path="final-words.html"><a href="final-words.html#summary"><i class="fa fa-check"></i><b>5.1</b> Summary</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -164,7 +179,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="intro" class="section level1">
 <h1><span class="header-section-number">Chapter 2</span> Introduction</h1>
 <p>You can label chapter and section titles using <code>{#label}</code> after them, e.g., we can reference Chapter <a href="intro.html#intro">2</a>. If you do not manually label them, there will be automatic labels anyway, e.g., Chapter <a href="methods.html#methods">3</a>.</p>
-<p>Figures and tables with captions will be placed in <code>figure</code> and <code>table</code> environments, respectively.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">par</span>(<span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="fl">.1</span>, <span class="fl">.1</span>))</a>
 <a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw">plot</span>(pressure, <span class="dt">type =</span> <span class="st">&#39;b&#39;</span>, <span class="dt">pch =</span> <span class="dv">19</span>)</a></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:nice-fig"></span>
@@ -332,16 +346,22 @@ Figure 2.1: Here is a nice figure!
 </tr>
 </tbody>
 </table>
-<p>You can write citations, too. For example, we are using the <strong>bookdown</strong> package <span class="citation">(Xie <a href="#ref-R-bookdown">2019</a>)</span> in this sample book, which was built on top of R Markdown and <strong>knitr</strong> <span class="citation">(Xie <a href="#ref-xie2015">2015</a>)</span>.</p>
+<div id="about-the-data" class="section level2">
+<h2><span class="header-section-number">2.1</span> About the Data:</h2>
+<p><strong>data/04_remove_underscores_average_replicates/04_SC-expression.csv</strong>
+1st col “gene”: gene names, lnc= long non-coding RNA
+all others: experimental IDs. 87 total. See /03_remove_zero_genes/03_condition_annotation.csv
+values: expression values. Normalized to TPM</p>
+<p><strong>data/03_remove_zero_genes/03_condition_annotation.csv</strong>
+1st “col: experimental ID. Grouped together by the first 2 letters.
+2nd col”primary“: strain used, includes WT, temp sensitivity? (ex. 15 deg, 37 deg), test-control, strain codes
+3rd col”secondary&quot;: experimental test, ex. salinty, temperature, ethanol, untreated…</p>
+<p><strong>data/03_remove_zero_genes/tiddy_expressions.csv</strong></p>
+<p><strong>data/tidy_data/tiddy_attributes.csv</strong></p>
+<p><strong>data/tidy_data/tiddy_conditionss.csv</strong></p>
+<p><strong>data/tidy_data/tiddy_expressions.csv</strong></p>
 
-</div>
-<h3>References</h3>
-<div id="refs" class="references">
-<div id="ref-xie2015">
-<p>Xie, Yihui. 2015. <em>Dynamic Documents with R and Knitr</em>. 2nd ed. Boca Raton, Florida: Chapman; Hall/CRC. <a href="http://yihui.name/knitr/">http://yihui.name/knitr/</a>.</p>
-</div>
-<div id="ref-R-bookdown">
-<p>Xie, Yihui. 2019. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. <a href="https://CRAN.R-project.org/package=bookdown">https://CRAN.R-project.org/package=bookdown</a>.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">knitr<span class="op">::</span>opts_chunk<span class="op">$</span><span class="kw">set</span>(<span class="dt">eval =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
 </div>
 </div>
             </section>

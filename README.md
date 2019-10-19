@@ -1,5 +1,5 @@
 # Transcriptomics in yeast
-Yeasts (saccharomyces cerevisiae) are used in the production of some of our diet's most cherished choices such as bread (not mentioning wine and beer). There are many other biotechnology applications that use yeast, some of which include complex pharmaceuticals production. Yeasts are also great model organisms because of their simple and small genome consisting of approximately 6000 genes. Being single celled organisms also make them great for transcriptome analyses as gene expression is homogenous. As part of our Vancouver-based hackathon (hackseq19) project (October 18 to 20, 2019) we will be examining a yeast transcriptome dataset. In this data, yeast strains have been treated with various stimuli (e.g. heat, phenol lysis, ethanol treatment, etc), and gene expression changes are the readout. It is note entirely clear from the metadata why certain strains or mutants were picked or how the stimuli differ for some experiments. It is, however, known that the data has been [scraped](https://github.com/rtwillett/yeastract_spider/) off of the web from various sources and aggregated into one where we can access through the Kaggle competition site. Also, we are provided with gene expression that is normalized to Transcript Per Million (TPM). As a team, we will be cleaning, analyzing, and communicating the results of our explorations through clear documentation of procedures and an interactive application. 
+Yeasts (Saccharomyces cerevisiae) are used in the production of some of the most cherished choices of our diet, such as bread (not mentioning wine and beer). There are many other biotechnology applications that use yeast, some of which include complex pharmaceuticals production. Yeasts are also great model organisms because of their simple and small genome consisting of approximately 6000 genes. Being single celled organisms also make them great for transcriptome analyses as gene expression is homogenous. As part of our Vancouver-based hackathon (hackseq19) project we will be examining a yeast transcriptome dataset. The dataset consists of gene expression changes from yeast strains that have been treated with various stimuli such as heat, phenol lysis, ethanol treatment, etc. It is not entirely clear from the metadata why certain strains or mutants were picked or how the stimuli differ for some experiments. It is, however, known that the data has been [scraped](https://github.com/rtwillett/yeastract_spider/) off of the web from various sources, aggregated and made accessible through the Kaggle competition site. We are also provided with gene expression data, normalized to Transcript Per Million (TPM). As a team, our aim is to clean, analyze, and communicate the results of our explorations through clear documentation of procedures and an interactive application.
 
 ### Data
 The data in this project includes gene expression values for 92 yeast strains treated with various stimuli. RNA expression levels are normalized to TPM (transcripts per million), following a default normalization procedure. Data is stored in `data` folder.
@@ -8,7 +8,7 @@ The data in this project includes gene expression values for 92 yeast strains tr
 - The `conditions_annotation.csv` file explain the yeast strains and experimental conditions.
 
 ### Data Source 
-This project is inspired by the yeast-omics dataset shared as a kaggle competition, and the original data can be found [here](https://www.kaggle.com/costalaether/yeast-transcriptomics).
+This project is inspired by the yeast-omics dataset shared as a Kaggle competition, and the original data can be found [here](https://www.kaggle.com/costalaether/yeast-transcriptomics).
 
 ### Goal
 The goal of this project is to unravel the genetic mechanisms involved in yeast stress adaptation through building a visualization platform (e.g. shiny application) that allows scientists to explore the data interactively. The tasks we will attempt in the hackathon include:
@@ -18,13 +18,13 @@ The goal of this project is to unravel the genetic mechanisms involved in yeast 
 - Phylogenetic/Taxonomic trees for yeast strains
 
 ### Software
-Please have the latest versions of R and R Bioconductor installed on your laptop prior to the workshop. RStudio (the free version) is highly recommended as well, since we will be teaching in this environment.
+Please have the latest versions of R and R Bioconductor installed on your machine prior to the workshop.
 
 - [Install R](https://cran.r-project.org/)   
 - [Install R Bioconductor](https://bioconductor.org/install/)   
 - [Install RStudio](https://rstudio.com/products/rstudio/download/#download)   
 
-### Suggested preparatory lessons
+### Suggested preparatory resources
 - [Introduction to Data Science with R](http://shop.oreilly.com/product/0636920034834.do)
 - [RNAseq Analysis tutorials in R](https://bioinformatics-core-shared-training.github.io/RNAseq-R/) and [Differential expression Analysis](https://combine-australia.github.io/RNAseq-R/06-rnaseq-day1.html)
 - [Mastering Shiny](https://mastering-shiny.org/)
@@ -39,7 +39,7 @@ Please have the latest versions of R and R Bioconductor installed on your laptop
 
 
 ### Team Members
-Noushin Nabavi, Matthew Emery, Alex Morin, Zuhaib Ahmed, Casey Engstrom, Sedat Demiriz, Shinta Thio, Saelin Bjornson
+Noushin Nabavi, Matthew Emery, Alex Morin, Zuhaib Ahmed, Casey Engstrom, Sedat Demiriz, Shinta Thio, Saelin Bjornson, Siddharth Raghuvanshi, Chris Rider 
 
 ### Team Channel
 Team collaborations in #p02-yeast channel in [slack](hackseq19.slack.com)

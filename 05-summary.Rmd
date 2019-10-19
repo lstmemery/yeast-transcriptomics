@@ -8,3 +8,5 @@ output:
 
 Discussion points
 We have finished a nice book.
+
+## Summary

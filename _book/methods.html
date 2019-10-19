@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="intro.html"/>
-<link rel="next" href="models.html"/>
+<link rel="next" href="visualizations-1.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -132,14 +132,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a></li>
-<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a></li>
-<li class="chapter" data-level="3" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>3</b> Methods</a></li>
-<li class="chapter" data-level="4" data-path="models.html"><a href="models.html"><i class="fa fa-check"></i><b>4</b> Models</a></li>
-<li class="chapter" data-level="5" data-path="visualizations.html"><a href="visualizations.html"><i class="fa fa-check"></i><b>5</b> Visualizations</a><ul>
-<li class="chapter" data-level="5.1" data-path="visualizations.html"><a href="visualizations.html#example-one"><i class="fa fa-check"></i><b>5.1</b> Example one</a></li>
-<li class="chapter" data-level="5.2" data-path="visualizations.html"><a href="visualizations.html#example-two"><i class="fa fa-check"></i><b>5.2</b> Example two</a></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a><ul>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#about-the-data"><i class="fa fa-check"></i><b>2.1</b> About the Data:</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>6</b> Final Words</a></li>
+<li class="chapter" data-level="3" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>3</b> Methods</a><ul>
+<li class="chapter" data-level="3.1" data-path="methods.html"><a href="methods.html#cleaning-data"><i class="fa fa-check"></i><b>3.1</b> Cleaning data</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="methods.html"><a href="methods.html#removing-zeros"><i class="fa fa-check"></i><b>3.1.1</b> Removing zeros</a></li>
+<li class="chapter" data-level="3.1.2" data-path="methods.html"><a href="methods.html#check-normalization---matt-emery"><i class="fa fa-check"></i><b>3.1.2</b> Check Normalization - Matt Emery</a></li>
+<li class="chapter" data-level="3.1.3" data-path="methods.html"><a href="methods.html#remove-underscores-and-average-replicates---matt-emery"><i class="fa fa-check"></i><b>3.1.3</b> Remove Underscores and average replicates - Matt Emery</a></li>
+<li class="chapter" data-level="3.1.4" data-path="methods.html"><a href="methods.html#load-the-expression-matrix-and-associated-metadata.-fix-inconsistency-between."><i class="fa fa-check"></i><b>3.1.4</b> Load the expression matrix and associated metadata. Fix inconsistency between.</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="methods.html"><a href="methods.html#shiny-app"><i class="fa fa-check"></i><b>3.2</b> Shiny App</a></li>
+<li class="chapter" data-level="3.3" data-path="methods.html"><a href="methods.html#visualizations"><i class="fa fa-check"></i><b>3.3</b> Visualizations</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="methods.html"><a href="methods.html#umap-generation---matt-emery"><i class="fa fa-check"></i><b>3.3.1</b> UMAP Generation - Matt Emery</a></li>
+<li class="chapter" data-level="3.3.2" data-path="methods.html"><a href="methods.html#heat-map-generation"><i class="fa fa-check"></i><b>3.3.2</b> Heat Map Generation</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="visualizations-1.html"><a href="visualizations-1.html"><i class="fa fa-check"></i><b>4</b> Visualizations</a><ul>
+<li class="chapter" data-level="4.1" data-path="visualizations-1.html"><a href="visualizations-1.html#umap"><i class="fa fa-check"></i><b>4.1</b> UMAP</a></li>
+<li class="chapter" data-level="4.2" data-path="visualizations-1.html"><a href="visualizations-1.html#heat-maps"><i class="fa fa-check"></i><b>4.2</b> Heat Maps</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>5</b> Final Words</a><ul>
+<li class="chapter" data-level="5.1" data-path="final-words.html"><a href="final-words.html#summary"><i class="fa fa-check"></i><b>5.1</b> Summary</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -163,8 +178,229 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="methods" class="section level1">
 <h1><span class="header-section-number">Chapter 3</span> Methods</h1>
-<p>Here is a review of methods.</p>
+<div id="cleaning-data" class="section level2">
+<h2><span class="header-section-number">3.1</span> Cleaning data</h2>
+<div id="removing-zeros" class="section level3">
+<h3><span class="header-section-number">3.1.1</span> Removing zeros</h3>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">here<span class="op">::</span><span class="kw">here</span>()</a></code></pre></div>
+<p>Get file</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">expression &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;02_expression.csv&quot;</span>, <span class="dt">header =</span> T, <span class="dt">row.names =</span> <span class="dv">1</span>)</a></code></pre></div>
+<p>See which rows have all zeros</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">zeros &lt;-<span class="st"> </span><span class="kw">apply</span>(expression, <span class="dv">1</span>, <span class="cf">function</span>(x) <span class="kw">return</span>(<span class="kw">length</span>(<span class="kw">which</span>(x <span class="op">==</span><span class="st"> </span><span class="dv">0</span>))))</a></code></pre></div>
+<p>Generate new data frame</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">newExpression &lt;-<span class="st"> </span>expression[<span class="kw">which</span>(zeros <span class="op">!=</span><span class="st"> </span><span class="kw">ncol</span>(expression)),]</a></code></pre></div>
+<p>Write to file</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw">write.csv</span>(newExpression, <span class="st">&quot;03_SC_expression.csv&quot;</span>, <span class="dt">row.names =</span> T)</a></code></pre></div>
+</div>
+<div id="check-normalization---matt-emery" class="section level3">
+<h3><span class="header-section-number">3.1.2</span> Check Normalization - Matt Emery</h3>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">expressions &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="kw">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;tidy_data&quot;</span>, <span class="st">&quot;tidy_expressions.csv&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1">expressions <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(condition) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb11-3" data-line-number="3"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">average =</span> <span class="kw">mean</span>(value), <span class="dt">standard_deviation =</span> <span class="kw">sd</span>(value)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb11-4" data-line-number="4"><span class="st">  </span><span class="kw">arrange</span>(standard_deviation)</a></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1">standard_deviation_gene &lt;-<span class="st"> </span>expressions <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb12-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(gene) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb12-3" data-line-number="3"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">average =</span> <span class="kw">mean</span>(value), <span class="dt">standard_deviation =</span> <span class="kw">sd</span>(value)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb12-4" data-line-number="4"><span class="st">  </span><span class="kw">arrange</span>(standard_deviation)</a></code></pre></div>
+<p>Expressed in at least 5 samples:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">standard_deviation_gene <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb13-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">str_detect</span>(gene, <span class="st">&quot;^__&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb13-3" data-line-number="3"><span class="st">  </span><span class="kw">filter</span>(standard_deviation <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb13-4" data-line-number="4"><span class="st">  </span><span class="kw">arrange</span>(standard_deviation)</a></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1">standard_deviation_gene <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb14-2" data-line-number="2"><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(standard_deviation))</a></code></pre></div>
+</div>
+<div id="remove-underscores-and-average-replicates---matt-emery" class="section level3">
+<h3><span class="header-section-number">3.1.3</span> Remove Underscores and average replicates - Matt Emery</h3>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1">expressions &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="kw">here</span>(<span class="st">&quot;data/03_remove_zero_genes/03_SC_expression.csv&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1">removed_underscores &lt;-<span class="st"> </span>expressions <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb16-2" data-line-number="2"><span class="st">  </span><span class="kw">rename</span>(<span class="st">&quot;gene&quot;</span> =<span class="st"> &quot;X1&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb16-3" data-line-number="3"><span class="st">  </span><span class="kw">pivot_longer</span>(<span class="op">-</span>gene) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb16-4" data-line-number="4"><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">str_detect</span>(gene, <span class="st">&quot;^_&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1">averaged_replicates &lt;-<span class="st"> </span>removed_underscores <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb17-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">name =</span> <span class="kw">str_remove</span>(name, <span class="st">&quot;.1$&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb17-3" data-line-number="3"><span class="st">  </span><span class="kw">group_by</span>(gene, name) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb17-4" data-line-number="4"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">value =</span> <span class="kw">mean</span>(value))</a></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1">wide_df &lt;-<span class="st"> </span>averaged_replicates <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb18-2" data-line-number="2"><span class="st">  </span><span class="kw">pivot_wider</span>(<span class="dt">id_cols =</span> gene)</a></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1"><span class="kw">write_csv</span>(wide_df, <span class="kw">here</span>(<span class="st">&quot;data/04_remove_underscores_average_replicates/04_SC_expression.csv&quot;</span>))</a></code></pre></div>
+</div>
+<div id="load-the-expression-matrix-and-associated-metadata.-fix-inconsistency-between." class="section level3">
+<h3><span class="header-section-number">3.1.4</span> Load the expression matrix and associated metadata. Fix inconsistency between.</h3>
+<p>Resave the cleaned tables.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
+<p>expression matrix, note that first column is gene names. coercing to rownames
+expect 6071x93</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1">SC_expression &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/SC_expression.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb21-2" data-line-number="2"><span class="kw">colnames</span>(SC_expression)[<span class="kw">colnames</span>(SC_expression) <span class="op">==</span><span class="st"> &quot;X&quot;</span>] &lt;-<span class="st"> &quot;gene&quot;</span></a></code></pre></div>
+<p>expect 92x4</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1">condition_annotation &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/conditions_annotation.csv&quot;</span>, <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<p>expect 6071x3</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1">labels_BP &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/labelsBP.csv&quot;</span>, <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<p>expect 6071x3</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" data-line-number="1">labels_CC &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/labelsCC.csv&quot;</span>, <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<p>expect 6071x3</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1">labels_MF &lt;-<span class="st"> </span><span class="kw">read.csv</span>(</a>
+<a class="sourceLine" id="cb25-2" data-line-number="2">  <span class="st">&quot;data/labelsMF.csv&quot;</span>,</a>
+<a class="sourceLine" id="cb25-3" data-line-number="3">  <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>,</a>
+<a class="sourceLine" id="cb25-4" data-line-number="4">  <span class="dt">header =</span> <span class="ot">FALSE</span>,</a>
+<a class="sourceLine" id="cb25-5" data-line-number="5">  <span class="dt">col.names =</span> <span class="kw">c</span>(<span class="st">&quot;gene&quot;</span>, <span class="st">&quot;validation&quot;</span>, <span class="st">&quot;localization&quot;</span>)</a>
+<a class="sourceLine" id="cb25-6" data-line-number="6">)</a></code></pre></div>
+<p>metadata has 6072 rows instead of 6071. turns out there is an extra row
+with a gene called “gene.” must remove</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" data-line-number="1"><span class="kw">table</span>(labels_MF<span class="op">$</span>gene <span class="op">%in%</span><span class="st"> </span><span class="kw">rownames</span>(SC_expression))</a>
+<a class="sourceLine" id="cb26-2" data-line-number="2"><span class="kw">setdiff</span>(labels_MF<span class="op">$</span>gene, <span class="kw">rownames</span>(SC_expression))</a></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1">labels_BP &lt;-<span class="st"> </span>labels_BP[labels_BP<span class="op">$</span>gene <span class="op">!=</span><span class="st"> &quot;gene&quot;</span>, ]</a>
+<a class="sourceLine" id="cb27-2" data-line-number="2">labels_CC &lt;-<span class="st"> </span>labels_BP[labels_CC<span class="op">$</span>gene <span class="op">!=</span><span class="st"> &quot;gene&quot;</span>, ]</a>
+<a class="sourceLine" id="cb27-3" data-line-number="3">labels_MF &lt;-<span class="st"> </span>labels_BP[labels_MF<span class="op">$</span>gene <span class="op">!=</span><span class="st"> &quot;gene&quot;</span>, ]</a></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1"><span class="kw">stopifnot</span>(<span class="kw">all</span>(<span class="kw">table</span>(SC_expression<span class="op">$</span>gene <span class="op">%in%</span><span class="st"> </span>labels_BP<span class="op">$</span>gene)))</a>
+<a class="sourceLine" id="cb28-2" data-line-number="2"><span class="kw">stopifnot</span>(<span class="kw">all</span>(<span class="kw">table</span>(SC_expression<span class="op">$</span>gene <span class="op">%in%</span><span class="st"> </span>labels_CC<span class="op">$</span>gene)))</a>
+<a class="sourceLine" id="cb28-3" data-line-number="3"><span class="kw">stopifnot</span>(<span class="kw">all</span>(<span class="kw">table</span>(SC_expression<span class="op">$</span>gene <span class="op">%in%</span><span class="st"> </span>labels_MF<span class="op">$</span>gene)))</a></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1">table.names &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;01_condition_annotation.csv&quot;</span>, </a>
+<a class="sourceLine" id="cb29-2" data-line-number="2">                 <span class="st">&quot;01_labelsBP.csv&quot;</span>,</a>
+<a class="sourceLine" id="cb29-3" data-line-number="3">                 <span class="st">&quot;01_labelsCC.csv&quot;</span>,</a>
+<a class="sourceLine" id="cb29-4" data-line-number="4">                 <span class="st">&quot;01_labelsMF.csv&quot;</span>, </a>
+<a class="sourceLine" id="cb29-5" data-line-number="5">                 <span class="st">&quot;01_SC_expression.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb29-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb29-7" data-line-number="7">tables &lt;-<span class="st"> </span><span class="kw">list</span>(condition_annotation,</a>
+<a class="sourceLine" id="cb29-8" data-line-number="8">            labels_BP,</a>
+<a class="sourceLine" id="cb29-9" data-line-number="9">            labels_CC,</a>
+<a class="sourceLine" id="cb29-10" data-line-number="10">            labels_MF,</a>
+<a class="sourceLine" id="cb29-11" data-line-number="11">            SC_expression)</a></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(tables)) {</a>
+<a class="sourceLine" id="cb30-2" data-line-number="2">  <span class="kw">write.table</span>(tables[i], </a>
+<a class="sourceLine" id="cb30-3" data-line-number="3">              <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>,</a>
+<a class="sourceLine" id="cb30-4" data-line-number="4">              <span class="dt">quote =</span> <span class="ot">FALSE</span>,</a>
+<a class="sourceLine" id="cb30-5" data-line-number="5">              <span class="dt">row.names =</span> <span class="ot">FALSE</span>,</a>
+<a class="sourceLine" id="cb30-6" data-line-number="6">              <span class="kw">paste0</span>(<span class="st">&quot;data/&quot;</span>, table.names[i]))</a>
+<a class="sourceLine" id="cb30-7" data-line-number="7">}</a></code></pre></div>
+</div>
+</div>
+<div id="shiny-app" class="section level2">
+<h2><span class="header-section-number">3.2</span> Shiny App</h2>
+</div>
+<div id="visualizations" class="section level2">
+<h2><span class="header-section-number">3.3</span> Visualizations</h2>
+<div id="umap-generation---matt-emery" class="section level3">
+<h3><span class="header-section-number">3.3.1</span> UMAP Generation - Matt Emery</h3>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1"><span class="kw">library</span>(umapr)</a>
+<a class="sourceLine" id="cb31-2" data-line-number="2"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1">expression &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="kw">here</span>(<span class="st">&quot;data/04_remove_underscores_average_replicates/04_SC_expression.csv&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1">expression_matrix &lt;-<span class="st"> </span>expression <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb33-2" data-line-number="2"><span class="st">  </span><span class="kw">select_if</span>(is.numeric) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb33-3" data-line-number="3"><span class="st">  </span><span class="kw">as.matrix</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1">umap_expression &lt;-<span class="st"> </span><span class="kw">umap</span>(expression_matrix)</a></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1">umap_df &lt;-<span class="st"> </span><span class="kw">bind_cols</span>(expression <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(gene), umap_expression <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(UMAP1, UMAP2))</a></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1">umap_df &lt;-<span class="st"> </span>umap_df <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb36-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">long_non_coding =</span> <span class="kw">str_detect</span>(gene, <span class="st">&quot;^SCER_lnc&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" data-line-number="1"><span class="kw">write_csv</span>(umap_df, <span class="kw">here</span>(<span class="st">&quot;data/umap.csv&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1"><span class="kw">ggplot</span>(umap_df, <span class="kw">aes</span>(UMAP1, UMAP2, <span class="dt">color =</span> long_non_coding)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb38-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">0.2</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" data-line-number="1">tidy_attributes &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="kw">here</span>(<span class="st">&quot;data/tidy_data/tidy_attributes.csv&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" data-line-number="1">wide_attributes &lt;-<span class="st"> </span>tidy_attributes <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb40-2" data-line-number="2"><span class="st">  </span><span class="kw">pivot_wider</span>(gene)</a></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" data-line-number="1">attributes_df &lt;-<span class="st"> </span>umap_df <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb41-2" data-line-number="2"><span class="st">  </span><span class="kw">inner_join</span>(wide_attributes)</a></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" data-line-number="1">umap_coloring &lt;-<span class="st"> </span><span class="cf">function</span>(filter_query) {</a>
+<a class="sourceLine" id="cb42-2" data-line-number="2">  filtered_values &lt;-<span class="st"> </span>tidy_attributes <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb42-3" data-line-number="3"><span class="st">    </span><span class="kw">filter</span>(value <span class="op">==</span><span class="st"> </span>{{ filter_query }}) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb42-4" data-line-number="4"><span class="st">    </span><span class="kw">pull</span>(gene)</a>
+<a class="sourceLine" id="cb42-5" data-line-number="5">  </a>
+<a class="sourceLine" id="cb42-6" data-line-number="6">  </a>
+<a class="sourceLine" id="cb42-7" data-line-number="7">  filter_df &lt;-<span class="st"> </span>umap_df <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb42-8" data-line-number="8"><span class="st">    </span><span class="kw">mutate</span>({{ filter_query }} <span class="op">:</span><span class="er">=</span><span class="st"> </span><span class="kw">map_lgl</span>(gene, <span class="cf">function</span>(x) x <span class="op">%in%</span><span class="st"> </span>filtered_values))</a>
+<a class="sourceLine" id="cb42-9" data-line-number="9">  </a>
+<a class="sourceLine" id="cb42-10" data-line-number="10">  <span class="kw">ggplot</span>(filter_df, <span class="kw">aes_string</span>(<span class="st">&quot;UMAP1&quot;</span>, <span class="st">&quot;UMAP2&quot;</span>, <span class="dt">color =</span> filter_query)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb42-11" data-line-number="11"><span class="st">    </span><span class="kw">geom_point</span>()</a>
+<a class="sourceLine" id="cb42-12" data-line-number="12">  }</a>
+<a class="sourceLine" id="cb42-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb42-14" data-line-number="14">g &lt;-<span class="st"> </span><span class="kw">umap_coloring</span>(<span class="st">&quot;protein&quot;</span>) </a>
+<a class="sourceLine" id="cb42-15" data-line-number="15">  <span class="kw">ggsave</span>(<span class="kw">here</span>(<span class="st">&quot;output/first_umap.png&quot;</span>), g, <span class="dt">width =</span> <span class="dv">16</span>, <span class="dt">height =</span> <span class="dv">9</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" data-line-number="1">tidy_attributes <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb43-2" data-line-number="2"><span class="st">  </span><span class="kw">distinct</span>(value)</a></code></pre></div>
+</div>
+<div id="heat-map-generation" class="section level3">
+<h3><span class="header-section-number">3.3.2</span> Heat Map Generation</h3>
+<hr />
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" data-line-number="1">rel_expr &lt;-<span class="st"> </span><span class="kw">read_csv</span>(fs<span class="op">::</span><span class="kw">path</span>(here<span class="op">::</span><span class="kw">here</span>(), <span class="st">&quot;data&quot;</span>,<span class="st">&quot;00_raw&quot;</span>,<span class="st">&quot;SC_expression.csv&quot;</span>))</a>
+<a class="sourceLine" id="cb44-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb44-3" data-line-number="3">strain_meta &lt;-<span class="st"> </span><span class="kw">read_csv</span>(fs<span class="op">::</span><span class="kw">path</span>(here<span class="op">::</span><span class="kw">here</span>(), <span class="st">&quot;data&quot;</span>,<span class="st">&quot;00_raw&quot;</span>,<span class="st">&quot;conditions_annotation.csv&quot;</span>))</a>
+<a class="sourceLine" id="cb44-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb44-5" data-line-number="5"><span class="co"># read in the gene metadata, with additional cols for tags</span></a>
+<a class="sourceLine" id="cb44-6" data-line-number="6">tag.vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;name&quot;</span>,<span class="st">&quot;confidence&quot;</span>, <span class="kw">paste0</span>(<span class="st">&quot;tag&quot;</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>))</a>
+<a class="sourceLine" id="cb44-7" data-line-number="7"><span class="co"># biol process</span></a>
+<a class="sourceLine" id="cb44-8" data-line-number="8">bp_meta &lt;-<span class="st"> </span><span class="kw">read_csv</span>(fs<span class="op">::</span><span class="kw">path</span>(here<span class="op">::</span><span class="kw">here</span>(),<span class="st">&quot;data&quot;</span>,<span class="st">&quot;00_raw&quot;</span>,<span class="st">&quot;labels_BP.csv&quot;</span>), <span class="dt">col_names =</span> tag.vec)</a>
+<a class="sourceLine" id="cb44-9" data-line-number="9"><span class="co"># cellular_component</span></a>
+<a class="sourceLine" id="cb44-10" data-line-number="10">cc_meta &lt;-<span class="st"> </span><span class="kw">read_csv</span>(fs<span class="op">::</span><span class="kw">path</span>(here<span class="op">::</span><span class="kw">here</span>(),<span class="st">&quot;data&quot;</span>,<span class="st">&quot;00_raw&quot;</span>,<span class="st">&quot;labels_CC.csv&quot;</span>), <span class="dt">col_names =</span> tag.vec)</a>
+<a class="sourceLine" id="cb44-11" data-line-number="11"><span class="co"># molecular func</span></a>
+<a class="sourceLine" id="cb44-12" data-line-number="12">mf_meta &lt;-<span class="st"> </span><span class="kw">read_csv</span>(fs<span class="op">::</span><span class="kw">path</span>(here<span class="op">::</span><span class="kw">here</span>(),<span class="st">&quot;data&quot;</span>,<span class="st">&quot;00_raw&quot;</span>,<span class="st">&quot;labels_MF.csv&quot;</span>), <span class="dt">col_names =</span> tag.vec)</a></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" data-line-number="1"><span class="co"># cols are strains, rows are genes</span></a>
+<a class="sourceLine" id="cb45-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb45-3" data-line-number="3"><span class="co"># threshold &lt;- 0.0001 # </span></a>
+<a class="sourceLine" id="cb45-4" data-line-number="4"><span class="co"># remove dups</span></a>
+<a class="sourceLine" id="cb45-5" data-line-number="5">rel_expr &lt;-<span class="st"> </span>rel_expr <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb45-6" data-line-number="6"><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span><span class="kw">ends_with</span>(<span class="st">&quot;_1&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># remove duplicate strains</span></a>
+<a class="sourceLine" id="cb45-7" data-line-number="7"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">rename</span>(<span class="dt">gene_name =</span> X1) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb45-8" data-line-number="8"><span class="st">  </span><span class="kw">pivot_longer</span>(<span class="op">-</span>gene_name, <span class="dt">names_to =</span> <span class="st">&quot;culture_treatment&quot;</span>, <span class="dt">values_to =</span> <span class="st">&quot;rel_expr&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb45-9" data-line-number="9"><span class="st">  </span><span class="kw">select</span>(culture_treatment, gene_name, rel_expr) <span class="co">#%&gt;% # reorder just to make look better</span></a>
+<a class="sourceLine" id="cb45-10" data-line-number="10">  <span class="co"># filter(rel_expr &gt; threshold)</span></a>
+<a class="sourceLine" id="cb45-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb45-12" data-line-number="12">rel_expr</a></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" data-line-number="1">strain_meta <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">distinct</span>(primary)</a>
+<a class="sourceLine" id="cb46-2" data-line-number="2">strain_meta <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">distinct</span>(secondary)</a>
+<a class="sourceLine" id="cb46-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb46-4" data-line-number="4">strain_meta &lt;-<span class="st"> </span>strain_meta <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb46-5" data-line-number="5"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">rename</span>(<span class="dt">culture_treatment =</span> ID) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb46-6" data-line-number="6"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">secondary =</span> <span class="kw">if_else</span>(secondary <span class="op">==</span><span class="st"> &quot;&lt;not provided&gt;&quot;</span>, <span class="ot">NA_character_</span>, secondary))</a>
+<a class="sourceLine" id="cb46-7" data-line-number="7"><span class="kw">head</span>(strain_meta) <span class="co"># not sure how to tidy this</span></a></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" data-line-number="1">clean_annotations &lt;-<span class="st"> </span><span class="cf">function</span>(df){</a>
+<a class="sourceLine" id="cb47-2" data-line-number="2">  df <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb47-3" data-line-number="3"><span class="st">    </span><span class="kw">pivot_longer</span>(<span class="dt">cols =</span> <span class="kw">paste0</span>(<span class="st">&quot;tag&quot;</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>), <span class="dt">names_to =</span> <span class="st">&quot;tag&quot;</span>, <span class="dt">values_to =</span> <span class="st">&quot;vals&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb47-4" data-line-number="4"><span class="st">    </span><span class="kw">drop_na</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb47-5" data-line-number="5"><span class="st">    </span><span class="kw">select</span>(<span class="op">-</span>tag) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb47-6" data-line-number="6"><span class="st">    </span>dplyr<span class="op">::</span><span class="kw">rename</span>(<span class="dt">tag =</span> vals,</a>
+<a class="sourceLine" id="cb47-7" data-line-number="7">                  <span class="dt">gene_name =</span> name) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb47-8" data-line-number="8"><span class="st">    </span><span class="kw">filter</span>(gene_name <span class="op">!=</span><span class="st"> &quot;gene&quot;</span>,</a>
+<a class="sourceLine" id="cb47-9" data-line-number="9">           <span class="op">!</span>tag <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;biological_process&quot;</span>,<span class="st">&quot;molecular_function&quot;</span>, <span class="st">&quot;cellular_component&quot;</span>),</a>
+<a class="sourceLine" id="cb47-10" data-line-number="10">           confidence <span class="op">==</span><span class="st"> &quot;Verified&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># remove artifacts</span></a>
+<a class="sourceLine" id="cb47-11" data-line-number="11"><span class="st">    </span><span class="kw">select</span>(<span class="op">-</span>confidence) </a>
+<a class="sourceLine" id="cb47-12" data-line-number="12">}</a>
+<a class="sourceLine" id="cb47-13" data-line-number="13">bp_meta &lt;-<span class="st"> </span>bp_meta <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb47-14" data-line-number="14"><span class="st">  </span><span class="kw">clean_annotations</span>()</a>
+<a class="sourceLine" id="cb47-15" data-line-number="15">bp_meta <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb47-16" data-line-number="16"><span class="st">  </span><span class="kw">distinct</span>(tag)</a>
+<a class="sourceLine" id="cb47-17" data-line-number="17">cc_meta &lt;-<span class="st"> </span>cc_meta <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb47-18" data-line-number="18"><span class="st">  </span><span class="kw">clean_annotations</span>()</a>
+<a class="sourceLine" id="cb47-19" data-line-number="19">cc_meta <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb47-20" data-line-number="20"><span class="st">  </span><span class="kw">distinct</span>(tag)</a>
+<a class="sourceLine" id="cb47-21" data-line-number="21">mf_meta &lt;-<span class="st"> </span>mf_meta <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb47-22" data-line-number="22"><span class="st">  </span><span class="kw">clean_annotations</span>()</a>
+<a class="sourceLine" id="cb47-23" data-line-number="23">cc_meta <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb47-24" data-line-number="24"><span class="st">  </span><span class="kw">distinct</span>(tag)</a></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" data-line-number="1">go_type &lt;-<span class="st"> </span>mf_meta</a>
+<a class="sourceLine" id="cb48-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb48-3" data-line-number="3"><span class="co"># compare RNA expression of strains with go_tag1 and go_tag2</span></a>
+<a class="sourceLine" id="cb48-4" data-line-number="4">heatmap_by_GO &lt;-<span class="st"> </span>rel_expr <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb48-5" data-line-number="5"><span class="st">  </span><span class="kw">left_join</span>(go_type, <span class="dt">by=</span><span class="st">&quot;gene_name&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb48-6" data-line-number="6"><span class="st">  </span><span class="kw">left_join</span>(strain_meta, <span class="dt">by=</span><span class="st">&quot;culture_treatment&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb48-7" data-line-number="7"><span class="st">  </span><span class="co"># filter(tag %in% go_tags) %&gt;% </span></a>
+<a class="sourceLine" id="cb48-8" data-line-number="8"><span class="st">  </span><span class="kw">group_by</span>(tag, primary) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb48-9" data-line-number="9"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">rel_expr =</span> <span class="kw">mean</span>(rel_expr)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb48-10" data-line-number="10"><span class="st">  </span><span class="kw">ungroup</span>()</a>
+<a class="sourceLine" id="cb48-11" data-line-number="11">  </a>
+<a class="sourceLine" id="cb48-12" data-line-number="12">  </a>
+<a class="sourceLine" id="cb48-13" data-line-number="13"><span class="kw">ggplot</span>(heatmap_by_GO, <span class="kw">aes</span>(<span class="dt">x=</span>primary <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">fct_reorder</span>(<span class="op">-</span>rel_expr), <span class="dt">y=</span>tag <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">fct_reorder</span>(<span class="op">-</span>rel_expr))) <span class="op">+</span></a>
+<a class="sourceLine" id="cb48-14" data-line-number="14"><span class="st">  </span><span class="kw">geom_tile</span>(<span class="kw">aes</span>(<span class="dt">fill=</span>rel_expr)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb48-15" data-line-number="15"><span class="st">  </span><span class="kw">scale_fill_viridis_c</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb48-16" data-line-number="16"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Mean transcript abundance&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb48-17" data-line-number="17"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">hjust=</span><span class="fl">0.99</span>, <span class="dt">vjust=</span><span class="fl">0.5</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb48-18" data-line-number="18"><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Molecular Function (GO)&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb48-19" data-line-number="19"><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;primary&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb48-20" data-line-number="20"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">fill=</span><span class="st">&quot;Norm. rel. expr.&quot;</span>)</a></code></pre></div>
 
+</div>
+</div>
 </div>
             </section>
 
@@ -172,7 +408,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         </div>
       </div>
 <a href="intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="models.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="visualizations-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

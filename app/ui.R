@@ -13,28 +13,43 @@ library(shiny)
 shinyUI(fluidPage(
 
     # Application title
-    titlePanel("SC Data"),
+    titlePanel(h1("Visualize Yeast Transcriptome Data")),
 
+    hr(),
     
-    
-    # Sidebar with a slider input for number of bins
-    sidebarLayout(
-        sidebarPanel(
-            sliderInput("bins",
-                        "Number of bins:",
-                        min = 1,
-                        max = 50,
-                        value = 30),
-            selectInput("experiment",
-                        "Experiment Name",
-                        c("IFFABF", "SAABQF"),
-                        )
-        ),
-        
+    tabsetPanel(
+        tabPanel("Heatmap",
+                fluidRow(
 
-        # Show a plot of the generated distribution
-        mainPanel(
-            plotOutput("distPlot")
-        )
+                    # Sidebar with a slider input for number of bins
+                    sidebarLayout(
+                        position = "right",
+                        sidebarPanel(
+                            selectInput(inputId="go_domain",
+                                        label = "GO domain",
+                                        choices = list("Biological process",
+                                                   "Cellular component", 
+                                                   "Molecular function"),
+                                        selected = "Biological process"
+                                        ),
+                            selectInput(inputId="strain_tag_type",
+                                        label = "Strain metadata",
+                                        choices = list("primary",
+                                                       "secondary", 
+                                                       "additional_information"),
+                                        selected = "primary"
+                                        ),
+                            checkboxGroupInput(inputId = "inCheckboxGroup", 
+                                               label = "Input checkbox",
+                                               c())
+                        ),
+                
+                        # Show a plot of the generated distribution
+                        mainPanel(plotOutput(outputId="heat"))
+                    )
+                )),
+                tabPanel("UMAP"),
+                tabPanel("PCA")
+                )
     )
-))
+)
