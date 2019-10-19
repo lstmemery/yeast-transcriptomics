@@ -23,14 +23,14 @@ shinyServer(function(input, output, session) {
                             pull(go_annotation)
         
         # Can use character(0) to remove all choices
-        if (is.null(x))
-            x <- character(0)
+        if (is.null(responses))
+            responses <- character(0)
         
         # Can also set the label and select items
         updateCheckboxGroupInput(session, "inCheckboxGroup",
                                  label = paste("Select Checkbox"),
                                  choices = responses,
-                                 selected = x
+                                 selected = responses
         )
     })
     
