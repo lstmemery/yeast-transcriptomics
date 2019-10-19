@@ -39,7 +39,7 @@ Please have the latest versions of R and R Bioconductor installed on your machin
 
 
 ### Team Members
-Noushin Nabavi, Matthew Emery, Alex Morin, Zuhaib Ahmed, Casey Engstrom, Sedat Demiriz, Shinta Thio, Saelin Bjornson
+Noushin Nabavi, Matthew Emery, Alex Morin, Zuhaib Ahmed, Casey Engstrom, Sedat Demiriz, Shinta Thio, Saelin Bjornson, Siddharth Raghuvanshi, Chris Rider 
 
 ### Team Channel
 Team collaborations in #p02-yeast channel in [slack](hackseq19.slack.com)
