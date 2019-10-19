@@ -75,9 +75,9 @@ go_annotation <- bind_rows(bp_meta,cc_meta,mf_meta)
 # tidy
 go_annotation <- go_annotation %>% 
   pivot_longer(cols = paste0("tag",1:10), names_to = "go_annotation", values_to = "vals") %>% 
-  drop_na() %>% 
+  drop_na(vals) %>% 
   select(-go_annotation) %>% 
-  dplyr::rename(go_tag = vals,
+  dplyr::rename(go_annotation = vals,
                 gene_name = name) %>% 
   filter(gene_name != "gene",
          confidence == "Verified") %>% # remove artifacts
@@ -86,6 +86,6 @@ go_annotation <- go_annotation %>%
 
 
 # write data for shiny app
-write_csv(bp_meta, fs::path(here::here(), "app","data", "go_annotation.csv"))
+write_csv(go_annotation, fs::path(here::here(), "app","data", "go_annotation.csv"))
 ```
 
