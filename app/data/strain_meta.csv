@@ -1,0 +1,277 @@
+culture_treatment,strain_tag_type,strain_tag
+AFIQCI,primary,wildtype
+AFIQCI,secondary,wildtype 1
+AFIQCI,additional_information,NA
+AFIQBR,primary,wildtype
+AFIQBR,secondary,wildtype 2
+AFIQBR,additional_information,NA
+AFIINC,primary,itc1
+AFIINC,secondary,itc1-1_dUTP
+AFIINC,additional_information,NA
+AFNAQI,primary,itc1
+AFNAQI,secondary,itc1-1_dUTP
+AFNAQI,additional_information,NA
+AFNCCR,primary,swr1
+AFNCCR,secondary,swr1 mutant
+AFNCCR,additional_information,NA
+AFNCCA,primary,swr1
+AFNCCA,secondary,swr1 mutant
+AFNCCA,additional_information,NA
+FABINB,primary,tet-STH1
+FABINB,secondary,NA
+FABINB,additional_information,NA
+FABINF,primary,tet-STH1
+FABINF,secondary,NA
+FABINF,additional_information,NA
+FAFAFF,primary,tet-INO80
+FAFAFF,secondary,tet-ino80
+FAFAFF,additional_information,NA
+FAFAFQ,primary,tet-INO80
+FAFAFQ,secondary,tet-ino80
+FAFAFQ,additional_information,NA
+FAFAQQ,primary,tet-control strain
+FAFAQQ,secondary,tet-control
+FAFAQQ,additional_information,NA
+FAFASB,primary,tet-control strain
+FAFASB,secondary,tet-control
+FAFASB,additional_information,NA
+FFNARI,primary,Strain5
+FFNARI,secondary,phenol lysis
+FFNARI,additional_information,NA
+FFNARS,primary,Strain5
+FFNARS,secondary,phenol lysis
+FFNARS,additional_information,NA
+FFNARN,primary,Strain6
+FFNARN,secondary,phenol lysis
+FFNARN,additional_information,NA
+FFNAAR,primary,Strain6
+FFNAAR,secondary,phenol lysis
+FFNAAR,additional_information,NA
+FFNAAA,primary,Strain6
+FFNAAA,secondary,phenol lysis
+FFNAAA,additional_information,NA
+FFNAAA,primary,Strain6
+FFNAAA,secondary,phenol lysis
+FFNAAA,additional_information,NA
+FFNAAC,primary,Strain7
+FFNAAC,secondary,phenol lysis
+FFNAAC,additional_information,NA
+FFNAAQ,primary,Strain7
+FFNAAQ,secondary,phenol lysis
+FFNAAQ,additional_information,NA
+QCAQFQ,primary,wildtype
+QCAQFQ,secondary,Mat a
+QCAQFQ,additional_information,NA
+QCAQFI,primary,wildtype
+QCAQFI,secondary,Mat a
+QCAQFI,additional_information,NA
+QCAQFS,primary,anMX4
+QCAQFS,secondary,BY4741 background
+QCAQFS,additional_information,NA
+QCAQFN,primary,anMX4
+QCAQFN,secondary,BY4741 background
+QCAQFN,additional_information,NA
+QCFFAB,primary,rrp6
+QCFFAB,secondary,rrp6
+QCFFAB,additional_information,NA
+QCFQIA,primary,rrp6
+QCFQIA,secondary,rrp6
+QCFQIA,additional_information,NA
+QNCSCQ,primary,MATa MAL2-8c SUC2
+QNCSCQ,secondary,CEN.PK113-7D
+QNCSCQ,additional_information,NA
+QNCSCI,primary,MATa MAL2-8c SUC2
+QNCSCI,secondary,CEN.PK113-7D
+QNCSCI,additional_information,NA
+QNCSCS,primary,MATa ura3-52 his3-1 leu2-3
+QNCSCS,secondary,hxk1::KlLEU2
+QNCSCS,additional_information,IMX372
+QNCSCN,primary,MATa ura3-52 his3-1 leu2-3
+QNCSCN,secondary,hxk1::KlLEU2
+QNCSCN,additional_information,IMX372
+IAAICF,primary,hybrid  cerevisiae x  paradoxus
+IAAICF,secondary,Citrinin
+IAAICF,additional_information,NA
+IAAICQ,primary,hybrid  cerevisiae x  paradoxus
+IAAICQ,secondary,Citrinin
+IAAICQ,additional_information,NA
+IAAICI,primary,hybrid  cerevisiae x  paradoxus
+IAAICI,secondary,Untreated
+IAAICI,additional_information,NA
+IAAICS,primary,hybrid  cerevisiae x  paradoxus
+IAAICS,secondary,Untreated
+IAAICS,additional_information,NA
+IFAAAR,primary,DDY3630
+IFAAAR,secondary,strain W303
+IFAAAR,additional_information,NA
+IFAAAA,primary,DDY4300
+IFAAAA,secondary,strain W303
+IFAAAA,additional_information,NA
+IFAAAA,primary,DDY4301
+IFAAAA,secondary,strain W303
+IFAAAA,additional_information,NA
+IFFABC,primary,E1A1
+IFFABC,secondary,ethanol
+IFFABC,additional_information,NA
+IFFABB,primary,E1A2
+IFFABB,secondary,ethanol
+IFFABB,additional_information,NA
+IFFABF,primary,E1B1
+IFFABF,secondary,ethanol
+IFFABF,additional_information,NA
+IFFABQ,primary,E1B2
+IFFABQ,secondary,ethanol
+IFFABQ,additional_information,NA
+IFFABI,primary,E2A1
+IFFABI,secondary,ethanol
+IFFABI,additional_information,NA
+IFFABS,primary,E2A2
+IFFABS,secondary,ethanol
+IFFABS,additional_information,NA
+IFFABN,primary,E2B1
+IFFABN,secondary,ethanol
+IFFABN,additional_information,NA
+IFFAFR,primary,E2B2
+IFFAFR,secondary,ethanol
+IFFAFR,additional_information,NA
+IFFAFA,primary,G1A1
+IFFAFA,secondary,glucose
+IFFAFA,additional_information,NA
+IFFAFA,primary,G1A2
+IFFAFA,secondary,glucose
+IFFAFA,additional_information,NA
+IFFAFC,primary,G1B1
+IFFAFC,secondary,glucose
+IFFAFC,additional_information,NA
+IFFAFB,primary,G1B2
+IFFAFB,secondary,glucose
+IFFAFB,additional_information,NA
+IFFAFF,primary,G2A1
+IFFAFF,secondary,glucose
+IFFAFF,additional_information,NA
+IFFAFQ,primary,G2A2
+IFFAFQ,secondary,glucose
+IFFAFQ,additional_information,NA
+IFFAFI,primary,G2B1
+IFFAFI,secondary,glucose
+IFFAFI,additional_information,NA
+IFFAFS,primary,G2B2
+IFFAFS,secondary,glucose
+IFFAFS,additional_information,NA
+INICIR,primary,YB210
+INICIR,secondary,biofuel generation
+INICIR,additional_information,NA
+INICIA,primary,YB210
+INICIA,secondary,biofuel generation
+INICIA,additional_information,NA
+INICIA,primary,YB210
+INICIA,secondary,biofuel generation
+INICIA,additional_information,NA
+INICIC,primary,YB211
+INICIC,secondary,biofuel generation
+INICIC,additional_information,NA
+INICIB,primary,YB211
+INICIB,secondary,biofuel generation
+INICIB,additional_information,NA
+INICIF,primary,YB211
+INICIF,secondary,biofuel generation
+INICIF,additional_information,NA
+INICIQ,primary,YB212
+INICIQ,secondary,biofuel generation
+INICIQ,additional_information,NA
+INICII,primary,YB212
+INICII,secondary,biofuel generation
+INICII,additional_information,NA
+INICIS,primary,YB212
+INICIS,secondary,biofuel generation
+INICIS,additional_information,NA
+INICIN,primary,YB213
+INICIN,secondary,biofuel generation
+INICIN,additional_information,NA
+INICSR,primary,YB213
+INICSR,secondary,biofuel generation
+INICSR,additional_information,NA
+INICSA,primary,YB213
+INICSA,secondary,biofuel generation
+INICSA,additional_information,NA
+SAABRQ,primary,wild type
+SAABRQ,secondary,none
+SAABRQ,additional_information,NA
+SAASAQ,primary,wild type
+SAASAQ,secondary,galactose
+SAASAQ,additional_information,NA
+SAASCC,primary,pbs2
+SAASCC,secondary,galactose
+SAASCC,additional_information,NA
+SAASCF,primary,ste12
+SAASCF,secondary,galactose
+SAASCF,additional_information,NA
+SAANNN,primary,wild type
+SAANNN,secondary,tunicamycin
+SAANNN,additional_information,NA
+SAARRR,primary,pbs2
+SAARRR,secondary,tunicamycin
+SAARRR,additional_information,NA
+SAARRS,primary,wild type
+SAARRS,secondary,salt stress
+SAARRS,additional_information,NA
+SAARAA,primary,pbs2
+SAARAA,secondary,salt stress
+SAARAA,additional_information,NA
+SARIAI,primary,fy3
+SARIAI,secondary,chemostat
+SARIAI,additional_information,NA
+SARICB,primary,fy3
+SARICB,secondary,chemostat
+SARICB,additional_information,NA
+SAABBN,primary,15 deg
+SAABBN,secondary,temperature
+SAABBN,additional_information,NA
+SAABFR,primary,15 deg
+SAABFR,secondary,temperature
+SAABFR,additional_information,NA
+SAABFA,primary,15 deg
+SAABFA,secondary,temperature
+SAABFA,additional_information,NA
+SAABFA,primary,15 deg
+SAABFA,secondary,temperature
+SAABFA,additional_information,NA
+SAABFI,primary,37 deg
+SAABFI,secondary,temperature
+SAABFI,additional_information,NA
+SAABFS,primary,37 deg
+SAABFS,secondary,temperature
+SAABFS,additional_information,NA
+SAABFN,primary,37 deg
+SAABFN,secondary,temperature
+SAABFN,additional_information,NA
+SAABQR,primary,37 deg
+SAABQR,secondary,temperature
+SAABQR,additional_information,NA
+SAABQF,primary,30 deg
+SAABQF,secondary,temperature
+SAABQF,additional_information,NA
+SAABQQ,primary,30 deg
+SAABQQ,secondary,temperature
+SAABQQ,additional_information,NA
+SAABQI,primary,30 deg
+SAABQI,secondary,temperature
+SAABQI,additional_information,NA
+SAABQS,primary,30 deg
+SAABQS,secondary,temperature
+SAABQS,additional_information,NA
+SAABIC,primary,37 deg
+SAABIC,secondary,temperature
+SAABIC,additional_information,dedbox1
+SAABIB,primary,37 deg
+SAABIB,secondary,temperature
+SAABIB,additional_information,dedbox1
+SAABIF,primary,37 deg
+SAABIF,secondary,temperature
+SAABIF,additional_information,dedbox1
+SAABIQ,primary,37 deg
+SAABIQ,secondary,temperature
+SAABIQ,additional_information,dedbox1
+SICIBA,primary,undocumented
+SICIBA,secondary,undocumented
+SICIBA,additional_information,NA
