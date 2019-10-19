@@ -39,6 +39,10 @@ shinyUI(fluidPage(
                                                        "additional_information"),
                                         selected = "primary"
                                         ),
+                            selectInput(inputId="order_by",
+                                        label = "Order GO by:",
+                                        choices = c()
+                            ),
                             checkboxGroupInput(inputId = "inCheckboxGroup", 
                                                label = "Input checkbox",
                                                c())

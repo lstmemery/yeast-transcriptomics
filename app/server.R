@@ -8,19 +8,19 @@ library(here)
 shinyServer(function(input, output, session) {
     
     # load plot data
-    rel_expr <- read_csv("data/rel_expr.csv")
-    strain_meta <- read_csv("data/strain_meta.csv")
-    go_annotation <- read_csv("data/go_annotation.csv")
+    rel_expr <- read_csv(fs::path(here::here(),"app","data","rel_expr.csv"))
+    strain_meta <- read_csv(fs::path(here::here(),"app","data","strain_meta.csv"))
+    go_annotation <- read_csv(fs::path(here::here(),"app","data","go_annotation.csv"))
     
 
     #Find the GO domain selected and change the options on the response checkboxes
     observe({
         domain_outputs <- go_annotation %>% 
-            filter(go_domain == input$go_domain) # "Biological process"
+            filter(go_domain == input$go_domain) # "Biological process" # 
         
         responses <- domain_outputs %>% 
-                        distinct(go_annotation) %>% 
-                            pull(go_annotation)
+            distinct(go_annotation) %>% 
+            pull(go_annotation)
         
         # Can use character(0) to remove all choices
         if (is.null(responses))
@@ -32,8 +32,21 @@ shinyServer(function(input, output, session) {
                                  choices = responses,
                                  selected = responses
         )
+
+
+        # populate the "Order by:" dropdown based on GO domain selected by user
+        domain2_outputs <- go_annotation %>%
+            filter(go_domain == "Biological process") # e.g. "Biological process" input$inCheckboxGroup
+
+        dropdown_responses <- domain2_outputs %>%
+            distinct(go_annotation) %>%
+            pull(go_annotation)
+
+        updateSelectInput(session, "order_by",
+                          choices = dropdown_responses,
+                          selected = dropdown_responses
+        )
     })
-    
 
     
     # Heatmap of RNA expression data for different strains of yeast
@@ -41,7 +54,7 @@ shinyServer(function(input, output, session) {
     
     output$heat <- renderPlot({
         
-        view(input$inCheckboxGroup)
+        # view(input$inCheckboxGroup)
         
         # filter based on ui input
         my_go_domain <- go_annotation %>% 
@@ -49,7 +62,7 @@ shinyServer(function(input, output, session) {
         my_strain_type <- strain_meta %>%
             filter(strain_tag_type == input$strain_tag_type) # "primary"
 
-        # compare RNA expression of strains with go_tag1 and go_tag2
+        # compare RNA expression of strains with go_annotation1 and go_annotation2
         heatmap_by_GO <- rel_expr %>% 
             left_join(my_go_domain, by="gene_name") %>%
             left_join(my_strain_type, by="culture_treatment") %>%
@@ -57,9 +70,20 @@ shinyServer(function(input, output, session) {
             summarise(rel_expr = mean(rel_expr)) %>% 
             ungroup()
         
-        user_filtered_heatmap = heatmap_by_GO %>% filter(go_annotation %in% input$inCheckboxGroup)
+        # filter the heatmap based on UI checkboxes
+        user_filtered_heatmap <- heatmap_by_GO %>% 
+            filter(go_annotation %in% input$inCheckboxGroup) 
+
+        # specify how to reorder the heatmap based on UI dropdown selection
+        heatmap_order <- heatmap_by_GO %>%
+            filter(go_annotation == input$order_by) %>%
+            mutate(strain_tag = fct_reorder(strain_tag, -rel_expr)) %>%
+            distinct(strain_tag) %>%
+            pull() %>%
+            sort() %>%
+            as.character()
         
-        ggplot(user_filtered_heatmap, aes(x=strain_tag %>% fct_reorder(-rel_expr), y= go_annotation %>% fct_reorder(-rel_expr))) +
+        ggplot(user_filtered_heatmap, aes(x=strain_tag %>% fct_relevel(heatmap_order), y= go_annotation )) + 
             geom_tile(aes(fill=rel_expr)) +
             scale_fill_viridis_c() +
             ggtitle("Mean transcript abundance") +
@@ -69,5 +93,5 @@ shinyServer(function(input, output, session) {
             labs(fill="Norm. rel. expr.")
 
     })
-
+    
 })
