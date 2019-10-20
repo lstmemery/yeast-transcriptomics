@@ -37,11 +37,6 @@ Our approaches included:
 - UMAP: UMAP (Uniform Manifold Approximation and Projection) is a practical scalable algorithm to reduce dimensions based on a theoretical framework from Riemannian geometry and algebraic topology
 
 
-
-
-
-
-
 ## Data Visualization 
 We deployed an shiny application in order to show the results of our analyses. The tabs within our dashboard include:
 - HEATMAP
