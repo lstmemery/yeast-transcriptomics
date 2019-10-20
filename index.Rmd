@@ -13,49 +13,19 @@ site: bookdown::bookdown_site
 biblio-style: apalike
 ---
 
-
-# Preface
-
-A repository to house data and code for a 3-day project as part of Hackseq Hackathon at UBC.
-As a team, we cleaned, analyzed, and communicated the results of our explorations through development of an interactive dashboard and blog to present our methodologies and code snippets.
-
-
-Prerequisites include: 
+# Prerequisites
 
 - [Install R](https://cran.r-project.org/)   
 - [Install R Bioconductor](https://bioconductor.org/install/)   
-- [Install RStudio](https://rstudio.com/products/rstudio/download/#download)
-- [Git](https://git-scm.com/) and [Github](https://github.com/)
-- The full documentation for this project was done using [bookdown](https://bookdown.org)
+- [Install RStudio](https://rstudio.com/products/rstudio/download/#download) 
 
+The library dependencies for this project include the following and can be installed from CRAN or Github:
 
-## Hackathon Team Members
-    
-Noushin Nabavi, Matthew Emery, Alexander Morin, Zuhaib Ahmed, Casey Engstrom, Sedat Demiriz, Shinta Thio, Saelin Bjornson, Siddharth Raghuvanshi, Chris Rider 
-
-##  Contributions
-If you’re having trouble using a function or package, or getting the syntax correct, please file an issue on the project repository. If you have any suggestions to improve this project, please fork or clone this repository and make suggestions through generating a branch and adding a pull request. 
-
-##  Licence
-This work is licensed under the Creative Commons MIT License.
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
+```{r eval=FALSE}
+install.packages("bookdown")
+# or the development version
+# devtools::install_github("rstudio/bookdown")
+```
 
 
 ```{r include=FALSE}

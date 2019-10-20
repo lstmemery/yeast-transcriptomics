@@ -10,7 +10,8 @@
 library(shiny)
 
 # Define UI for application that draws a histogram
-shinyUI(fluidPage(
+shinyUI(
+    fluidPage(
     
     # Application title
     titlePanel(HTML("<em>S. cervisiae</em> RNA expression")),
@@ -28,36 +29,33 @@ shinyUI(fluidPage(
                          sidebarPanel(
                              width = 3,
                                  selectInput(inputId="go_domain_heatmap",
-                                             label = "Select GO domain",
+                                             label = "GO domain",
                                              choices = list("Biological process",
                                                             "Cellular component", 
                                                             "Molecular function"),
                                              selected = "Biological process"
                                  ),
-                                 helpText('Which gene onthology domain data to use'),
                                  selectInput(inputId="strain_tag_type_heatmap",
-                                             label = "Select strain metadata",
+                                             label = "Strain metadata",
                                              choices = list("primary",
                                                             "secondary", 
                                                             "additional_information"),
                                              selected = "primary"
-                                 ),
-                                 helpText('What strain metadata tag to display as the columns'),
-                                 selectInput(inputId="order_by_heatmap",
-                                             label = "Order GO by:",
-                                             choices = c()
-                                 ),
-                                 helpText('Sort columns based on their relative expression values in that row'),
-                                 checkboxGroupInput(inputId = "inCheckboxGroup_heatmap", 
-                                             label = "Input checkbox",
-                                             c()),
-                                 helpText('Select what responses to display')
-                                 ),
+                             ),
+                             selectInput(inputId="order_by_heatmap",
+                                         label = "Order GO by:",
+                                         choices = c()
+                             ),
+                             checkboxGroupInput(inputId = "inCheckboxGroup_heatmap", 
+                                                label = "Input checkbox",
+                                                c())
+                         ),
+                         
                          # Show a plot of the generated distribution
                          mainPanel(br(), plotOutput(outputId="heat", height = 600))
                      )
                  )),
-        tabPanel("UMAP",
+        tabPanel("Gene Clustering",
                  br(),
                  fluidRow(
                      sidebarLayout(
@@ -76,8 +74,16 @@ shinyUI(fluidPage(
                                          c())
                          ),
                          mainPanel(
-                             column(12, offset = 1, plotOutput(outputId="umap")))
+                             column(12,
+                                    offset = 1, 
+                                    plotOutput(outputId="umap"),
+                                    helpText(paste("This plot shows how gene-wise transcription profiles cluster.",
+                                    "Data points can be colored by GO expression.",
+                                    "This plot was generated using Uniform Manifold Approximation and Projection (UMAP).", sep = "\n")
+                                    )
+                                    )
                      )
+<<<<<<< HEAD
                  )
         ),
         tabPanel("PCA"),
@@ -132,3 +138,24 @@ shinyUI(fluidPage(
     )
     )
 )
+=======
+        ))),
+        tabPanel("LIMMA"),
+        tabPanel("Condition Clustering",
+                 fluidRow(
+                     
+                     # make a perplexity slider
+                     sidebarLayout(
+                         position = "left",
+                         sidebarPanel(
+                             width = 3,
+                             sliderInput("perplexity_slider", h3("Perplexity"),
+                                         min = 1, max = 28, value = 10)
+                         ),
+                         
+                         # add the plot
+                         mainPanel(br(),plotOutput(outputId="tsne", height = 600))
+                     )
+    )             )
+    )))
+>>>>>>> master
