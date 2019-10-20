@@ -9,23 +9,16 @@ Yeasts (Saccharomyces cerevisiae) are used in the production of some of the most
 
 Yeasts are great model organisms because of their simple and small genome consisting of approximately 6000 genes. As single celled organisms, they also make great models for transcriptome analyses as gene expression is homogenous. 
 
-As part of our Vancouver-based hackathon (hackseq19) project examined  yeast transcriptome data scraped off of the [web](https://github.com/rtwillett/yeastract_spider/). The data consists of gene expression changes from yeast strains that have been treated with various stimuli such as heat, phenol lysis, ethanol treatment, etc.  Gene expression was normalized to Transcript Per Million (TPM). As a team, we cleaned, analyzed, and communicated the results of our explorations through development of an interactive dashboard and blog to present our methodologies and code snippets.
+As part of our Vancouver-based hackathon (hackseq19) project examined  yeast transcriptome data scraped off of the [web](https://github.com/rtwillett/yeastract_spider/). The data consists of gene expression changes from yeast strains that have been treated with various stimuli such as heat, phenol lysis, ethanol treatment, etc.  Gene expression was normalized to Transcript Per Million (TPM). 
 
 
-![yeast image from wikipedia](here::here("yeast-wikipedia.jpg"))
-![dry beer yeast](here::here("dry-beer-yeast.jpg"))
-
-
-
-## About the Data:
-
-### Data
+## Data
 The data in this project includes gene expression values for 92 yeast strains treated with various stimuli. RNA expression levels are normalized to TPM (transcripts per million), following a default normalization procedure. Data is stored in `data` folder.
 - The `SC_expression.csv` file contains gene expression of yeast strains in the experiments.
 - The `labels.csv` files pertain to gene validation status and molecular function (MF), cellular component (CC), and biological processes (BP) of those genes. 
 - The `conditions_annotation.csv` file explain the yeast strains and experimental conditions.
 
-### Data Source 
+## Data Source 
 This project is inspired by the open source yeast-omics dataset shared as a Kaggle competition. The original data can be found [here](https://www.kaggle.com/costalaether/yeast-transcriptomics) and scraped off from [here](https://github.com/rtwillett/yeastract_spider/).
 
 **data/04_remove_underscores_average_replicates/04_SC-expression.csv**
