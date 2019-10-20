@@ -1,0 +1,142 @@
+---
+title: "hackseq_workspace_trial_error"
+author: "Shinta Thio"
+date: "10/18/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+
+##Playing around with Hackseq stuff
+```{r}
+packages <- c("here", "data.table", "tidyverse", "tabplot", "RColorBrewer", "MASS", "pheatmap",
+              "leaflet", "rgdal", "ggridges", "plotly", "ggplot2", "lubridate",
+              "shiny", "lattice", "mapview", "htmltools", "DT", "sf", "bcmaps", "DESeq2")
+
+lapply(packages, library, character.only = TRUE)
+```
+
+##installing packages
+```{r}
+if (!requireNamespace("BiocManager", quietly = TRUE))
+  install.packages("BiocManager")
+
+BiocManager::install(c("edgeR","limma","Glimma","gplots","tidyverse","tabplot","RColorBrewer","MASS","pheatmap","leaflet","rgdal","ggridges","plotly","ggplot2", "lubridate",  "bcdata","shiny","lattice","mapview","htmltools","DT","sf","bcmaps","DESeq2"))
+```
+
+##load the 5 data tables in the '00_raw' folder
+```{r}
+condition_annotation <- fread(here::here("data/00_raw", "conditions_annotation.csv"))
+labels_BP <- fread(here::here("data/00_raw", "labels_BP.csv"))
+labels_CC <- fread(here::here("data/00_raw", "labels_CC.csv"))
+labels_MF <- fread(here::here("data/00_raw", "labels_MF.csv"))
+SC_expression <- fread(here::here("data/00_raw", "SC_expression.csv"))
+```
+
+##load the cleaned data
+```{r}
+SC_expression_clean <- fread(here::here("data/04_remove_underscores_average_replicates", "04_SC_expression.csv"))
+```
+
+```{r}
+head (SC_expression_clean)
+```
+
+```{r}
+if (!requireNamespace('BiocManager', quietly = TRUE))
+        install.packages('BiocManager')
+        BiocManager::install('PCAtools')
+library(PCAtools)
+```
+
+```{r}
+BiocManager::install("pcaMethods")
+#install.packages("pcaMethods")
+```
+
+```{r}
+install.packages("remotes")
+remotes::install_github("vqv/ggbiplot")
+```
+
+```{r}
+library(devtools)
+install_github("vqv/ggbiplot")
+```
+```{r}
+install.packages(c("plyr", "scales", "grid"))
+library(ggbiplot)
+```
+
+```{r}
+install.packages("tidyverse")
+```
+
+```{r}
+library(tidyverse)
+attach(SC_expression_clean)
+```
+
+```{r}
+SC_expression_clean %>% 
+  select(-gene) %>% 
+  prcomp()
+```
+
+```{r}
+SC_expression_clean %>% 
+  select(-gene) %>% 
+  prcomp() %>%
+  ggbiplot()
+```
+#above code is the same as below
+```{r}
+pca<-prcomp(select(SC_expression_clean, -gene))
+ggbiplot(pca)
+```
+
+##since PCA didn't work, try another clustering method
+```{r}
+install.packages("dbscan")
+library(dbscan)
+expression_matrix <-as.matrix(select(SC_expression_clean, -gene))
+```
+
+```{r}
+#install.packages("M3C")
+#library(M3C)
+#tsne(select(SC_expression_clean, -gene))
+install.packages("Rtsne")
+library(Rtsne)
+```
+
+```{r}
+## Run the t-SNE algorithm and store the results into an object called tsne_results
+tsne_results <- Rtsne(select(SC_expression_clean, -gene), perplexity=30, check_duplicates = FALSE)
+par(mfcolumn=c(1,2))
+#plot(tsne_results$x, col = "blue", pch = 19, cex = 1.5)
+```
+
+```{r}
+sc_ex_unique<-unique(select(SC_expression_clean, -gene))
+set.seed(42)
+tsne_out<- Rtsne(as.matrix(sc_ex_unique[,1:87]))
+```
+
+```{r}
+tsne_out
+```
+
+```{r}
+plot(tsne_out$Y)
+```
+
