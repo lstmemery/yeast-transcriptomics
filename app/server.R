@@ -4,6 +4,7 @@ library(shiny)
 library(tidyverse)
 library(here)
 library(ggthemes)
+library(Rtsne)
 
 
 # Define server logic required to draw a histogram
@@ -138,7 +139,7 @@ shinyServer(function(input, output, session) {
         my_tsne_tibble <- my_tsne_tibble %>% 
             add_column(sample_names_vec, .before=1)
         
-        
+        group_table <- read_csv(fs::path(here::here(),"app","data","05_grouping_table.csv"))
         
         my_tsne_tibble <- my_tsne_tibble %>% 
             left_join(group_table, by=c("sample_names_vec"="ID"))
