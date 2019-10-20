@@ -6,6 +6,7 @@ library(here)
 library(ggthemes)
 
 
+
 # Define server logic required to draw a histogram
 shinyServer(function(input, output, session) {
     
@@ -14,6 +15,8 @@ shinyServer(function(input, output, session) {
     strain_meta <- read_csv("data/strain_meta.csv")
     go_annotation <- read_csv("data/go_annotation.csv")
     umap_df <- read_csv("data/umap.csv")
+    limma_group <- read_csv("data/limma_grouping_table.csv")
+    limma_expr <- read_csv("data/limma_04_SC_expression.csv")
     
     
     #Find the GO domain selected and change the options on the response checkboxes for the Heatmap Panel
@@ -144,6 +147,70 @@ shinyServer(function(input, output, session) {
             theme(axis.title = element_text(size = 16)) +
             labs(fill=str_to_title(column_name))
         
+    })
+    
+    output$limma <- rederPlot({
+     
+      plot(x=1:5, y=2:10)
+      
+      
+      #  getDiffExpressedResults <- function(group1, group2) {
+      #   ## Assumes that the expression matrix and metadata table have already been defined.
+      #   
+      #   checkGroupNames(group1, group2)
+      #   matched_samples <- matchSamples(group1, group2)
+      #   
+      #   subset_matrix <- expr_mat[, which(colnames(expr_mat) %in% matched_samples$ID)]
+      #   design_mat <- model.matrix(~matched_samples$Group)
+      #   lm_fit <- eBayes(lmFit(subset_matrix, design_mat))
+      #   
+      #   summary_table <- topTable(
+      #     lm_fit,
+      #     adjust = "fdr",
+      #     sort.by = "B",
+      #     number = Inf,
+      #     genelist = gene_symbols
+      #   )
+      # }
+      # 
+      # results_table <- getDiffExpressedResults("AF", "QN")
+      #  
+      # plotVolcano <- function(results_table) {
+      #   ## Expects the table returned by getDiffExpressedResults
+      #   
+      #   
+      #   # Assign binary vector to determine if results are significant for coloring
+      #   results_table$Color <- rep(0, nrow(results_table))
+      #   for (i in 1:nrow(results_table)) {
+      #     if (abs(results_table$logFC[i]) > 2 &&
+      #         results_table$adj.P.Val[i] < 0.05) {
+      #       results_table$Color[i] <- 1
+      #     }
+      #   }
+      #   
+      #   g <-
+      #     ggplot(results_table, aes(
+      #       x = logFC,
+      #       y = -log10(adj.P.Val),
+      #       color = as.factor(Color)
+      #     )) +
+      #     geom_point(alpha = 0.6, size = 0.8) +
+      #     theme_classic() +
+      #     geom_hline(yintercept = -log10(0.05), linetype = "dotted") +
+      #     geom_vline(xintercept = 2, linetype = "dotted") +
+      #     geom_vline(xintercept = -2, linetype = "dotted") +
+      #     xlab("Log fold change") +
+      #     ylab("Significance") +
+      #     scale_color_manual(values = c("black", "red")) +
+      #     theme(legend.position = "none",
+      #           text = element_text(size=20))
+      #   
+      #   return (g)
+      # }
+      # 
+      # g
+      
+      
     })
     
 })
