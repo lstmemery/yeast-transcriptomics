@@ -2,7 +2,6 @@
 
 library(shiny)
 library(tidyverse)
-library(here)
 library(ggthemes)
 
 
@@ -14,6 +13,7 @@ shinyServer(function(input, output, session) {
     strain_meta <- read_csv("data/strain_meta.csv")
     go_annotation <- read_csv("data/go_annotation.csv")
     umap_df <- read_csv("data/umap.csv")
+    group_table <- read_csv("data/05_grouping_table.csv")
     
     
     #Find the GO domain selected and change the options on the response checkboxes for the Heatmap Panel
@@ -132,7 +132,7 @@ shinyServer(function(input, output, session) {
         
         column_name <- str_replace(filter_query, " ", "_")
         
-        filter_df <- umap_df %>% 
+        filter_df <- umap_df %>%
             mutate({{ column_name }} := map_lgl(gene, function(x) x %in% filtered_values))
         
         ggplot(filter_df, aes_string("UMAP1", "UMAP2", color = column_name)) + 
@@ -144,6 +144,35 @@ shinyServer(function(input, output, session) {
             theme(axis.title = element_text(size = 16)) +
             labs(fill=str_to_title(column_name))
         
+    })
+    
+    output$tsne <- renderPlot({
+        rel_expr_wide <- rel_expr %>%
+            pivot_wider(names_from = gene_name, values_from = rel_expr)
+        
+        sample_names_vec <- rel_expr_wide %>% select(culture_treatment) %>% pull()
+        
+        rel_expr_wide_mat <- rel_expr_wide %>%
+            select(-culture_treatment) %>%
+            as.matrix()
+        
+        set.seed(123)
+        
+        perplex <- input$perplexity_slider
+        
+        tsne_out <- Rtsne(rel_expr_wide_mat,perplexity = perplex, check_duplicates = FALSE)
+        
+        tsne_out$Y
+        my_tsne_tibble <- as_tibble(tsne_out$Y)
+        my_tsne_tibble <- my_tsne_tibble %>%
+            add_column(sample_names_vec, .before=1)
+        
+        my_tsne_tibble <- my_tsne_tibble %>%
+            left_join(group_table, by=c("sample_names_vec"="ID"))
+        
+        ggplot(my_tsne_tibble, aes(x=V1, y=V2)) +
+            geom_point(aes(color = Group)) +
+            theme_few()
     })
     
 })

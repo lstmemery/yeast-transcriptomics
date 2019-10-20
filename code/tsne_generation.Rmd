@@ -24,12 +24,12 @@ library(dbscan)
 SC_expression_clean <- fread(here::here("data/04_remove_underscores_average_replicates", "04_SC_expression.csv"))
 ```
 
-##t-SNE plot
+##t-SNE plot (non transposed) - comparing genes
 ```{r}
-#expression_matrix <-as.matrix(select(SC_expression_clean, -gene))
 sc_ex_unique<-unique(select(SC_expression_clean, -gene))
+conditions<-colnames(sc_ex_unique)
 set.seed(42)
-tsne_out<- Rtsne(as.matrix(sc_ex_unique[,1:87])) #to do: transpose??
+tsne_out<- Rtsne(as.matrix(sc_ex_unique[,1:87]))
 plot(tsne_out$Y)
 ```
 
@@ -73,4 +73,32 @@ g <- tsne_coloring("protein")
 ```
 
 
+##t-SNE plot(transposed) - comparing strains/samples
+```{r}
+transposed_tsne_out<- Rtsne(t(as.matrix(sc_ex_unique[,1:87])),perplexity = 10)
+transposed_tsne_out$Y
+my_tsne_tibble <- as_tibble(transposed_tsne_out$Y)
+my_tsne_tibble <- my_tsne_tibble %>% 
+  add_column(conditions, .before=1)
+#plot(my_tsne_tibble)
+tidy_conditions <- read_csv(here("data/tidy_data/tidy_conditions.csv"))
+group_table <- read_csv(here("data/05_grouping_experiments/05_grouping_table.csv"))
+my_tsne_tibble <- my_tsne_tibble %>% 
+  left_join(group_table, by=c("conditions"="ID"))
 
+t_g<-ggplot(my_tsne_tibble, aes(x=V1, y=V2)) +
+  geom_point(aes(color = Group))
+ggsave(here("output/tsne_transposed.png"), t_g, width = 16, height = 9)
+plot(my_tsne_tibble)
+tidy_conditions <- read_csv(here("data/tidy_data/tidy_conditions.csv"))
+group_table <- read_csv(here("data/05_grouping_table.csv"))
+my_tsne_tibble <- my_tsne_tibble %>% 
+  left_join(group_table, by=c("conditions"="ID"))
+
+# my_tsne_tibble <- my_tsne_tibble %>% 
+#   filter(name == "primary")
+
+ggplot(my_tsne_tibble, aes(x=V1, y=V2)) +
+  geom_point(aes(color = Group))
+
+```

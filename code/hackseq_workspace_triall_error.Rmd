@@ -52,18 +52,6 @@ head (SC_expression_clean)
 ```
 
 ```{r}
-if (!requireNamespace('BiocManager', quietly = TRUE))
-        install.packages('BiocManager')
-        BiocManager::install('PCAtools')
-library(PCAtools)
-```
-
-```{r}
-BiocManager::install("pcaMethods")
-#install.packages("pcaMethods")
-```
-
-```{r}
 install.packages("remotes")
 remotes::install_github("vqv/ggbiplot")
 ```
@@ -72,6 +60,7 @@ remotes::install_github("vqv/ggbiplot")
 library(devtools)
 install_github("vqv/ggbiplot")
 ```
+
 ```{r}
 install.packages(c("plyr", "scales", "grid"))
 library(ggbiplot)
@@ -83,7 +72,7 @@ install.packages("tidyverse")
 
 ```{r}
 library(tidyverse)
-attach(SC_expression_clean)
+#attach(SC_expression_clean)
 ```
 
 ```{r}
@@ -91,7 +80,7 @@ SC_expression_clean %>%
   select(-gene) %>% 
   prcomp()
 ```
-
+##PCA plot
 ```{r}
 SC_expression_clean %>% 
   select(-gene) %>% 
@@ -104,26 +93,10 @@ pca<-prcomp(select(SC_expression_clean, -gene))
 ggbiplot(pca)
 ```
 
-##since PCA didn't work, try another clustering method
+##t-SNE plot
 ```{r}
-install.packages("dbscan")
-library(dbscan)
-expression_matrix <-as.matrix(select(SC_expression_clean, -gene))
-```
-
-```{r}
-#install.packages("M3C")
-#library(M3C)
-#tsne(select(SC_expression_clean, -gene))
 install.packages("Rtsne")
 library(Rtsne)
-```
-
-```{r}
-## Run the t-SNE algorithm and store the results into an object called tsne_results
-tsne_results <- Rtsne(select(SC_expression_clean, -gene), perplexity=30, check_duplicates = FALSE)
-par(mfcolumn=c(1,2))
-#plot(tsne_results$x, col = "blue", pch = 19, cex = 1.5)
 ```
 
 ```{r}
@@ -138,5 +111,45 @@ tsne_out
 
 ```{r}
 plot(tsne_out$Y)
+```
+
+```{r}
+tsne_out_df<-as_data_frame(tsne_out$Y)
+tsne_out_g_df<-bind_cols(SC_expression_clean %>% select(gene), tsne_out_df)
+```
+
+```{r}
+names(tsne_out_g_df)<-c("gene","tSNE1", "tSNE2")
+tsne_out_g_df
+```
+
+```{r}
+tidy_attributes <- read_csv(here("data/tidy_data/tidy_attributes.csv"))
+```
+```{r}
+wide_attributes <- tidy_attributes %>%
+  pivot_wider(gene)
+```
+```{r}
+attributes_df <- tsne_out_g_df %>% 
+  inner_join(wide_attributes)
+```
+
+```{r}
+tsne_coloring <- function(filter_query) {
+  filtered_values <- tidy_attributes %>% 
+    filter(value == {{ filter_query }}) %>% 
+    pull(gene)
+  
+  
+  filter_df <- tsne_out_g_df %>% 
+    mutate({{ filter_query }} := map_lgl(gene, function(x) x %in% filtered_values))
+  
+  ggplot(filter_df, aes_string("tSNE1", "tSNE2", color = filter_query)) + 
+    geom_point()
+  }
+
+g <- tsne_coloring("protein") 
+  ggsave(here("output/first_tsne.png"), g, width = 16, height = 9)
 ```
 
