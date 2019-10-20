@@ -16,7 +16,7 @@ shinyUI(fluidPage(
     titlePanel(HTML("<em>S. cervisiae</em> RNA expression")),
 
     hr(),
-    
+
     tabsetPanel(
         tabPanel("Heatmap",
                 fluidRow(
@@ -30,7 +30,7 @@ shinyUI(fluidPage(
                                     selectInput(inputId="go_domain_heatmap",
                                                 label = "GO domain",
                                                 choices = list("Biological process",
-                                                           "Cellular component", 
+                                                           "Cellular component",
                                                            "Molecular function"),
                                                 selected = "Biological process"
                                                 ),
@@ -39,7 +39,7 @@ shinyUI(fluidPage(
                                     selectInput(inputId="strain_tag_type_heatmap",
                                                 label = "Strain metadata",
                                                 choices = list("primary",
-                                                               "secondary", 
+                                                               "secondary",
                                                                "additional_information"),
                                                 selected = "primary"
                                                 ),
@@ -47,21 +47,21 @@ shinyUI(fluidPage(
                             ),
                             fluidRow(
                                 column(5,
-                            checkboxGroupInput(inputId = "inCheckboxGroup_heatmap", 
+                            checkboxGroupInput(inputId = "inCheckboxGroup_heatmap",
                                                label = "Input checkbox",
                                                c())
-                            
+
                                 )
                             )
                         ),
-                
+
                         # Show a plot of the generated distribution
                         mainPanel(br(),plotOutput(outputId="heat",height = 600))
                     )
                 )),
                 tabPanel("UMAP",
                          fluidRow(
-                             
+
                              # Sidebar with a slider input for number of bins
                              sidebarLayout(
                                  position = "left",
@@ -71,7 +71,7 @@ shinyUI(fluidPage(
                                                 selectInput(inputId="go_domain_UMAP",
                                                             label = "GO domain",
                                                             choices = list("Biological process",
-                                                                           "Cellular component", 
+                                                                           "Cellular component",
                                                                            "Molecular function"),
                                                             selected = "Biological process"
                                                 ),
@@ -80,7 +80,7 @@ shinyUI(fluidPage(
                                                 selectInput(inputId="strain_tag_type_UMAP",
                                                             label = "Strain metadata",
                                                             choices = list("primary",
-                                                                           "secondary", 
+                                                                           "secondary",
                                                                            "additional_information"),
                                                             selected = "primary"
                                                 ),
@@ -88,14 +88,14 @@ shinyUI(fluidPage(
                                      ),
                                      fluidRow(
                                          column(5,
-                                                selectInput(inputId = "response_UMAP", 
+                                                selectInput(inputId = "response_UMAP",
                                                                    label = "Input checkbox",
                                                                    c())
-                                                
+
                                          )
                                      )
                                  ),
-                                 
+
                                  # Show a plot of the generated distribution
                                  mainPanel()
                              )
