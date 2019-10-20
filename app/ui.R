@@ -48,7 +48,22 @@ shinyUI(fluidPage(
                         mainPanel(plotOutput(outputId="heat"))
                     )
                 )),
-                tabPanel("UMAP"),
+                tabPanel("UMAP",
+                         position = "right",
+                         sidebarPanel(
+                             selectInput(inputId="go_domain",
+                                         label = "GO domain",
+                                         choices = list("Biological process",
+                                                        "Cellular component", 
+                                                        "Molecular function"),
+                                         selected = "Biological process"
+                             ),
+                             selectInput(inputId = "goTag", 
+                                                label = "Go Tag",
+                                                c())
+                         ),
+                         mainPanel(plotOutput(outputId="umap"))
+                         ),
                 tabPanel("PCA")
                 )
     )

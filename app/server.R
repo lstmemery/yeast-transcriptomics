@@ -11,6 +11,8 @@ shinyServer(function(input, output, session) {
     rel_expr <- read_csv("data/rel_expr.csv")
     strain_meta <- read_csv("data/strain_meta.csv")
     go_annotation <- read_csv("data/go_annotation.csv")
+    umap_df <- read_csv("data/umap.csv")
+    tidy_attributes <- read_csv(here("data/tidy_data/tidy_attributes.csv"))
     
 
     #Find the GO domain selected and change the options on the response checkboxes
@@ -32,6 +34,13 @@ shinyServer(function(input, output, session) {
                                  choices = responses,
                                  selected = responses
         )
+        
+        updateSelectInput(
+            session, 
+            "goTag",
+            label = "Select Go Tags",
+            choices = responses
+            )
     })
     
     # Heatmap of RNA expression data for different strains of yeast
@@ -63,6 +72,20 @@ shinyServer(function(input, output, session) {
             labs(fill="Norm. rel. expr.")
 
     })
+    
+    output$umap <- renderPlot({
+        
+        filter_query <- input$goTag
+            filtered_values <- tidy_attributes %>% 
+                filter(value == {{ filter_query }}) %>% 
+                pull(gene)
+            
+            filter_df <- umap_df %>% 
+                mutate({{ filter_query }} := map_lgl(gene, function(x) x %in% filtered_values))
+            
+            ggplot(filter_df, aes_string("UMAP1", "UMAP2", color = filter_query)) + 
+                geom_point()
+        })
 
 })
 
