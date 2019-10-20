@@ -27,7 +27,12 @@ expression_matrix <- expression %>%
 
 
 ```{r}
-umap_expression <- umap(expression_matrix, random_state = 1L)
+umap_expression <- umap(t(expression_matrix), random_state = 1L)
+```
+
+```{r}
+ggplot(umap_expression, aes_string("UMAP1", "UMAP2")) +
+  geom_point()
 ```
 
 
