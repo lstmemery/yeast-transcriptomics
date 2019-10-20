@@ -43,7 +43,7 @@ The goal of this project is to unravel the genetic mechanisms involved in yeast 
 
 
 ### Team Members
-Noushin Nabavi, Matthew Emery, Alex Morin, Zuhaib Ahmed, Casey Engstrom, Sedat Demiriz, Shinta Thio, Saelin Bjornson, Siddharth Raghuvanshi, Chris Rider 
+Noushin Nabavi, Matthew Emery, Alexander Morin, Zuhaib Ahmed, Casey Engstrom, Sedat Demiriz, Shinta Thio, Saelin Bjornson, Siddharth Raghuvanshi, Chris Rider 
 
 ### Team Channel
 Team collaborations in #p02-yeast channel in [slack](hackseq19.slack.com)
