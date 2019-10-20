@@ -45,9 +45,9 @@ To unravel the genetic mechanisms involved in yeast stress adaptation, we built 
 
 
 ### Team Members
-Noushin Nabavi, Matthew Emery                                                       - Team Co-Leads  
-Alexander Morin, Zuhaib Ahmed, Casey Engstrom, Shinta Thio, Siddharth Raghuvanshi   - Visualization  
-Sedat Demiriz, Saelin Bjornson, Chris Rider                                         - Data Analysis and Documentation
+Team Co-Leads: Noushin Nabavi, Matthew Emery  
+Visualization: Alexander Morin, Zuhaib Ahmed, Casey Engstrom, Shinta Thio, Siddharth Raghuvanshi  
+Data Analysis and Documentation: Sedat Demiriz, Saelin Bjornson, Chris Rider  
 
 ### Team Channel
 Team collaborations in #p02-yeast channel in [slack](hackseq19.slack.com)
