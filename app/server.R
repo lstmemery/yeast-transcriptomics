@@ -2,7 +2,8 @@
 
 library(shiny)
 library(tidyverse)
-library(here)
+library(ggthemes)
+library(stringr)
 
 # Define server logic required to draw a histogram
 shinyServer(function(input, output, session) {
@@ -84,7 +85,12 @@ shinyServer(function(input, output, session) {
                 mutate({{ filter_query }} := map_lgl(gene, function(x) x %in% filtered_values))
             
             ggplot(filter_df, aes_string("UMAP1", "UMAP2", color = filter_query)) + 
-                geom_point()
+                geom_point(size = 0.5) +
+                theme_few() +
+                scale_color_few() + 
+                ggtitle("UMAP Cluster Projection") +
+                labs(fill=str_to_title(filter_query))
+                
         })
 
 })

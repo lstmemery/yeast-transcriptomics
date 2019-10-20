@@ -49,6 +49,8 @@ shinyUI(fluidPage(
                     )
                 )),
                 tabPanel("UMAP",
+                         fluidRow(
+                         sidebarLayout(
                          position = "right",
                          sidebarPanel(
                              selectInput(inputId="go_domain",
@@ -63,6 +65,8 @@ shinyUI(fluidPage(
                                                 c())
                          ),
                          mainPanel(plotOutput(outputId="umap"))
+                         )
+                         )
                          ),
                 tabPanel("PCA")
                 )
