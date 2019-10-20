@@ -84,5 +84,4 @@ shinyUI(fluidPage(
         tabPanel("LIMMA"),
         tabPanel("TSNE")
     )
-)
-)
+)))
