@@ -2,7 +2,6 @@
 
 library(shiny)
 library(tidyverse)
-library(here)
 library(ggthemes)
 library(Rtsne)
 
@@ -163,7 +162,7 @@ shinyServer(function(input, output, session) {
         
         column_name <- str_replace(filter_query, " ", "_")
         
-        filter_df <- umap_df %>% 
+        filter_df <- umap_df %>%
             mutate({{ column_name }} := map_lgl(gene, function(x) x %in% filtered_values))
         
         ggplot(filter_df, aes_string("UMAP1", "UMAP2", color = column_name)) + 

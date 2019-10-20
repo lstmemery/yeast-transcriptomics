@@ -10,7 +10,8 @@
 library(shiny)
 
 # Define UI for application that draws a histogram
-shinyUI(fluidPage(
+shinyUI(
+    fluidPage(
     
     # Application title
     titlePanel(HTML("<em>S. cervisiae</em> RNA expression")),
@@ -76,10 +77,16 @@ shinyUI(fluidPage(
                                          c())
                          ),
                          mainPanel(
-                             column(12, offset = 1, plotOutput(outputId="umap")))
+                             column(12,
+                                    offset = 1, 
+                                    plotOutput(outputId="umap"),
+                                    helpText(paste("This plot shows how gene-wise transcription profiles cluster.",
+                                    "Data points can be colored by GO expression.",
+                                    "This plot was generated using Uniform Manifold Approximation and Projection (UMAP).", sep = "\n")
+                                    )
+                                    )
                      )
-                 )
-        ),
+        ))),
         tabPanel("LIMMA"),
         tabPanel("Condition Clustering",
                  fluidRow(
@@ -96,7 +103,5 @@ shinyUI(fluidPage(
                          # add the plot
                          mainPanel(br(),plotOutput(outputId="tsne", height = 600))
                      )
-                 ))
-    )
-))
-
+    )             )
+    )))
