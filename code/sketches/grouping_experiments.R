@@ -34,6 +34,7 @@ conditions_annotation$Ref <- NA
 
 write.csv(conditions_annotation, here::here("data", "05_grouping_experiments", "05_grouping_table"))
 
+#------------------------------------------------------------------------------------------------
 
 # split out the SA group and merge in gene expression data
 
