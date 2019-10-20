@@ -10,9 +10,10 @@ library(ggthemes)
 shinyServer(function(input, output, session) {
     
     # load plot data
-    rel_expr <- read_csv(fs::path(here::here(),"app","data","rel_expr.csv"))
-    strain_meta <- read_csv(fs::path(here::here(),"app","data","strain_meta.csv"))
-    go_annotation <- read_csv(fs::path(here::here(),"app","data","go_annotation.csv"))
+    rel_expr <- read_csv("data/rel_expr.csv")
+    strain_meta <- read_csv("data/strain_meta.csv")
+    go_annotation <- read_csv("data/go_annotation.csv")
+    umap_df <- read_csv("data/umap.csv")
     
     
     #Find the GO domain selected and change the options on the response checkboxes for the Heatmap Panel
@@ -119,19 +120,21 @@ shinyServer(function(input, output, session) {
     output$umap <- renderPlot({
         
         filter_query <- input$goTag
-        filtered_values <- tidy_attributes %>% 
-            filter(value == {{ filter_query }}) %>% 
-            pull(gene)
+        filtered_values <- go_annotation %>% 
+            filter(go_annotation == {{ filter_query }}) %>% 
+            pull(gene_name)
+        
+        column_name <- str_replace(filter_query, " ", "_")
         
         filter_df <- umap_df %>% 
-            mutate({{ filter_query }} := map_lgl(gene, function(x) x %in% filtered_values))
+            mutate({{ column_name }} := map_lgl(gene, function(x) x %in% filtered_values))
         
-        ggplot(filter_df, aes_string("UMAP1", "UMAP2", color = filter_query)) + 
+        ggplot(filter_df, aes_string("UMAP1", "UMAP2", color = column_name)) + 
             geom_point(size = 0.5) +
             theme_few() +
             scale_color_few() + 
             ggtitle("UMAP Cluster Projection") +
-            labs(fill=str_to_title(filter_query))
+            labs(fill=str_to_title(column_name))
         
     })
     
