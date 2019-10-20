@@ -2,6 +2,7 @@
 library(tidyverse)
 library(stringr)
 
+
 # can download limma through the bioconductor:
 if (!requireNamespace("BiocManager", quietly = TRUE))
   install.packages("BiocManager")
@@ -31,7 +32,7 @@ conditions_annotation$secondary <- str_to_lower(conditions_annotation$secondary,
 
 conditions_annotation$Ref <- NA
 
-write.csv(conditions_annotation, here::here("data", "05_grouping_experiments", "05_grouping_table"))
+write.csv(conditions_annotation, here::here("data", "05_grouping_experiments", "05_grouping_table.csv"))
 
 #------------------------------------------------------------------------------------------------
 

@@ -19,6 +19,7 @@ shinyUI(fluidPage(
     
     tabsetPanel(
         tabPanel("Heatmap",
+                 br(),
                  fluidRow(
                      
                      # Sidebar with a slider input for number of bins
@@ -54,39 +55,28 @@ shinyUI(fluidPage(
                      )
                  )),
         tabPanel("UMAP",
+                 br(),
                  fluidRow(
-                     
-                     # Sidebar with a slider input for number of bins
                      sidebarLayout(
                          position = "left",
                          sidebarPanel(
-                             width = 3,
+                             width =3, 
                              selectInput(inputId="go_domain_UMAP",
-                                         label = "GO domain",
+                                         label = "GO domain to visualise",
                                          choices = list("Biological process",
                                                         "Cellular component", 
                                                         "Molecular function"),
                                          selected = "Biological process"
                              ),
-                             selectInput(inputId="strain_tag_type_UMAP",
-                                         label = "Strain metadata",
-                                         choices = list("primary",
-                                                        "secondary", 
-                                                        "additional_information"),
-                                         selected = "primary"
-                             ),
-
-                             selectInput(inputId = "response_UMAP", 
-                                            label = "Input checkbox",
-                                            c())
+                             selectInput(inputId = "goTag", 
+                                         label = "Go Tag",
+                                         c())
                          ),
-                         
-                         # Show a plot of the generated distribution
-                         mainPanel(br(),)
+                         mainPanel(
+                             column(12, offset = 1, plotOutput(outputId="umap")))
                      )
-                 )),
-            
-            
+                 )
+        ),
         tabPanel("PCA"),
         tabPanel("LIMMA"),
         tabPanel("TSNE")

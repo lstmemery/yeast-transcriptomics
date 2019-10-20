@@ -44,7 +44,7 @@ tidy_bp <- biological_process %>%
 
 ```{r}
 cellular_components <- read_csv(
-    here("data", "00_raw","labels_BP.csv"),
+    here("data", "00_raw","labels_CC.csv"),
   col_names = c(
     "gene",
     "cc_validation",
