@@ -1,0 +1,28 @@
+---
+title: "Additional Cleaning Steps"
+author: "Matt Emery"
+date: "18/10/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+library(tidyverse)
+library(fs)
+library(here)
+```
+
+```{r}
+expressions <- read_csv(path(here(), "data", "03_no_uninteresting_genes", "03_SC_expression.csv"))
+```
+
+```{r}
+expressions %>% 
+  rename("gene" = X1) %>% 
+  filter()
+```
+
