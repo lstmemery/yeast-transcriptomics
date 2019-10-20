@@ -140,6 +140,8 @@ shinyServer(function(input, output, session) {
             theme_few() +
             scale_color_few() + 
             ggtitle("UMAP Cluster Projection") +
+            theme(plot.title = element_text(size = 20, hjust = 0.5, lineheight = 4)) + 
+            theme(axis.title = element_text(size = 16)) +
             labs(fill=str_to_title(column_name))
         
     })

@@ -72,7 +72,8 @@ shinyUI(fluidPage(
                                          label = "Go Tag",
                                          c())
                          ),
-                         mainPanel(plotOutput(outputId="umap"))
+                         mainPanel(
+                             column(12, offset = 1, plotOutput(outputId="umap")))
                      )
                  )
         ),
