@@ -89,7 +89,16 @@ plotVolcano <- function(results_table) {
     ylab("Significance") +
     scale_color_manual(values = c("black", "red")) +
     theme(legend.position = "none",
-          text = element_text(size=20))
+          text = element_text(size=20)) +
+    annotate("text", 
+             label = "adjusted pval < 0.05\nabs(log2 fold change) > 2",
+             x = 5,
+             y = 10,
+             size = 5)
   
   return (g)
 }
+
+group1 <- "AF"
+group2 <- "QN"
+plotVolcano(getDiffExpressedResults(group1, group2))
