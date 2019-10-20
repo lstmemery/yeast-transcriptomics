@@ -1,11 +1,17 @@
+if (!requireNamespace("BiocManager", quietly = TRUE))
+  install.packages("BiocManager")
+
+BiocManager::install("GO.db")
+
 library(GO.db)
+library(here)
 
 #here("data")
 
 #Get files
-labelsCC <- read.csv("03_labelsCC.csv", header = T, row.names = 1)
-labelsBP <- read.csv("03_labelsBP.csv", header = T, row.names = 1)
-labelsMF <- read.csv("03_labelsMF.csv", header = T, row.names = 1)
+labelsCC <- read.csv(here("data", "03_remove_zero_genes", "03_labelsCC.csv"), header = T, row.names = 1)
+labelsBP <- read.csv(here("data", "03_remove_zero_genes", "03_labelsBP.csv"), header = T, row.names = 1)
+labelsMF <- read.csv(here("data", "03_remove_zero_genes", "03_labelsMF.csv"), header = T, row.names = 1)
 
 # Get the unique list of terms used in the labels files.
 termsMF <- names(table(unlist(strsplit(as.character(labelsMF[,2]), ";"))))
@@ -30,10 +36,10 @@ goTerms <- lapply(lst, function(x) {
   return(slot(x, "Term"))
 })
 # Retreive the ancestors for all the GO terms (i.e. all nodes from the given term to the root)
-BPancestors <- as.list(GOBPANCESTOR)
-CCancestors <- as.list(GOCCANCESTOR)
-MFancestors <- as.list(GOMFANCESTOR)
-ancestors <- c(BPancestors, CCancestors, MFancestors)
+BP_ancestors <- as.list(GOBPANCESTOR)
+CC_ancestors <- as.list(GOCCANCESTOR)
+MF_ancestors <- as.list(GOMFANCESTOR)
+ancestors <- c(BP_ancestors, CC_ancestors, MF_ancestors)
 
 # Takes a string and queries all GO terms for that word. It then traces each of those terms back to the root
 # and decides which terms are representitive of query results by looking at which terms appeared most in the
@@ -84,4 +90,4 @@ newLabels <- apply(labels, 1, function(x) {
 names(newLabels) <- labels[,1]
 labels$newTerms <- newLabels
 
-write.csv(labels, "05_newLabels.csv", row.names = F)
+write.csv(labels, here("data", "05_get_GO_terms", "05_GOTERMS_newLabels.csv"), row.names = F)
