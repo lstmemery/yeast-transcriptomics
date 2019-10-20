@@ -16,7 +16,7 @@ shinyServer(function(input, output, session) {
     go_annotation <- read_csv("data/go_annotation.csv")
     umap_df <- read_csv("data/umap.csv")
     limma_group <- read_csv("data/limma_grouping_table.csv")
-    limma_expr <- read_csv("data/limma_04_SC_expression.csv")
+    limma_expr <- read_csv("data/04_SC_expression.csv")
     
     
     #Find the GO domain selected and change the options on the response checkboxes for the Heatmap Panel
