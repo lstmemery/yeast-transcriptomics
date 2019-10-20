@@ -56,7 +56,7 @@ shinyUI(fluidPage(
         tabPanel("UMAP",
                  fluidRow(
                      sidebarLayout(
-                         position = "right",
+                         position = "left",
                          sidebarPanel(
                              selectInput(inputId="go_domain_UMAP",
                                          label = "GO domain",
