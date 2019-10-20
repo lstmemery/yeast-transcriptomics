@@ -83,6 +83,62 @@ shinyUI(
                                     )
                                     )
                      )
+<<<<<<< HEAD
+                 )
+        ),
+        tabPanel("PCA"),
+        tabPanel("LIMMA",
+                 br(),
+                 fluidRow(
+                   sidebarLayout(
+                     position = "left",
+                     sidebarPanel(
+                       width = 3,
+                       selectInput(
+                         inputId = "group1",
+                         label = "Select first group for comparison",
+                         choices = list(
+                           "AF",
+                           "FA",
+                           "FF",
+                           "IA",
+                           "IF",
+                           "IN",
+                           "QC",
+                           "QN",
+                           "SA"
+                         ),
+                         selected = "AF"),
+                       selectInput(
+                         inputId = "group2",
+                         label = "Select second group for comparison",
+                         choices = list(
+                           "AF",
+                           "FA",
+                           "FF",
+                           "IA",
+                           "IF",
+                           "IN",
+                           "QC",
+                           "QN",
+                           "SA"
+                         ),
+                         selected = "FA")
+                     ),
+                     mainPanel(br(), 
+                               plotOutput(outputId = "limma", height = 600)
+                     )
+                       )
+                     # Show a plot of the generated distribution
+                     
+                   )
+                   
+        ),
+        tabPanel("TSNE")
+    )
+    )
+)
+=======
         ))),
         tabPanel("LIMMA"),
         tabPanel("Condition Clustering",
@@ -102,3 +158,4 @@ shinyUI(
                      )
     )             )
     )))
+>>>>>>> master

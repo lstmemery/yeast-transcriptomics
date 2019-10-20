@@ -2,7 +2,10 @@
 
 library(shiny)
 library(tidyverse)
+library(here)
 library(ggthemes)
+library(limma)
+
 
 
 # Define server logic required to draw a histogram
@@ -13,8 +16,12 @@ shinyServer(function(input, output, session) {
     strain_meta <- read_csv("data/strain_meta.csv")
     go_annotation <- read_csv("data/go_annotation.csv")
     umap_df <- read_csv("data/umap.csv")
-    group_table <- read_csv("data/05_grouping_table.csv")
-    
+    group_table <- read_csv("data/limma_grouping_table.csv")
+    expr_mat <- read_csv("data/04_SC_expression.csv")
+    group_table <- group_table[!duplicated(group_table$ID),]
+    gene_symbols <- expr_mat$gene
+    expr_mat <- as.matrix(expr_mat[,colnames(expr_mat) != "gene"])
+    rownames(expr_mat) <- gene_symbols
     
     #Find the GO domain selected and change the options on the response checkboxes for the Heatmap Panel
     observe({
@@ -132,7 +139,7 @@ shinyServer(function(input, output, session) {
         
         column_name <- str_replace(filter_query, " ", "_")
         
-        filter_df <- umap_df %>%
+        filter_df <- umap_df %>% 
             mutate({{ column_name }} := map_lgl(gene, function(x) x %in% filtered_values))
         
         ggplot(filter_df, aes_string("UMAP1", "UMAP2", color = column_name)) + 
@@ -146,33 +153,98 @@ shinyServer(function(input, output, session) {
         
     })
     
-    output$tsne <- renderPlot({
-        rel_expr_wide <- rel_expr %>%
-            pivot_wider(names_from = gene_name, values_from = rel_expr)
+    output$limma <- renderPlot({
+    
         
-        sample_names_vec <- rel_expr_wide %>% select(culture_treatment) %>% pull()
+        group1 <- input$group1
+        group2 <- input$group2
         
-        rel_expr_wide_mat <- rel_expr_wide %>%
-            select(-culture_treatment) %>%
-            as.matrix()
+        checkGroupNames <- function(group1, group2) {
+            ## This code will ensure that the submitted groups for comparison in limma
+            ## are valid. Groups cannot overlap in any manner, and "SI" cannot exist
+            ## as a standalone group. Refer to group table for the acceptable group names.
+            group1 <- group1[order(group1)]
+            group2 <- group2[order(group2)]
+            if (identical(group1, group2)) {
+                stop("Groups must be unique")
+            }
+            if (group1 == "SI" || group2 == "SI") {
+                stop("SI only has one sample, cannot use as group")
+            }
+            if (any(group1 %in% group2)) {
+                stop("Groups cannot share any samples")
+            }
+        }
+       
         
-        set.seed(123)
+
+        matchSamples <- function(group1, group2) {
+            ## Subset the samples to match the submitted groups
+            groups <- c(group1, group2)
+            matched_samples <- group_table %>%
+                filter(Group %in% groups) %>%
+                select(ID, Group)
+        }
         
-        perplex <- input$perplexity_slider
-        
-        tsne_out <- Rtsne(rel_expr_wide_mat,perplexity = perplex, check_duplicates = FALSE)
-        
-        tsne_out$Y
-        my_tsne_tibble <- as_tibble(tsne_out$Y)
-        my_tsne_tibble <- my_tsne_tibble %>%
-            add_column(sample_names_vec, .before=1)
-        
-        my_tsne_tibble <- my_tsne_tibble %>%
-            left_join(group_table, by=c("sample_names_vec"="ID"))
-        
-        ggplot(my_tsne_tibble, aes(x=V1, y=V2)) +
-            geom_point(aes(color = Group)) +
-            theme_few()
+
+       getDiffExpressedResults <- function(group1, group2) {
+        ## Assumes that the expression matrix and metadata table have already been defined.
+
+        checkGroupNames(group1, group2)
+        matched_samples <- matchSamples(group1, group2)
+
+        subset_matrix <- expr_mat[, which(colnames(expr_mat) %in% matched_samples$ID)]
+        design_mat <- model.matrix(~matched_samples$Group)
+        lm_fit <- eBayes(lmFit(subset_matrix, design_mat))
+
+        summary_table <- topTable(
+          lm_fit,
+          adjust = "fdr",
+          sort.by = "B",
+          number = Inf,
+          genelist = gene_symbols
+        )
+      }
+
+      results_table <- getDiffExpressedResults(group1, group2)
+      
+
+      plotVolcano <- function(results_table) {
+        ## Expects the table returned by getDiffExpressedResults
+
+
+        # Assign binary vector to determine if results are significant for coloring
+        results_table$Color <- rep(0, nrow(results_table))
+        for (i in 1:nrow(results_table)) {
+          if (abs(results_table$logFC[i]) > 2 &&
+              results_table$adj.P.Val[i] < 0.05) {
+            results_table$Color[i] <- 1
+          }
+        }
+
+        g <-
+          ggplot(results_table, aes(
+            x = logFC,
+            y = -log10(adj.P.Val),
+            color = as.factor(Color)
+          )) +
+          geom_point(alpha = 0.6, size = 0.8) +
+          theme_classic() +
+          geom_hline(yintercept = -log10(0.05), linetype = "dotted") +
+          geom_vline(xintercept = 2, linetype = "dotted") +
+          geom_vline(xintercept = -2, linetype = "dotted") +
+          xlab("Log fold change") +
+          ylab("Significance") +
+          scale_color_manual(values = c("black", "red")) +
+          theme(legend.position = "none",
+                text = element_text(size=20))
+
+        return (g)
+      }
+
+      plotVolcano(results_table)
+
+      
     })
     
 })
