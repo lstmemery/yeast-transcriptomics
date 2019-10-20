@@ -28,28 +28,31 @@ shinyUI(fluidPage(
                          sidebarPanel(
                              width = 3,
                                  selectInput(inputId="go_domain_heatmap",
-                                             label = "GO domain",
+                                             label = "Select GO domain",
                                              choices = list("Biological process",
                                                             "Cellular component", 
                                                             "Molecular function"),
                                              selected = "Biological process"
                                  ),
+                                 helpText('Which gene onthology domain data to use'),
                                  selectInput(inputId="strain_tag_type_heatmap",
-                                             label = "Strain metadata",
+                                             label = "Select strain metadata",
                                              choices = list("primary",
                                                             "secondary", 
                                                             "additional_information"),
                                              selected = "primary"
-                             ),
-                             selectInput(inputId="order_by_heatmap",
-                                         label = "Order GO by:",
-                                         choices = c()
-                             ),
-                             checkboxGroupInput(inputId = "inCheckboxGroup_heatmap", 
-                                                label = "Input checkbox",
-                                                c())
-                         ),
-                         
+                                 ),
+                                 helpText('What strain metadata tag to display as the columns'),
+                                 selectInput(inputId="order_by_heatmap",
+                                             label = "Order GO by:",
+                                             choices = c()
+                                 ),
+                                 helpText('Sort columns based on their relative expression values in that row'),
+                                 checkboxGroupInput(inputId = "inCheckboxGroup_heatmap", 
+                                             label = "Input checkbox",
+                                             c()),
+                                 helpText('Select what responses to display')
+                                 ),
                          # Show a plot of the generated distribution
                          mainPanel(br(), plotOutput(outputId="heat", height = 600))
                      )
