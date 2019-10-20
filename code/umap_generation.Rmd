@@ -27,8 +27,14 @@ expression_matrix <- expression %>%
 
 
 ```{r}
-umap_expression <- umap(expression_matrix, random_state = 0L)
+umap_expression <- umap(t(expression_matrix), random_state = 1L)
 ```
+
+```{r}
+ggplot(umap_expression, aes_string("UMAP1", "UMAP2")) +
+  geom_point()
+```
+
 
 ```{r}
 umap_df <- bind_cols(expression %>% select(gene), umap_expression %>% select(UMAP1, UMAP2))
@@ -38,11 +44,6 @@ umap_df <- bind_cols(expression %>% select(gene), umap_expression %>% select(UMA
 write_csv(umap_df, here("data/umap.csv"))
 ```
 
-
-```{r}
-ggplot(umap_df, aes(UMAP1, UMAP2, color = long_non_coding)) +
-  geom_point(alpha = 0.2)
-```
 
 ```{r}
 tidy_attributes <- read_csv(here("data/tidy_data/tidy_attributes.csv"))
@@ -57,6 +58,7 @@ wide_attributes <- tidy_attributes %>%
 attributes_df <- umap_df %>%
   inner_join(wide_attributes)
 ```
+
 
 ```{r}
 umap_coloring <- function(filter_query) {
