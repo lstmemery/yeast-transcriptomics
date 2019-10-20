@@ -84,15 +84,15 @@ my_tsne_tibble <- my_tsne_tibble %>%
   add_column(conditions, .before=1)
 plot(my_tsne_tibble)
 tidy_conditions <- read_csv(here("data/tidy_data/tidy_conditions.csv"))
-group_table <- read_csv(here("data/05_grouping_experiments/05_grouping_table"))
+group_table <- read_csv(here("data/05_grouping_table.csv"))
 my_tsne_tibble <- my_tsne_tibble %>% 
-  left_join(tidy_conditions, by=c("conditions"="condition"))
+  left_join(group_table, by=c("conditions"="ID"))
 
-my_tsne_tibble <- my_tsne_tibble %>% 
-  filter(name == "primary")
+# my_tsne_tibble <- my_tsne_tibble %>% 
+#   filter(name == "primary")
 
 ggplot(my_tsne_tibble, aes(x=V1, y=V2)) +
-  geom_point(aes(color = value))
+  geom_point(aes(color = Group))
 
 ```
 
