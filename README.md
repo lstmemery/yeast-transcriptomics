@@ -2,7 +2,11 @@ Link to the work-in-progress dashboard cna be found here: https://lstmemery.shin
 
 
 # Transcriptomics in yeast
-Yeasts (Saccharomyces cerevisiae) are used in the production of some of the most cherished choices of our diet, such as bread (not mentioning wine and beer). There are many other biotechnology applications that use yeast, some of which include complex pharmaceuticals production. Yeasts are also great model organisms because of their simple and small genome consisting of approximately 6000 genes. Being single celled organisms also make them great for transcriptome analyses as gene expression is homogenous. As part of our Vancouver-based hackathon (hackseq19) project we will be examining a yeast transcriptome dataset. The dataset consists of gene expression changes from yeast strains that have been treated with various stimuli such as heat, phenol lysis, ethanol treatment, etc. It is not entirely clear from the metadata why certain strains or mutants were picked or how the stimuli differ for some experiments. It is, however, known that the data has been [scraped](https://github.com/rtwillett/yeastract_spider/) off of the web from various sources, aggregated and made accessible through the Kaggle competition site. We are also provided with gene expression data, normalized to Transcript Per Million (TPM). As a team, our aim is to clean, analyze, and communicate the results of our explorations through clear documentation of procedures and an interactive application.
+Yeasts (Saccharomyces cerevisiae) are used in the production of some of the most cherished food choices (e.g. bakery, wine making, and beer brewing). There are many other biotechnology applications that use yeast such as pharmaceutical and biomass production. 
+
+Yeasts are great model organisms because of their simple and small genome consisting of approximately 6000 genes. As single celled organisms, they also make great models for transcriptome analyses as gene expression is homogenous. 
+
+As part of our Vancouver-based hackathon (hackseq19) project examined  yeast transcriptome data scraped off of the [web](https://github.com/rtwillett/yeastract_spider/). The data consists of gene expression changes from yeast strains that have been treated with various stimuli such as heat, phenol lysis, ethanol treatment, etc.  Gene expression was normalized to Transcript Per Million (TPM). As a team, we cleaned, analyzed, and communicated the results of our explorations through development of an interactive dashboard and blog to present our methodologies and code snippets.
 
 ### Data
 The data in this project includes gene expression values for 92 yeast strains treated with various stimuli. RNA expression levels are normalized to TPM (transcripts per million), following a default normalization procedure. Data is stored in `data` folder.
@@ -11,14 +15,10 @@ The data in this project includes gene expression values for 92 yeast strains tr
 - The `conditions_annotation.csv` file explain the yeast strains and experimental conditions.
 
 ### Data Source 
-This project is inspired by the yeast-omics dataset shared as a Kaggle competition, and the original data can be found [here](https://www.kaggle.com/costalaether/yeast-transcriptomics).
+This project is inspired by the open source yeast-omics dataset shared as a Kaggle competition. The original data can be found [here](https://www.kaggle.com/costalaether/yeast-transcriptomics) and scraped off from [here](https://github.com/rtwillett/yeastract_spider/).
 
-### Goal
-The goal of this project is to unravel the genetic mechanisms involved in yeast stress adaptation through building a visualization platform (e.g. shiny application) that allows scientists to explore the data interactively. The tasks we will attempt in the hackathon include:
-- Perform unsupervised and supervised clustering of experimental conditions based on gene expression 
-- Perform gene set enrichment analyses (GSEA, ReactomePA)
-- Create visualizations of gene expression (heatmaps, barplots, etc.)
-- Phylogenetic/Taxonomic trees for yeast strains
+### Methodology
+To unravel the genetic mechanisms involved in yeast stress adaptation, we built a visualization platform that allows scientists to explore transcriptome data interactively. The methods implemented to visualize data include dimensionality reduction strategies (Unsupervised and supervised clustering of transcriptome across all experimental conditions]. 
 
 
 ### Software
