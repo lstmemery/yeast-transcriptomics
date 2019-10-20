@@ -26,19 +26,19 @@ shinyUI(fluidPage(
                          position = "left",
                          sidebarPanel(
                              width = 3,
-                             selectInput(inputId="go_domain_heatmap",
-                                         label = "GO domain",
-                                         choices = list("Biological process",
-                                                        "Cellular component", 
-                                                        "Molecular function"),
-                                         selected = "Biological process"
-                             ),
-                             selectInput(inputId="strain_tag_type_heatmap",
-                                         label = "Strain metadata",
-                                         choices = list("primary",
-                                                        "secondary", 
-                                                        "additional_information"),
-                                         selected = "primary"
+                                 selectInput(inputId="go_domain_heatmap",
+                                             label = "GO domain",
+                                             choices = list("Biological process",
+                                                            "Cellular component", 
+                                                            "Molecular function"),
+                                             selected = "Biological process"
+                                 ),
+                                 selectInput(inputId="strain_tag_type_heatmap",
+                                             label = "Strain metadata",
+                                             choices = list("primary",
+                                                            "secondary", 
+                                                            "additional_information"),
+                                             selected = "primary"
                              ),
                              selectInput(inputId="order_by_heatmap",
                                          label = "Order GO by:",

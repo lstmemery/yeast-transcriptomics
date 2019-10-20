@@ -68,6 +68,13 @@ shinyServer(function(input, output, session) {
             label = "Select Go Tags",
             choices = responses
         )
+        # Can also set the label and select items
+        updateSelectInput(session, "response_UMAP",
+                                 label = paste("Select which response to visualise"),
+                                 choices = responses,
+                                 selected = responses
+
+        )
     })
     
     
