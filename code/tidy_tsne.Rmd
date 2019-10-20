@@ -56,3 +56,4 @@ ggplot(my_tsne_tibble, aes(x=V1, y=V2)) +
   geom_point(aes(color = Group))
 ```
 
+slider for perplexity

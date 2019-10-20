@@ -89,7 +89,22 @@ shinyUI(fluidPage(
             
         tabPanel("PCA"),
         tabPanel("LIMMA"),
-        tabPanel("TSNE")
+        tabPanel("TSNE",
+                 fluidRow(
+                     
+                     # make a perplexity slider
+                     sidebarLayout(
+                         position = "left",
+                         sidebarPanel(
+                             width = 3,
+                             sliderInput("perplexity_slider", h3("Perplexity"),
+                                         min = 1, max = 28, value = 10)
+                         ),
+                         
+                         # add the plot
+                         mainPanel(br(),plotOutput(outputId="tsne", height = 600))
+                     )
+                 ))
     )
-)
-)
+))
+
