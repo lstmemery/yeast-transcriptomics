@@ -6,7 +6,7 @@ library(limma)
 library(here)
 
 expr_mat <- read_csv(here("data/04_remove_underscores_average_replicates/04_SC_expression.csv"))
-group_table <- read_csv(here("data/05_grouping_experiments/05_grouping_table"))
+group_table <- read_csv(here("data/05_grouping_experiments/05_grouping_table.csv"))
 
 # only keep non-duplicated IDs
 group_table <- group_table[!duplicated(group_table$ID),]
