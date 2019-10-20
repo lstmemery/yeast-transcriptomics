@@ -30,8 +30,9 @@ Prerequisites include:
 
 
 ## Hackathon Team Members
-    
-Noushin Nabavi, Matthew Emery, Alexander Morin, Zuhaib Ahmed, Casey Engstrom, Sedat Demiriz, Shinta Thio, Saelin Bjornson, Siddharth Raghuvanshi, Chris Rider 
+Team Co-Leads: Noushin Nabavi, Matthew Emery  
+Visualization: Alexander Morin, Zuhaib Ahmed, Casey Engstrom, Shinta Thio, Siddharth Raghuvanshi  
+Data Analysis and Documentation: Sedat Demiriz, Saelin Bjornson, Chris Rider  
 
 ##  Contributions
 If you’re having trouble using a function or package, or getting the syntax correct, please file an issue on the project repository. If you have any suggestions to improve this project, please fork or clone this repository and make suggestions through generating a branch and adding a pull request. 
