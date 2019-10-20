@@ -57,7 +57,7 @@ shinyUI(fluidPage(
                          mainPanel(br(), plotOutput(outputId="heat", height = 600))
                      )
                  )),
-        tabPanel("UMAP",
+        tabPanel("Gene Clustering",
                  br(),
                  fluidRow(
                      sidebarLayout(
@@ -81,7 +81,7 @@ shinyUI(fluidPage(
                  )
         ),
         tabPanel("LIMMA"),
-        tabPanel("TSNE",
+        tabPanel("Condition Clustering",
                  fluidRow(
                      
                      # make a perplexity slider
