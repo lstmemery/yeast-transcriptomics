@@ -4,6 +4,7 @@ library(shiny)
 library(tidyverse)
 library(here)
 library(ggthemes)
+library(Rtsne)
 
 
 # Define server logic required to draw a histogram
@@ -15,8 +16,7 @@ shinyServer(function(input, output, session) {
     go_annotation <- read_csv("data/go_annotation.csv")
     umap_df <- read_csv("data/umap.csv")
     strain_meta_grouping <- read_csv("data/stain_meta_grouping.csv")
-    
-    
+    group_table <- read_csv("data/05_grouping_table.csv")
     #Find the GO domain selected and change the options on the response checkboxes for the Heatmap Panel
     observe({
         domain_outputs <- go_annotation %>% 
@@ -144,8 +144,6 @@ shinyServer(function(input, output, session) {
         my_tsne_tibble <- as_tibble(tsne_out$Y)
         my_tsne_tibble <- my_tsne_tibble %>% 
             add_column(sample_names_vec, .before=1)
-        
-        
         
         my_tsne_tibble <- my_tsne_tibble %>% 
             left_join(group_table, by=c("sample_names_vec"="ID"))
