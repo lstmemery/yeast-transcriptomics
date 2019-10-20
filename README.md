@@ -20,9 +20,8 @@ The goal of this project is to unravel the genetic mechanisms involved in yeast 
 - Create visualizations of gene expression (heatmaps, barplots, etc.)
 - Phylogenetic/Taxonomic trees for yeast strains
 
-### Software
-Please have the latest versions of R and R Bioconductor installed on your machine prior to the workshop.
 
+### Software
 - [Install R](https://cran.r-project.org/)   
 - [Install R Bioconductor](https://bioconductor.org/install/)   
 - [Install RStudio](https://rstudio.com/products/rstudio/download/#download)   
@@ -39,10 +38,12 @@ Please have the latest versions of R and R Bioconductor installed on your machin
 - [Package development, maintenance, documentation, and peer-review](https://devguide.ropensci.org/building.html#documentation)
 - [Shiny Apps for Transcriptome Visualizations](https://academic.oup.com/bioinformatics/article/33/3/447/2525724)
 - [RNAseq Shiny app options](https://www.rna-seqblog.com/tag/shiny/)
+- [Limma/Glimma/edgeR analyses](https://www.bioconductor.org/packages/devel/workflows/vignettes/RNAseq123/inst/doc/limmaWorkflow.html)
+- [Bioinformatics data skills](http://2.droppdf.com/files/5aTvl/bioinformatics-data-skills.pdf)
 
 
 ### Team Members
-Noushin Nabavi, Matthew Emery, Alex Morin, Zuhaib Ahmed, Casey Engstrom, Sedat Demiriz, Shinta Thio, Saelin Bjornson, Siddharth Raghuvanshi, Chris Rider 
+Noushin Nabavi, Matthew Emery, Alexander Morin, Zuhaib Ahmed, Casey Engstrom, Sedat Demiriz, Shinta Thio, Saelin Bjornson, Siddharth Raghuvanshi, Chris Rider 
 
 ### Team Channel
 Team collaborations in #p02-yeast channel in [slack](hackseq19.slack.com)

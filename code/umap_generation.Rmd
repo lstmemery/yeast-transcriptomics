@@ -20,8 +20,8 @@ expression <- read_csv(here("data/04_remove_underscores_average_replicates/04_SC
 ```
 
 ```{r}
-expression_matrix <- expression %>% 
-  select_if(is.numeric) %>% 
+expression_matrix <- expression %>%
+  select_if(is.numeric) %>%
   as.matrix()
 ```
 
@@ -55,32 +55,31 @@ wide_attributes <- tidy_attributes %>%
 ```
 
 ```{r}
-attributes_df <- umap_df %>% 
+attributes_df <- umap_df %>%
   inner_join(wide_attributes)
 ```
 
 
 ```{r}
 umap_coloring <- function(filter_query) {
-  filtered_values <- tidy_attributes %>% 
-    filter(value == {{ filter_query }}) %>% 
+  filtered_values <- tidy_attributes %>%
+    filter(value == {{ filter_query }}) %>%
     pull(gene)
-  
-  
-  filter_df <- umap_df %>% 
+
+
+  filter_df <- umap_df %>%
     mutate({{ filter_query }} := map_lgl(gene, function(x) x %in% filtered_values))
-  
-  ggplot(filter_df, aes_string("UMAP1", "UMAP2", color = filter_query)) + 
+
+  ggplot(filter_df, aes_string("UMAP1", "UMAP2", color = filter_query)) +
     geom_point()
   }
 
-g <- umap_coloring("protein") 
+g <- umap_coloring("protein")
   ggsave(here("output/first_umap.png"), g, width = 16, height = 9)
 ```
 
 
 ```{r}
-tidy_attributes %>% 
+tidy_attributes %>%
   distinct(value)
 ```
-
