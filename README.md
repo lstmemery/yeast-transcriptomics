@@ -17,8 +17,10 @@ The data in this project includes gene expression values for 92 yeast strains tr
 ### Data Source 
 This project is inspired by the open source yeast-omics dataset shared as a Kaggle competition. The original data can be found [here](https://www.kaggle.com/costalaether/yeast-transcriptomics) and scraped off from [here](https://github.com/rtwillett/yeastract_spider/).
 
+
 ### Methodology
-To unravel the genetic mechanisms involved in yeast stress adaptation, we built a visualization platform that allows scientists to explore transcriptome data interactively. The methods implemented to visualize data include dimensionality reduction strategies (Unsupervised and supervised clustering of transcriptome across all experimental conditions]. 
+To unravel the genetic mechanisms involved in yeast stress adaptation, we built a visualization platform that allows scientists to explore transcriptome data interactively. The methods implemented to visualize data include dimensionality reduction strategies (Unsupervised and supervised clustering of transcriptome across all experimental conditions. 
+
 
 
 ### Software
