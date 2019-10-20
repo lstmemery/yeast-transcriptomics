@@ -149,7 +149,7 @@ shinyServer(function(input, output, session) {
         
     })
     
-    output$limma <- rederPlot({
+    output$limma <- renderPlot({
      
       plot(x=1:5, y=2:10)
       
