@@ -1,0 +1,76 @@
+---
+title: "tsne_generation.Rmd"
+author: "Shinta Thio"
+date: "10/20/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+##installing packages
+```{r}
+packages <- c("here",  "data.table", "tidyverse", "RColorBrewer", "Rtsne", "tidyverse", "ggplot2", "dbscan")
+lapply(packages, library, character.only = TRUE)
+library(here)
+library(tidyverse)
+library(Rtsne)
+library(dbscan)
+```
+
+##load the cleaned data
+```{r}
+SC_expression_clean <- fread(here::here("data/04_remove_underscores_average_replicates", "04_SC_expression.csv"))
+```
+
+##t-SNE plot
+```{r}
+#expression_matrix <-as.matrix(select(SC_expression_clean, -gene))
+sc_ex_unique<-unique(select(SC_expression_clean, -gene))
+set.seed(42)
+tsne_out<- Rtsne(as.matrix(sc_ex_unique[,1:87])) #to do: transpose??
+plot(tsne_out$Y)
+```
+
+```{r}
+tsne_out_df<-as_data_frame(tsne_out$Y)
+tsne_out_g_df<-bind_cols(SC_expression_clean %>% select(gene), tsne_out_df)
+names(tsne_out_g_df)<-c("gene","tSNE1", "tSNE2")
+tsne_out_g_df
+```
+
+```{r}
+tidy_attributes <- read_csv(here("data/tidy_data/tidy_attributes.csv"))
+```
+
+```{r}
+wide_attributes <- tidy_attributes %>%
+  pivot_wider(gene)
+```
+
+```{r}
+attributes_df <- tsne_out_g_df %>% 
+  inner_join(wide_attributes)
+```
+
+```{r}
+tsne_coloring <- function(filter_query) {
+  filtered_values <- tidy_attributes %>% 
+    filter(value == {{ filter_query }}) %>% 
+    pull(gene)
+  
+  
+  filter_df <- tsne_out_g_df %>% 
+    mutate({{ filter_query }} := map_lgl(gene, function(x) x %in% filtered_values))
+  
+  ggplot(filter_df, aes_string("tSNE1", "tSNE2", color = filter_query)) + 
+    geom_point()
+  }
+
+g <- tsne_coloring("protein") 
+  ggsave(here("output/tsne_nottransposed.png"), g, width = 16, height = 9)
+```
+
+
+
