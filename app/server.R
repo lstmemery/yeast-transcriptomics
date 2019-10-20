@@ -73,7 +73,6 @@ shinyServer(function(input, output, session) {
                                  label = paste("Select which response to visualise"),
                                  choices = responses,
                                  selected = responses
-
         )
     })
     
