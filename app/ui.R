@@ -9,6 +9,9 @@
 
 library(shiny)
 
+go_annotation <- read.csv("data/goTerms.csv")
+go_terms <- unique(unlist(strsplit(as.character(go_annotation[,3]), ";")))
+
 # Define UI for application that draws a histogram
 shinyUI(fluidPage(
     
@@ -29,10 +32,9 @@ shinyUI(fluidPage(
                              width = 3,
                                  selectInput(inputId="go_domain_heatmap",
                                              label = "Select GO domain",
-                                             choices = list("Biological process",
-                                                            "Cellular component", 
-                                                            "Molecular function"),
-                                             selected = "Biological process"
+                                             choices = go_terms,
+                                             selected = "biological_process",
+                                             multiple = T
                                  ),
                                  helpText('Which gene onthology domain data to use'),
                                  selectInput(inputId="strain_tag_type_heatmap",
@@ -64,16 +66,14 @@ shinyUI(fluidPage(
                          position = "left",
                          sidebarPanel(
                              width =3, 
-                             selectInput(inputId="go_domain_UMAP",
-                                         label = "GO domain to visualise",
-                                         choices = list("Biological process",
-                                                        "Cellular component", 
-                                                        "Molecular function"),
-                                         selected = "Biological process"
-                             ),
+                             # selectInput(inputId="go_domain_UMAP",
+                             #             label = "GO domain to visualise",
+                             #             choices = go_terms,
+                             #             selected = "biological_process",
+                             # ),
                              selectInput(inputId = "goTag", 
                                          label = "Go Tag",
-                                         c())
+                                         choices = go_terms
                          ),
                          mainPanel(
                              column(12, offset = 1, plotOutput(outputId="umap")))
