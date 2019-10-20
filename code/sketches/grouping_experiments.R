@@ -8,12 +8,11 @@ if (!requireNamespace("BiocManager", quietly = TRUE))
 BiocManager::install("limma")
 library(limma)
 
-# set time zone to proper location   
+# set time zone to proper location to make project reproducible across different Machines
 options(readr.default_locale=readr::locale(tz="America/Vancouver"))
 
 
-# Load datafiles
-
+# Load data-files
 conditions_annotation <- read_csv("data/00_raw/conditions_annotation.csv")
 SC_expression <- read_csv("data/04_remove_underscores_average_replicates/04_SC_expression.csv")
 
@@ -36,6 +35,7 @@ write.csv(conditions_annotation, here::here("data", "05_grouping_experiments", "
 
 #------------------------------------------------------------------------------------------------
 
+# Use of Limma for differential gene expression
 # split out the SA group and merge in gene expression data
 
 group_SA <- conditions_annotation[conditions_annotation$Group == "SA", ]
@@ -57,7 +57,7 @@ rownames(SAwildGalactose) <- SAwildGalactose$Gene
 
 SAwildGalactose$Gene <- NULL
 
-
+# Limma fit
 fit <- lmFit(SAwildGalactose)
 
 SAwildGalactose$fold <- SAwildGalactose$SAASAQ/SAwildGalactose$SAABRQ
@@ -65,6 +65,7 @@ SAwildGalactose$pval <- fit$p.value # this doesn't run, no p.value in the data
 
 df <- SAwildGalactose[is.finite(rowSums(SAwildGalactose)),]
 
+# GGplot visualization of differentially expressed genes
 g = ggplot(data=df, aes(x=log2(fold), y=-log10(pval))) +
   geom_point(alpha=0.4, size=5) +
   theme(legend.position = "none") +
