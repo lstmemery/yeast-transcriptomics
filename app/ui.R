@@ -19,6 +19,7 @@ shinyUI(fluidPage(
     
     tabsetPanel(
         tabPanel("Heatmap",
+                 br(),
                  fluidRow(
                      
                      # Sidebar with a slider input for number of bins
@@ -54,12 +55,14 @@ shinyUI(fluidPage(
                      )
                  )),
         tabPanel("UMAP",
+                 br(),
                  fluidRow(
                      sidebarLayout(
                          position = "left",
                          sidebarPanel(
+                             width =3, 
                              selectInput(inputId="go_domain_UMAP",
-                                         label = "GO domain",
+                                         label = "GO domain to visualise",
                                          choices = list("Biological process",
                                                         "Cellular component", 
                                                         "Molecular function"),

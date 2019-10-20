@@ -65,7 +65,7 @@ shinyServer(function(input, output, session) {
         updateSelectInput(
             session, 
             "goTag",
-            label = "Select Go Tags",
+            label = "Select GO tag to mark",
             choices = responses
         )
         # Can also set the label and select items
