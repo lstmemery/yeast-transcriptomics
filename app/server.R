@@ -3,6 +3,7 @@
 library(shiny)
 library(tidyverse)
 library(here)
+library(ggthemes)
 
 
 # Define server logic required to draw a histogram
@@ -14,7 +15,7 @@ shinyServer(function(input, output, session) {
     go_annotation <- read_csv(fs::path(here::here(),"app","data","go_annotation.csv"))
     
     
-    #Find the GO domain selected and change the options on the response checkboxes
+    #Find the GO domain selected and change the options on the response checkboxes for the Heatmap Panel
     observe({
         domain_outputs <- go_annotation %>% 
             filter(go_domain == input$go_domain_heatmap) # "Biological process" # 
@@ -46,6 +47,25 @@ shinyServer(function(input, output, session) {
         updateSelectInput(session, "order_by_heatmap",
                           choices = dropdown_responses,
                           selected = dropdown_responses
+        )
+        
+        #Find the GO domain selected and change the options on the response checkboxes for the UMAP Panel
+        domain_outputs <- go_annotation %>% 
+            filter(go_domain == input$go_domain_UMAP) # "Biological process" # 
+        
+        responses <- domain_outputs %>% 
+            distinct(go_annotation) %>% 
+            pull(go_annotation)
+        
+        # Can use character(0) to remove all choices
+        if (is.null(responses))
+            responses <- character(0)
+        
+        # Can also set the label and select items
+        updateSelectInput(session, "response_UMAP",
+                                 label = paste("Select which response to visualise"),
+                                 choices = responses,
+                                 selected = responses
         )
     })
     
@@ -86,7 +106,10 @@ shinyServer(function(input, output, session) {
             geom_tile(aes(fill=rel_expr)) +
             scale_fill_viridis_c() +
             ggtitle("Mean transcript abundance") +
+            theme_few() +
+            theme(plot.title = element_text(size = 20, hjust = 0.5, lineheight = 4)) + 
             theme(axis.text.x = element_text(angle = 90, hjust=0.99, vjust=0.5)) +
+            theme(axis.title = element_text(size = 16)) +
             ylab(input$go_domain_heatmap) +
             xlab(input$strain_tag_type_heatmap) +
             labs(fill="Norm. rel. expr.")
