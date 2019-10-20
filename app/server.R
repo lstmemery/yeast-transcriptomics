@@ -3,7 +3,6 @@
 library(shiny)
 library(tidyverse)
 library(ggthemes)
-library(Rtsne)
 
 
 # Define server logic required to draw a histogram
@@ -14,8 +13,8 @@ shinyServer(function(input, output, session) {
     strain_meta <- read_csv("data/strain_meta.csv")
     go_annotation <- read_csv("data/go_annotation.csv")
     umap_df <- read_csv("data/umap.csv")
-    strain_meta_grouping <- read_csv("data/stain_meta_grouping.csv")
-    group_table <- read_csv("data/05_grouping_table.csv")
+    
+    
     #Find the GO domain selected and change the options on the response checkboxes for the Heatmap Panel
     observe({
         domain_outputs <- go_annotation %>% 
@@ -123,36 +122,6 @@ shinyServer(function(input, output, session) {
         
     })
     
-    output$tsne <- renderPlot({
-        rel_expr_wide <- rel_expr %>% 
-            pivot_wider(names_from = gene_name, values_from = rel_expr)
-        
-        sample_names_vec <- rel_expr_wide %>% select(culture_treatment) %>% pull()
-        
-        rel_expr_wide_mat <- rel_expr_wide %>% 
-            select(-culture_treatment) %>% 
-            as.matrix()
-        
-        set.seed(123)
-        
-        perplex <- input$perplexity_slider
-        
-        tsne_out <- Rtsne(rel_expr_wide_mat,perplexity = perplex, check_duplicates = FALSE)
-        
-        tsne_out$Y
-        my_tsne_tibble <- as_tibble(tsne_out$Y)
-        my_tsne_tibble <- my_tsne_tibble %>% 
-            add_column(sample_names_vec, .before=1)
-        
-        my_tsne_tibble <- my_tsne_tibble %>% 
-            left_join(group_table, by=c("sample_names_vec"="ID"))
-        
-        ggplot(my_tsne_tibble, aes(x=V1, y=V2)) +
-            geom_point(aes(color = Group)) +
-            theme_few()
-        
-    })
-    
     output$umap <- renderPlot({
         
         filter_query <- input$goTag
@@ -173,6 +142,7 @@ shinyServer(function(input, output, session) {
             theme(plot.title = element_text(size = 20, hjust = 0.5, lineheight = 4)) + 
             theme(axis.title = element_text(size = 16)) +
             labs(fill=str_to_title(column_name))
+        
     })
     
 })
