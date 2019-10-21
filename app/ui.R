@@ -80,7 +80,11 @@ shinyUI(
                                     helpText(paste("This plot shows how gene-wise transcription profiles cluster.",
                                     "Data points can be colored by GO expression.",
                                     "This plot was generated using Uniform Manifold Approximation and Projection (UMAP).", sep = "\n")
-                                    )
+                                    ),
+                                    br(),
+                                    br(),
+                                    br(),
+                                    plotOutput(outputId="gene_tsne")
                                     )
                      )
         ))),

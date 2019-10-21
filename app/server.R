@@ -14,6 +14,8 @@ shinyServer(function(input, output, session) {
     go_annotation <- read_csv("data/go_annotation.csv")
     umap_df <- read_csv("data/umap.csv")
     group_table <- read_csv("data/05_grouping_table.csv")
+    SC_expression <- read_csv(fs::path(here::here(),"app","data","SC_expression.csv"))
+    
     
     
     #Find the GO domain selected and change the options on the response checkboxes for the Heatmap Panel
@@ -174,5 +176,47 @@ shinyServer(function(input, output, session) {
             geom_point(aes(color = Group)) +
             theme_few()
     })
+    
+    output$gene_tsne <- renderPlot({
+        SC_expression
+        
+        gene_names_vec <- SC_expression %>% select(Gene_Name) %>% pull()
+        
+        SC_expression_mat <- SC_expression %>% 
+            select(-Gene_Name) %>% 
+            as.matrix()
+        
+        set.seed(123)
+        
+        perplex <- input$perplexity_slider
+        
+        tsne_out <- Rtsne(SC_expression_mat,perplexity = perplex, check_duplicates = FALSE)
+        
+        tsne_out$Y
+        my_tsne_tibble <- as_tibble(tsne_out$Y)
+        my_tsne_tibble <- my_tsne_tibble %>% 
+            add_column(gene_names_vec, .before=1)
+        
+        my_tsne_go_domains <- go_annotation %>% 
+            filter(go_domain == input$go_domain_UMAP)
+        
+        user_genes <- my_tsne_go_domains %>% 
+            pull(gene_name)
+        
+        Filtered_tnse_tibble <- my_tsne_tibble %>%
+            filter(gene_names_vec %in% user_genes)
+        
+        user_genes <- my_tsne_go_domains %>% 
+            select(go_annotation)
+        
+        gene_tsne_tibble <- inner_join(Filtered_tnse_tibble, my_tsne_go_domains, by=c("gene_names_vec" = "gene_name"))
+        
+        view(gene_tsne_tibble)
+        
+        ggplot(gene_tsne_tibble, aes(x=V1, y=V2)) +
+            geom_point(aes(color = go_annotation)) +
+            theme_few()
+    })
+    
     
 })
