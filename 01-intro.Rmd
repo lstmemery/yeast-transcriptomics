@@ -19,14 +19,16 @@ As part of our Vancouver-based hackathon (hackseq19) project examined  yeast tra
 
 ## About the Data:
 
-### Data
+### Data Source 
+This project is inspired by the open source yeast-omics dataset shared as a Kaggle competition. The original data can be found [here](https://www.kaggle.com/costalaether/yeast-transcriptomics) and scraped off from [here](https://github.com/rtwillett/yeastract_spider/).
+
+### Project Data
 The data in this project includes gene expression values for 92 yeast strains treated with various stimuli. RNA expression levels are normalized to TPM (transcripts per million), following a default normalization procedure. Data is stored in `data` folder.
 - The `SC_expression.csv` file contains gene expression of yeast strains in the experiments.
 - The `labels.csv` files pertain to gene validation status and molecular function (MF), cellular component (CC), and biological processes (BP) of those genes. 
 - The `conditions_annotation.csv` file explain the yeast strains and experimental conditions.
 
-### Data Source 
-This project is inspired by the open source yeast-omics dataset shared as a Kaggle competition. The original data can be found [here](https://www.kaggle.com/costalaether/yeast-transcriptomics) and scraped off from [here](https://github.com/rtwillett/yeastract_spider/).
+### Processed Data
 
 **data/04_remove_underscores_average_replicates/04_SC-expression.csv**
 1st col "gene": gene names, lnc= long non-coding RNA
@@ -40,7 +42,6 @@ values: expression values. Normalized to TPM
 
 
 **data/03_remove_zero_genes/tiddy_expressions.csv**
-
 
 **data/tidy_data/tiddy_attributes.csv**
 
